@@ -1,740 +1,251 @@
-//Sun Dec 01 2024 10:56:53 GMT+0000 (Coordinated Universal Time)
+//Thu Dec 05 2024 04:11:53 GMT+0000 (Coordinated Universal Time)
 //Base:https://github.com/echo094/decode-js
 //Modify:https://github.com/smallfawn/decode_action
-/*
-目标: 抖音极速版App 抓包https://api5-normal-lf.toutiaoapi.com域名url里的device_id iid 请求头cookie里的sessionid用＆连接 不分顺序
-格式：export dyjsb="sessionid=xxxx&device_id=xxxxx&iid=xxxx"  
-多账号换行隔开
-cron: 32 0/30 * * ?
-*/
-const $ = new Env("\u6296\u97F3\u6781\u901F\u7248");
-let envSplitor = ["\n"]; //多账号隔开方式，默认换行可自定义
-///////////////////////////////维护参数自行更换//////////////////////////////////
-let defaultUA = ""; //默认UA
-var version_ = "jsjiami.com.v7";
-function _0x2c25() {
-  const _0x1a2e0f = function () {
-    return [...[version_, "kMjNsjtFiAfaSOGmwi.ecAotmEO.rLvnO7nnAUMG==", "nmkZW4HOa8o7Bcq", "bmoYWO7dQmk+", "AUw+UEwVPUEULZyQ", "oSkPW7ytW7DDW7C", "WPdcU2JdLurG", "gCkiW6tcV8kP", "Dhm2W5CCsftdM2q3", "iKD8WQpdQmogW5aojrNdPSohlaDMfhSIWRRdSmkjWQhdLCkCWOdcPCo3iSoBWOCpW6TmbW7dLqTYW4SrC0Dpq8kwW74PC8kZxSkvWOmOWO7cJdNcKCkQzJldUv/cVSkSlGFcTxhcG8oOWPP5CJesWQVdMGeNWRu1mLvTWQfNaGddICoQaq", "W5Xcyhu", "WPxdGshdLmkBWPpdQ1ZdLq", "W5uuWRWV", "WOWKW7BcHLa", "WOD3WQnzmH3dKW", "kwf8W4K", "W67dIGq", "W7K7W4epWPxdOCkW", "n8kyF0FdVa", "W4NdSYiUoSkwW4K/W7HWWPRdKhK", "WOdcGCk8WRFcJW", "eow6GUwrVUI/JowiUYCR", "yMq3W7SBsa", "nEAEKUAiIowjSmomWQCF6k+h6zIF6k2G6iwj5P+n6kYJ5PIX", "W4jkr3ZcKa", "iYpdNCkoAW", "WOCwW4iVDbtdS8oEj8kLoG", "WQK9mSkKCq", "6lEC5y6YW4e", "zaP5W4RdSSoEWRRcIta", "WPiXW67cN0FdQZSOWQqVWQVdS8oaWQVcJSklW5ugo8oTk8k2W710lCkaW47cJJZdMZxdUIWGh3D9WOddKSkzAmoDWOxcQhPTW6RcKmkGwJtcNCkRjGdcMmkQWPegW4PBhSkaW5tdV8o2xG", "W4T1WQ/dNaxdPeDjWOCkWQ/cGa", "lSkCW7WDW7q", "h+s7G+AuSEMfTUw7S+AuPoweNZG", "W4/dGqbEWO8", "WPNcOMRdT2i", "W6zUnq", "W5SUWQvgWPeoW7nRbCknWQ7dIG", "ESkVrCk5", "W5msW4uYWRC", "uCoOW7ldV8kT", "emolWPXAWOurW5JcKhq", "W6SGgKC", "lv1nwSoZjmoYW5JdRgT7t8kzn2xcUmoyr8kgWPjCqGhdSWy6W5/cIgxdH8kVfepdHgxcLtRdG0WDDxe9W6nlW6ZdRmkgi8kK", "aCkzW6RcGSk9", "mMJcPSogWP8", "WOlcL8oCWO4", "W6uGgx9ZaSkUWQ4mWPJdS8kB", "WRixemkcza", "W4SBWRe+da", "WR3cHSozWOJcSG", "ALfls8kGySoW", "WP7cK8oaWRtcNSor", "WQpdPSksaCkRBmonpmovkmk2WOq5W4Xjmtf4W4usWOCfWQ0qaKldRNdcUCoDW5K", "gmo4lYvE", "BCkezmk/BG", "WPdcP2tdRubHW7XB", "WPJdUSkljmk0", "WQRdSwFdTCk0u8oSpHbIW7y", "W6msW4H8W5C", "W47dMIP+WRm", "ChKVW50w", "W7KGduO", "WRldT8kqdmkV", "W6BdHG7dHmoRta", "aSouW53cN2K", "fvqHW7JdMSo4WOhdGHxdVq3dUgLg", "AxbPwmkH", "x+w7LEwtSUI9IEwjHSkaWO8", "WR8eW7vUW5KCWP9nW4y2W6q", "jNH7W4bp", "WQVcVmkAqq", "yaCpuCk0W4amxNRcSfNdHcSRW6yNECo/dq00amk2nwfdWO0kWPRcS2SqwWJcHKn0emkZWPZdRmolWRuvr8kzWRZdOmkEr8k4qSkoWP1UnmoPsmo3WR/dOb3dTCotW5iM", "6lsz5y2plq", "D0OCCCkPW48DwMVcOb3cHW", "ymoRd1rB", "WPRcSwldM1LVW7PxWPC+BCoHW5fOuSkwW5rK", "jbtdOmkJsSop", "jaX3WOqN", "W610WQ0o", "WRhdTCknh8kNumonjCotmSk2W58", "fSoMWR3dQmkU", "6lEe5y+zWO4", "WPncWOvNgXldLCoRf8otgmodW48ddWxcOq7cG8ohbfpdGxNcLCoqWPadW5NcSdSkWRqAoCkUDZ82B8oeWRtdUWbqmCosrXrW", "lmkRW6BcMq", "jSkfr1NdNG", "W5BdUxRdSmkQ", "WPOPW784W6vgW7yKsSo5W6eEkSktW68DtmkDFIZcQCkWWRpcKmoUWO14W4NdTaNcM8oQWOJcRmkvcCo/o3tcUgZdM8obWPHWhSoKyCkGeCoobtu9W7BdLcNcJCoExqRdUM/cN1yqr8o2ACoVuqNdMCoMqGFdJSoUjeBcUCoaeZ0sdx0dW7RdSb3cSv7dRsZdJd8Lh0pcPqPxW6NdLMDMW6xdNLZcRg/dHSoZrSoHeuNcOKqJWRmmW51DW4CXW7lcMCkJWPakc8kFWRb8r8kZpsRdS8o1zSoOkHzvW6v8hwL+uSovWOJcPCkFrGhdTh98qCogaNlcLCkeW5jIWRJdTCkSW5f/W4ZdQttcGa9eW67dRZm", "DK7cU8kos8oyWQGjWQW", "y0HqtSk9lmoUW4xcTd1ZcSoebMtcQ8oyq8oxW5TqgHtdVeyeW57cHhZdLmkNauNdMZNcKcddJNGkD30SW7eyWQJcP8oCAmk7W4iOWQesWPFcOc1JgCoMWQfRWQ4WWO/cG8ohE8kUemomtxXwsdGxrCkYWOpcQw5hWONcPgtdKwjHW5VcHSo9t8odW4tcQeG7WRO", "W73cT2HpWOe", "W5tdOrryWQa", "W7bOWRFdGHNdVdKQW6HYW6/dQ8oaW6JdJmoz6lAE5y6q5Qkx5RAlAmk2WRW/lSomWO7dHNZcGdBcTg5Ghq", "WOdcG8kuWOFcUG", "WPzQW5e9W48", "wuyq", "WO4qjMtcLaPhkfC", "ECkJwCk/whGXbM3cVG0q", "E3Spr8o/hmkjW74lmMtcQW", "6lwJ5y6oW5q", "WPVcQhxdKW", "lmkqw0tdTwK6", "W7WsW6jhW4qwWOPH", "WO3cRhhdNKXTW6S", "WQRcR8kCFXhdRG", "lbddQW", "iw9VW6LKrConBXP1kmkC", "W5TiqNxcMIH5", "W77dShhdRmkXrSoS", "o8obW6ier8krWRnslNpcOSo7WPq", "WOT7WOdcIN4", "W6H2WQWEAuW", "jmksEwhdGq", "WPxdGshdLmkBWPpdQ1ZdLwK", "BCkwWR9vimobW6ro", "WR3cUmkDtXpdT8oN", "W7ajW7q", "WRmxo8kiDa", "kCkNW73cJCkxWOy", "W7G1W4SK", "iSkGW4b8hq", "DhuQW5yqEfVdN29/w3a", "mmkSW5vcgCoM", "iCkdW44uW4e", "W65+WRC", "WQL8W5iTW6e", "W47dGqvd", "W6CUe1S", "WOFdLcldI8kBWP/dPehdMdTzW6tdRftcMSkkowRdMCojW5dcHCobemkkW63cNcpcS8o4nW", "eColWPXgWOaiW5m", "y8ohW5FdGCkiW47cNG", "rUECRUw4HowrUSo9WOVOJ6tLVQi", "6lsI5y+rtG", "wmoDaHtdPSkbwG", "ECkPuCkJyK4+", "krBdQmkxsSoFWQ8mWQldRmoYWQy", "cCoAmJ96lmojvSo+W7tdQN3cHSk8WOVdQmk8mSkkW5XMW74pW5RdOcn8qCoBwCkOW50PprapW50MfSkzBCkOz8oeCCokoqdcOd3cLZpcQb01cI3cTauNW7DsWQb4vuvYwM/cLSodFSouESkabKNdP8oRx8okW7bQWOtdICkEW7NdNSo+WPdcQmkOW5NdJa", "FSoanMLg", "lSkwyLddT3rV", "mLO7W60", "hUs9UUMJUuK", "W47dOuJdU8kV", "kragtmkRz8kEWOpcSw8Ghq", "r3aRy8oA", "y8ohW5FdGCkiW44", "t+wTIUETTow5NowrN8oyW40", "vCo/BSotW6a", "WOzbWRVcVgGYsSo0", "W6TPmSk/WQJdSrBcOCkLW5ldKG", "6yEv5BINnEEFJow6QUwsVUMHP+IUNEwpS+IoIow8Kmkn", "W71hCxJcVG", "FuWvuCkRW4CQ", "W5hdHq1tWO7dMW0", "z8kaWQfqyW", "6lsy5y+upW", "WO0ve8kowa", "WPtdGspdUmkBWPG", "p20CW4tdLG", "WR8hdSkmyG", "ySkIWRzl", "z8oyW4RdQ8ksW5pdN8o7", "zSk4ySkxvW", "W4hcGwHjWOi", "WPNdVwmnEmkdWOGW", "W4buWOi6ua", "iCksuW", "WRZcUmkDuXBdRSoSW6Tgya", "FSkYWQTeyCkk"], ...function () {
-      return [...["W7L0WRaF", "WPqZe8k/vG", "nComWOddL8kh", "yK9QuCkQCW", "WPvpWRZcRq", "WPblWQBcTLSHtG", "WQZcVmkaCHRdOmoM", "AmosBSobW4PjgIxdMNS2WOBcUZ8XWRKBzfy1W4VdVhpdTSoVk1rKcZT0rGHDumoWWR8BW4/dPsZcJw5uW59jW6vxa1HaW7xcICktW6tcJmo5W6TrDLRcQtlcNCkVymolkCkHcmoAWOZcJ8kedhZdGfKapMjWW5jWDSkRcaORWQzuW4pdOCoPlSkcWPupWQH0ExbCvfSYW4LDn8oyWOlcMMpcT2xdVt3dI0aSlsFcIq", "F1yTbCkD", "FmkHwSkKwq", "jmolW5hdKmoBWOJcNmk6WRfnW7iEWQ7cK8oPW6JdNZPaWO7dTf8/WQP1lJJdLmkZW7VcVCkyWR7cV8o3WPdcQ8k4WOpcVmk/nSoasvSeBhrOk8kTs8o/WQVcVbFdSZbqW58ZcIpdTSopW5VdJd3dUXDKpSoJWQNcMCk7W5BcISkcaGbiW4GDpSkdWOJdJtDKW5G", "WRfmWOlcRKy", "paHKWOeVW77cNG", "m0K9W5pdI8o/WOxcNa", "lCk4W6dcP8knWPVdIJa", "oLqOW43dKCoYWRVcGc3dSqxdPG", "W410WOK4CW", "zMXTWOxcPW", "WPpdV3q8BSkfWOa", "5B6p6ygb5OE7776O6yAK5BIM5RQM6lEc5lQg772u", "W6eTWPTfWRO", "w8owhgDIBJDSW5K+W4Sg", "y+wpN+AUV+s5VUILKowLIoI1H+w/QowsNE++Ro++KG", "WR82W5dcQvW", "WRGRW7zynG3dIxO+nmoPbG", "b2XBW4XC", "WQ7dUCkf", "WOr5W7KgW6jeW5K8", "jNdcVSouWPa", "W4ChWQCeamo4WQ0z", "zSkVuq", "WOL/W78PW6uxWOzGwCkXW61oyCkyW6uxvSkbDJVcQCoXWR7cOmoIW4y7WONcUKBcNmo2WPlcRa", "ESoYWQhdJmobW4FcJcTGWP0yc2K", "e8oJWPBdOa", "CSolW4RdLCkl", "WPBcP2xdL1u", "pSkeW4pcGCkq", "W7fVpSkNWQJdPY4", "BN8H", "W78OkvD0", "WOJcN8ov", "WQRcPCknsqVdOmo2W6Tnm8o7W5pdJX7dQ2tcQ8kfgCoSjSoBqmk+W7KE", "zSkjWRrEhColW70", "yxfRASkH", "mqnZ", "W7JdPdLbWQi", "u8oZvmoqW5q", "W7JdPdxdP8o+", "y+IoLowoSUw4JowsM+woOoAuNEAiU+wlPmkmWRpPOR7OR5BLJkpOJz7LV4Gb", "WRj0WPNcLvO", "vUw5G+wrRUI/G+wjRIZdOEInNEw9GG", "jSkRW7/cNq", "W5rmC1xcMcvtdKjDFmoo", "WO9QW6y8", "W747W5S8", "E8kCWQjFe8osW6a", "WQVdUmkgcmk6", "ymkxWRvvbW", "oajI", "W7zLn8kJWQK", "W6SfW6n3W5WjWP8", "W6fQxvZcMW", "W6BdJaFdOSoXqmolWOzFo8o0WOa", "WPfKW7GT", "jmo0WRRdUCkF", "pqnHWOaY", "xuWkb8k0dbK", "pMv7W5TJtSoTAqO", "W5mGWRzM", "vCkUW4ddOmkUWOpdHCogWROmAbe", "nmkZWQbvFmkbWOJcOf7cH8kS", "W41WWQ3dNWtdPwvoWPa9WPxcSW", "WQ8Uf1OGvmotW7nbW5FdTmksrCkmtCo+b2TiAr3cHeS8WPRcQd7dUSknwc3cQW/cRX3dR8k6rmkunwjFyNbOaCkJduBcLtu+hdG9W4TaxCkjWR/dNqLNremRW45tECoyW5G4W5LJxmkaW5NdJCo6W4dcHgtcTW", "wmk7WQD3lW", "6lwR5y+3uW", "WPjpWQFcUfO", "nCkGW45w", "W5LmWPi", "iwJcUSo1WPDZhG", "eowmGEAVR+s4VoIKMUwKT+I0OEw9TowtIU++O+++VG", "6lA/5y6xW4S", "CCopW4VdH8kpW5xdGCoHW6W", "WQ/dTLOhsq", "uKWdmSk/bIned8oeW7vd", "rvSXASoh", "WO0OW7ZcVhy", "vveOW4G2", "E11wx8kJ", "W47dUZdcIH47W5XDWQ0xqCol", "o8kVW6hcI8kqWP3dLcPYW4q", "i8kKW4Lyg8oKEq", "i23cI8ooWPy", "6lsK5y2DW6m", "zSkLwmkQsu8", "WOtcJmkJsbS", "D8ohC8of", "nrJdVCkLqq", "qmoyeLi", "zCouAmoUW40ArxK", "W7flELBcSa", "W5PbWP9YjWG", "aSobkdTSEmks", "W4FKVlRKVO/NM5NLJllML7dMLltMLR0", "W5j3WROLWQzrWP0Zhq", "W5rhWQP+ia", "6i+/5B2BWR8", "z1nd", "W7/LJONMRi7KUzBOP7xLPRVOT7FLVQNLKiZVV4tVVRK", "FCk1F8k+zW", "5l+y5PIm5zgs55oi5zUTyE+8GG", "W43dPs3dTmoX", "5lQM6lAZ5y+1", "WOpdLs0qW58jqCkwW7b1ta", "WRZNRBxLIRTJWRy", "uSkbFCkOrq", "WOZcRhldGurHW6bxWPW", "tCoMW73dL8kp", "rmojf094", "ySk2WRDcEa", "W5LmWPjwkHJdUSoPbSkhgSov", "bdVdHSkezG", "WOBcUCoaWPZcVa", "e8oGWQ5CWR4", "W4X+WRenyW", "WPnVWOtcLhm", "krZdOCkXumot", "WP3cPMxdIW", "ASk9WR9/oW", "W6yJefbz", "W4q1WRa1WPuzW5jQ", "W4TsWO4ZuW", "WPVcOgu", "W5uUWQz+", "jLq8W7G", "6lAF5y2xnW", "F8kPyN/dRxXS", "w8ozaIe", "iHZdU8kYrCopWOa", "uCoMWOFdT8kJWR/dKSoWWQDkBW", "ACkVwmk5weKK", "BmoJW4RdMmkx", "5l6m5PUz5zo355c35zUSWPxVVyS", "W7y1W4GCWP7dPmkAWPRdUu0lW5W", "W6xdU2hdRmkWvCowbrHYWQO", "tmoDgcq", "W7pdJrrqWQK", "C8o2fMnb", "W5LWWPbzdq", "WPyQW73cRLRcTvPOWRe2WQtcVW", "W5xdJWS", "BmodDmowW40B", "kCkCqfa", "DwacxCkc", "FmoqeGxdVq", "DKeNWOqNW6pcMcldP0DIEG", "WQZdHWxdLCo2r8oGWRzcnSkV", "W4OFchj7", "BNDfCCkO", "W5iKWObTWRy", "ASkQWRXDmG", "oCoJWRpdQCke", "eSo6WOhdQmk+WR3dG8ogWQfadvldMSkiWOXaAtK", "eCoFWR5RWRG", "W5ZdQW14WO0", "W4CGWRb0WPO", "6lsH5y+HhG", "W7lcSh1YWRG", "WQZcSSkavbRdR8o2WQ9wjmouW5C"], ...function () {
-        return ["W6RdIYzoWOC", "W5brWODimbxdHmo1", "W5LVWO4bCq", "yCkYWRzqFmknWOpcLLpdNG", "a8k6W7WmW5m", "r8oycuDH", "W44qWRS8amo5", "W6z1WQy0ALFdQfe", "dmo/WOPHWOe", "b8oJWPddOmkN", "F0apuCkUW4C", "WQTMW6fhjvNdVMSDdCoTiCo/WQP1WPKQz8oSWP/cJmk5WRPevY4UlYdcRSooW49kh8oamCouW6xcVuNcLmkEBSkXgW", "W5NcLg5yWPXBkCoHW4roy8kOW77dSbqwnCk4paZcMmokpW1uCGqStHOZCSk/W7LNWQZdIHdcHZTSCfKVW7buW7pdOejVCCokWRLQFmo2WP08W59sW7CoW5rxWR7cPCoDW6RdPc1yW70oWPddTcrOnCo8pNldGuuCW5pcMeWVWOZcIWZdJwnWW73dUmkVmSoM", "jmkLW7xcUCkxWPBdTcXIWPaika", "WQFNNy7LU6xLKQuoW7e", "WQpcSSkj", "mbrVWPyO", "lmkLW6e", "uM9VWPdcTG", "WPhcQgZdLW", "W4RdGWnfWO7dTH/cOYZdHGGH", "A0qjuCkQ", "W7K1W4ePWPxdRSkGW5JdUv0DW4a", "rUECRUw4HowrUSo9WOS", "h8o2WPBdSCk5W6BcMmkaWQ9EoWBcK8k5WOPCyJFdVd4oW7n3qCoXeqDBW7TLW7xcJCkQdCkCWPPbgvJcJmkEtComWQyXwtn3W7ddOhxdJwdcQCo7W6xcTMlcQ8oMWQBcJ3OgWRTmW5OVa8oitJSyhCoTmmo1", "W6ldTg/dPG", "WQ4Gi8kovCooCa", "W6KbW6j5W50", "lSkJW77cJmkCWOa", "W4zaWPPLispdLCoRhCkBeSoy", "WO3cM8oEWP7cMCobzq", "WQuKlmk4vCoDzW", "WQJdU8kBlmky", "W5DnCuVcMY5Vba", "W7JdQmozee/cTCoZW4T3p8oZW4C", "D0DVWOZcVW", "WOLjW6euW7q", "WPfQW7K4W7S", "WRT4W6OCW6e", "WQpdUSko", "ECo9WRDmWQGtWQy2p8kiW7RdNCk1", "6lsS5yY3Bq", "W7PVWRfzBuVdTvO", "imolWR5+WRG", "t1tcOSo7cCkwW4XoW7VcQmk5W7lcQXJdJSk95AwD5AwI6lw26ysu5BUvWQmOjgpdKItdUsfwWQdcVCoTW6eTAG", "qComW5tdOmkP", "x04lbSk/fG", "WPVcL8oyWP8", "FNOmy8oP", "WPiGW7VcI1hcO2C", "y8oIDmo+W70", "W7upW7DzW54BWRr9W5S7WR/cHW", "CSoFW4VdNa", "W44AWRi", "W6ZNRP7LIkRLUzFLKQvBjG", "msv3W5qxBgddU2e", "lvpcNCoIWPy", "dSkjtrq1oefkW6W0W6SPCG", "W69GtedcNG", "d8kIW6BcLCks", "WP7dOhuR", "t+ADK+AlSEwlPMFdSmob6k6u6zUt6k2+6iAo5P+Z6k2Y5PI7", "eZpdUmkWuq", "CmopW4VdM8kkW4ZdIG", "WRVcVhBdO2i", "jmkLW7u", "jXRdPmkhyq", "W5iAWQyV", "pCoAW4xcSq", "W5iaWQyZ", "ugbHWOJcTG", "W53dMdPXWRS", "W6rPymkyvConxh/cISoBWQ/cRa", "W6tdGG3dHG", "EKeKwCkJ", "6lsT5y+lFW", "6lAK5y+WcG", "ueijfG", "WOKXW6JdNv7cONTP", "5B236ykE5OA/776+5Aw75yQ/5RIs6lwo5lM+", "6lsM5y2rqq", "WPH3WP3cQga", "WORdIZu", "nt9NWQW+", "WP09W5lcL1K", "WPpcRg/dLvLM", "aSodWObCWOik", "tKO4xmk+", "kSkJW6ef", "eSoEkIz9", "WQiKnSkl", "mCouW4ZcRq", "mr93WROKW6m", "uKWd", "p2v5W7DJrq", "BSohD8ou", "zSoje0vj", "W4btWQKeqa", "WOVdONCbtG", "jcnCxSo+g8koW7Sf", "zCkWu8kJx0GO", "6lwU5yY7W54", "w1ewlmk/dq", "oWvX4OcK4Oot4Ok/4Ogh44c/", "yvrNWPJcOCkDWPnp", "teyvlmk4bG", "wEETMowiPEw6UowsN8ooW4pOJOVLVOS", "W5K1W4ePWPxdRSkGW5JdGuedW4jZWQy", "W5xdJWT2WOxdJtdcOtFdMGaS", "iCoEW5VcU2/cLa4", "x+wST+ESIEw7I+wsRmkaWO8", "W68hh29W", "n38UW47dPG", "f8o+aX9W", "W7y1W4G", "WOHIW68", "W5yfWQn/WPq", "W4/dTfRdS8k6", "WPKUW4ZcJLJcUha", "Cx0eCSo0cG", "W5ZdKH5OWP/dGa7cVq", "rmoAffrPvrHUW4iIW4ml", "W5qsWPi5mW", "r8oPdxbb", "WORdIZxdPSkCWPJdI1RdHt1rWRi", "W7SpW7rH", "5yEZ5OM55yMH", "mmoAW5ZcT2S", "BCkZWR14lW", "jCklW6RcL8kY", "W5ziWQn2kbxdKa", "tKiweSk8", "nCocW4RcOKO", "tuO4yCke", "W4zgWOzKlrpdMSoVfSot", "WOKTW73cHNe", "zCkwWRzXeCoaW4Tvlh7cSSoy", "vCoTeXldLW", "WPZcOLFdK0fNW6O", "yMq3W7SbtKRdGq", "WReKk8kE", "BSkHqSkS", "oGXOWOa", "z8osW5VdNCksW5VdM8oHW6CfW4WpWRRcK8oUW6FdLda", "W7VdTgVdTW", "nXZdVmk5smonWOq", "W6aMgG", "W6zMjCkX", "W6JLRR7NRytLUAJLKi5gWPtOJlhLV6u", "WQ7dUCkflmkSA8oIj8oilSk+W5i", "WRpcK1BcKCkMfSk9WQbQmCouWQ/dRW", "W5FcLwdcL8obW4tcSwddVID2WQFdLa", "WO8RW77cILlcUhPIWQe", "W60IW7yNWQm", "aCkNW68TW7G", "W6H2WQWEAuZcQa", "F8omaNFdLLveW5ff", "W7TmEMdcKY9PthPrDmoqebW", "pxv7W4a", "fmkIW7fypa", "W4myWROUgSoL", "m0mSW6xdI8o3WOhcHJBdTJZdVNLXWRFcL8oxbLJdKmoWWR/cLSkbcKq", "W5iZWRbyWPef", "W7q7W4i4", "zCk2WQXx", "w8oCfuf4yG", "bCoNWPpdNSkJWRG"];
-      }()];
-    }()];
-  }();
-  _0x2c25 = function () {
-    return _0x1a2e0f;
-  };
-  return _0x2c25();
-}
-;
-const _0x2f0247 = _0x21e9;
-(function (_0x4ca769, _0x2ac152, _0x19c640, _0x38491d, _0x37dd0e, _0x916a63, _0x3c5393) {
-  return _0x4ca769 = _0x4ca769 >> 3, _0x916a63 = "hs", _0x3c5393 = "hs", function (_0x2d4f11, _0x13535f, _0x3ccc65, _0x408533, _0x5e5654) {
-    const _0x136dc9 = _0x21e9;
-    _0x408533 = "tfi", _0x916a63 = _0x408533 + _0x916a63, _0x5e5654 = "up", _0x3c5393 += _0x5e5654, _0x916a63 = _0x3ccc65(_0x916a63), _0x3c5393 = _0x3ccc65(_0x3c5393), _0x3ccc65 = 0;
-    const _0x24a522 = _0x2d4f11();
-    while (!![] && --_0x38491d + _0x13535f) {
-      try {
-        _0x408533 = parseInt(_0x136dc9(744, "^@2!")) / 1 * (parseInt(_0x136dc9(671, "Rfh#")) / 2) + parseInt(_0x136dc9(568, "EQin")) / 3 + -parseInt(_0x136dc9(738, "NtE]")) / 4 + parseInt(_0x136dc9(560, "a6z^")) / 5 * (-parseInt(_0x136dc9(397, "&C$M")) / 6) + -parseInt(_0x136dc9(624, "]tPp")) / 7 * (parseInt(_0x136dc9(759, "5Fl$")) / 8) + parseInt(_0x136dc9(761, "4oGZ")) / 9 + parseInt(_0x136dc9(648, "GNuD")) / 10 * (parseInt(_0x136dc9(302, "*o81")) / 11);
-      } catch (_0x57edcb) {
-        _0x408533 = _0x3ccc65;
-      } finally {
-        _0x5e5654 = _0x24a522[_0x916a63]();
-        if (_0x4ca769 <= _0x38491d) _0x3ccc65 ? _0x37dd0e ? _0x408533 = _0x5e5654 : _0x37dd0e = _0x5e5654 : _0x3ccc65 = _0x5e5654;else {
-          if (_0x3ccc65 == _0x37dd0e["replace"](/[ArkeGFOtLfMEUSNnw=]/g, "")) {
-            if (_0x408533 === _0x13535f) {
-              _0x24a522["un" + _0x916a63](_0x5e5654);
-              break;
-            }
-            _0x24a522[_0x3c5393](_0x5e5654);
-          }
-        }
-      }
-    }
-  }(_0x19c640, _0x2ac152, function (_0x183f7e, _0x1aea0a, _0x48e75c, _0x491f41, _0xb03a30, _0xf63cab, _0x5065be) {
-    return _0x1aea0a = "split", _0x183f7e = arguments[0], _0x183f7e = _0x183f7e[_0x1aea0a](""), _0x48e75c = `\x72\x65\x76\x65\x72\x73\x65`, _0x183f7e = _0x183f7e[_0x48e75c]("v"), _0x491f41 = `\x6a\x6f\x69\x6e`, 1211901, _0x183f7e[_0x491f41]("");
+const $ = new Env("益禾堂"),
+  axios = require("axios"),
+  axiosRetry = require("axios-retry").default,
+  {
+    sendNotify
+  } = require("./sendNotify"),
+  SyncRequest = require("sync-request");
+let notifyStr = "";
+var ua = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36 MicroMessenger/7.0.20.1781(0x6700143B) NetType/WIFI MiniProgramEnv/Windows WindowsWechat/WMPF WindowsWechat(0x63090c11)XWEB/11275";
+(async () => {
+  axiosRetry(axios, {
+    retries: 3
   });
-}(1512, 837466, _0x2c25, 191), _0x2c25) && (version_ = _0x2c25);
-let httpResult,
-  httpReq,
-  httpResp,
-  userCookie = ($[_0x2f0247(539, "r*F#")]() ? process[_0x2f0247(580, "k!Q8")][_0x2f0247(564, "T$fS")] : $[_0x2f0247(673, "Ye1E")](_0x2f0247(720, "k!Q8"))) || "",
-  userList = [],
-  userIdx = 0,
-  userCount = 0;
-class UserInfo {
-  constructor(_0x3561eb) {
-    const _0x52271d = _0x2f0247,
-      _0x3f6f64 = {
-        "bLMfo": function (_0x299e39, _0x28c78f) {
-          return _0x299e39 === _0x28c78f;
-        },
-        "IhnBF": _0x52271d(664, "gGId"),
-        "SkJyl": _0x52271d(491, "^@2!")
-      };
-    this[_0x52271d(592, "h%kc")] = ++userIdx, this["name"] = this[_0x52271d(593, "Ek^S")], this[_0x52271d(545, "Vn!k")] = ![], this["canRead"] = ![];
-    let _0x3715d5 = new Date()[_0x52271d(501, "K5#g")]();
-    try {
-      this["param"] = $[_0x52271d(665, "SAUS")](_0x3561eb), this[_0x52271d(506, "Rfh#")] = !![];
-    } catch (_0x558b98) {
-      _0x3f6f64[_0x52271d(435, "r*F#")](_0x3f6f64[_0x52271d(635, "ITE$")], _0x3f6f64[_0x52271d(704, "FPOW")]) ? _0x1be734[_0x52271d(719, "NtE]")](_0x3688f7) : (this[_0x52271d(321, "jbuj")] = ![], $[_0x52271d(684, "jbuj")](_0x52271d(670, "FPOW") + this[_0x52271d(752, "*o81")] + "]CK\u683C\u5F0F\u9519\u8BEF"));
-    }
+  const _0x42a8e6 = checkVersion("yht.js", "1aa3ea7dedca6e09ef9470d8ec23be31");
+  let _0x8bb918 = [];
+  const _0x101e61 = process.env.yht_invite_id;
+  _0x101e61 && (_0x8bb918 = _0x101e61.split(","));
+  logAndNotify("益禾堂 助力码:【" + _0x8bb918.join("、") + "】");
+  if (_0x42a8e6) {
+    _0x8bb918.push(..._0x42a8e6.split(","));
   }
-  async ["my"]() {
-    const _0xcbc62a = _0x2f0247,
-      _0x3ea5c1 = {
-        "VIzWc": "SBJKK",
-        "QzCjV": function (_0xd177cb, _0x1c9c0a, _0x411f7a, _0x4e113d) {
-          return _0xd177cb(_0x1c9c0a, _0x411f7a, _0x4e113d);
-        },
-        "RvQUf": function (_0x39c907, _0x6ededf) {
-          return _0x39c907 / _0x6ededf;
-        },
-        "baczz": function (_0x22b4fc, _0x300cd0) {
-          return _0x22b4fc < _0x300cd0;
-        },
-        "Ucero": function (_0x4e3cd9, _0x3e26e5) {
-          return _0x4e3cd9 === _0x3e26e5;
-        },
-        "jMOTo": _0xcbc62a(267, "]tPp"),
-        "ESUZh": _0xcbc62a(747, "8av#"),
-        "jUeRX": function (_0x1b065f, _0x4d20d5) {
-          return _0x1b065f !== _0x4d20d5;
-        },
-        "lSeNI": "wzFIX"
-      };
-    try {
-      if (_0xcbc62a(408, "T[c]") !== _0x3ea5c1[_0xcbc62a(722, "VOMW")]) _0x575be9[_0xcbc62a(503, "Ye1E")](_0xcbc62a(628, "T[c]") + this["name"] + _0xcbc62a(718, "jbuj") + _0x533051[_0xcbc62a(323, "FPOW")]);else {
-        let _0x31f945 = _0xcbc62a(398, "jbuj") + this[_0xcbc62a(570, "T[c]")]["iid"] + _0xcbc62a(674, "7)v^") + this[_0xcbc62a(611, "!(Ai")][_0xcbc62a(721, "^@2!")] + _0xcbc62a(451, "vi[9"),
-          _0x43afb8 = "",
-          _0x341d7f = _0xcbc62a(707, "pdRu") + this[_0xcbc62a(741, "sce2")][_0xcbc62a(379, "9I$%")],
-          _0x193ff2 = _0x3ea5c1["QzCjV"](populateUrlObject, _0x31f945, _0x341d7f, _0x43afb8);
-        await httpRequest(_0xcbc62a(463, "ihcj"), _0x193ff2);
-        let _0x4eb0f2 = httpResult;
-        if (!_0x4eb0f2) return;
-        if (_0x4eb0f2[_0xcbc62a(365, "SAUS")] == 0) {
-          $[_0xcbc62a(405, "SAUS")](_0xcbc62a(396, "jbuj") + this[_0xcbc62a(366, "OY((")] + _0xcbc62a(401, "T$fS") + _0x4eb0f2["data"]["income_data"][_0xcbc62a(498, "T[c]")] + " \u4F59\u989D:" + _0x3ea5c1[_0xcbc62a(537, "*uum")](_0x4eb0f2[_0xcbc62a(439, "NtE]")]["income_data"][_0xcbc62a(358, "a6z^")], 100) + "\u5143");
-          if (_0x3ea5c1["baczz"](_0x4eb0f2[_0xcbc62a(293, "*uum")]["income_data"][_0xcbc62a(469, "Rfh#")], 30000)) {
-            if (_0x3ea5c1["Ucero"](_0x3ea5c1["jMOTo"], _0x3ea5c1[_0xcbc62a(579, "r*F#")])) this["valid"] = !![], this[_0xcbc62a(735, "*uum")] = !![];else {
-              if (_0x1ddb86) _0x169967[_0xcbc62a(361, "*upJ")](new _0x35486d(_0x1c9ce8));
-            }
-          } else _0x3ea5c1["ESUZh"] !== _0x3ea5c1["ESUZh"] ? _0x54d1b1() : $[_0xcbc62a(466, "*o81")](_0xcbc62a(450, "!(Ai") + this["name"] + _0xcbc62a(615, "Rfh#"));
+  const _0x2b68b4 = process.env.yht_ck,
+    _0x163388 = process.env.yht_showinviteId;
+  if (!_0x2b68b4) {
+    logAndNotify("请先设置环境变量 yht_ck");
+    return;
+  }
+  const _0x3927b7 = !!_0x163388;
+  let _0xfced3e = _0x2b68b4.replaceAll("&", "\n").split("\n");
+  for (let _0x18d72a = 0; _0x18d72a < _0xfced3e.length; _0x18d72a++) {
+    const _0x1bedf1 = _0xfced3e[_0x18d72a],
+      _0x34c6a7 = await sendGetRequest("https://webapi.qmai.cn/web/catering/crm/personal-info", _0x1bedf1);
+    if (!_0x34c6a7.data.status) {
+      logAndNotify("账号【" + (_0x18d72a + 1) + "】 登录失败☹");
+      continue;
+    }
+    logAndNotify("🧐" + _0x34c6a7.data.data.mobilePhone + "🧐");
+    const _0x35d7b2 = await sendPostRequest("https://webapi.qmai.cn/web/cmk-center/nurture/takePartInNurture", _0x1bedf1, {
+      activityId: "1025694534292430849",
+      appid: "wx4080846d0cec2fd5"
+    });
+    if (_0x35d7b2.data.status) {
+      logAndNotify("账号【" + (_0x18d72a + 1) + "】 开启种树成功");
+      logAndNotify("账号【" + (_0x18d72a + 1) + "】 userId=【" + _0x35d7b2.data.data.userId + "】");
+    } else {
+      logAndNotify("账号【" + (_0x18d72a + 1) + "】 忽略此提示【" + _0x35d7b2.data.message + "】");
+    }
+    const _0x5a0f39 = await sendPostRequest("https://webapi.qmai.cn/web/cmk-center/task/taskInfo", _0x1bedf1, {
+      activityId: "1025694534292430849",
+      appid: "wx4080846d0cec2fd5"
+    });
+    logAndNotify("账号【" + (_0x18d72a + 1) + "】 被助力次数:【" + _0x5a0f39.data.data.dailyInviteNum + "】");
+    const _0x4e9844 = await sendPostRequest("https://webapi.qmai.cn/web/cmk-center/nurture/stageInfo", _0x1bedf1, {
+      activityId: "1025694534292430849",
+      appid: "wx4080846d0cec2fd5"
+    });
+    let _0x56aed4 = 0;
+    if (_0x4e9844.data.status) {
+      const _0x4d2f04 = _0x4e9844.data.data;
+      _0x4d2f04.level === 3 ? logAndNotify("账号【" + (_0x18d72a + 1) + "】 当前是【" + _0x4d2f04.name + "】 可以领取奖励了") : (_0x56aed4 = _0x4d2f04.upgradeThreshold - _0x4d2f04.nutrientUsed, logAndNotify("账号【" + (_0x18d72a + 1) + "】 当前是【" + _0x4d2f04.name + "】, 再施肥【" + _0x56aed4 + "】次 成为【" + _0x4d2f04.nextName + "】"));
+    }
+    const _0x473990 = await sendPostRequest("https://webapi.qmai.cn/web/cmk-center/nurture/activityInfo", _0x1bedf1, {
+        activityId: "1025694534292430849",
+        appid: "wx4080846d0cec2fd5"
+      }),
+      _0x7b9a42 = _0x473990.data.data.nurtureStageVo;
+    logAndNotify("账号【" + (_0x18d72a + 1) + "】 剩余肥料【" + _0x7b9a42.nutrientRemaining + "】");
+    if (_0x56aed4 < _0x7b9a42.nutrientRemaining) {
+      logAndNotify("账号【" + (_0x18d72a + 1) + "】 本次只需要施肥【" + _0x56aed4 + "】次即可完成任务，请及时领取奖励！！！！！！！！！！！！！！！");
+    } else {
+      _0x56aed4 = _0x7b9a42.nutrientRemaining;
+    }
+    for (let _0x102ab9 = 0; _0x102ab9 < _0x56aed4; _0x102ab9++) {
+      const _0x165195 = await sendPostRequest("https://webapi.qmai.cn/web/cmk-center/nurture/add/nutrient", _0x1bedf1, {
+        activityId: "1025694534292430849",
+        appid: "wx4080846d0cec2fd5"
+      });
+      if (_0x165195.data.status) {
+        logAndNotify("账号【" + (_0x18d72a + 1) + "】 施肥【" + (_0x102ab9 + 1) + "】次成功");
+      } else {
+        logAndNotify("账号【" + (_0x18d72a + 1) + "】 施肥【" + (_0x102ab9 + 1) + "】次失败");
+      }
+    }
+    const _0x4e6ebe = new Date().getDay();
+    if (_0x4e6ebe === 2) {
+      const _0x6d5fb3 = await sendPostRequest("https://webapi.qmai.cn/web/cmk-center/receive/takePartInReceive", _0x1bedf1, {
+        activityId: "1038508490954362881",
+        timestamp: "",
+        signature: "",
+        qzGtd: "",
+        gdtVid: "",
+        data: "",
+        version: 1,
+        appid: "wx4080846d0cec2fd5"
+      });
+      _0x6d5fb3.data.status ? logAndNotify("账号【" + (_0x18d72a + 1) + "】 领卷成功") : logAndNotify("账号【" + (_0x18d72a + 1) + "】 领卷失败，可以忽略: " + _0x6d5fb3.data.message);
+    }
+    const _0x4a6fa0 = await sendPostRequest("https://webapi.qmai.cn/web/catering/crm/coupon/list", _0x1bedf1, {
+      pageNo: 1,
+      pageSize: 1000,
+      useStatus: 0,
+      appid: "wx4080846d0cec2fd5"
+    });
+    if (_0x4a6fa0.data.status) {
+      logAndNotify("账号【" + (_0x18d72a + 1) + "】 优惠卷总数量: " + _0x4a6fa0.data.data.totalNum);
+      for (const _0x50a43a of _0x4a6fa0.data.data.data) {
+        logAndNotify("账号【" + (_0x18d72a + 1) + "】 优惠卷: " + _0x50a43a.title + " 有效期【" + _0x50a43a.expireDesc + "】");
+      }
+    } else {
+      logAndNotify("账号【" + (_0x18d72a + 1) + "】 获取优惠卷失败: " + _0x4a6fa0.data.message);
+    }
+    logAndNotify("账号【" + (_0x18d72a + 1) + "】 开始助力其他人");
+    for (const _0x139511 of _0x8bb918) {
+      const _0x2d8218 = await sendPostRequest("https://webapi.qmai.cn/web/cmk-center/task/userHelp", _0x1bedf1, {
+        activityId: "1025694534292430849",
+        appid: "wx4080846d0cec2fd5",
+        inviteUserId: _0x139511
+      });
+      if (_0x2d8218.data.status) {
+        if (_0x3927b7) {
+          logAndNotify("账号【" + (_0x18d72a + 1) + "】 【" + _0x139511 + "】 助力成功");
         } else {
-          if (_0x3ea5c1[_0xcbc62a(340, "K5#g")](_0xcbc62a(428, "FPOW"), _0x3ea5c1[_0xcbc62a(683, "vi[9")])) return _0x60830a[_0xcbc62a(476, "FNga")](1);else $["logAndNotify"](_0xcbc62a(304, "^@2!") + this[_0xcbc62a(589, "sce2")] + "]\u4F60\u4F20\u7684\u53C2\u6570\u65E0\u6548");
-        }
-      }
-    } catch (_0x7b80b8) {} finally {
-      return Promise[_0xcbc62a(312, "B$xH")](1);
-    }
-  }
-  async [_0x2f0247(502, "Vn!k")]() {
-    const _0x1dd1df = _0x2f0247,
-      _0x2f8f90 = {
-        "rGUDa": function (_0x25232f, _0x1022cb, _0x186b07, _0x45bce9) {
-          return _0x25232f(_0x1022cb, _0x186b07, _0x45bce9);
-        },
-        "rqQBT": function (_0x14698e, _0x355eb3) {
-          return _0x14698e == _0x355eb3;
-        },
-        "jGXYI": function (_0x3a122d, _0x390646) {
-          return _0x3a122d !== _0x390646;
-        },
-        "GFMWn": _0x1dd1df(335, "B$xH")
-      };
-    try {
-      let _0x2113b5 = "https://api5-normal-c-lf.amemv.com/luckycat/aweme/v1/task/done/sign_in?iid=" + this["param"][_0x1dd1df(574, "5Fl$")] + "&device_id=" + this[_0x1dd1df(334, "ihcj")]["did"] + _0x1dd1df(411, "r*F#"),
-        _0x15d8c5 = "{}",
-        _0x217274 = _0x1dd1df(481, "9I$%") + this[_0x1dd1df(413, "T$fS")][_0x1dd1df(603, "*upJ")],
-        _0x32194d = _0x2f8f90[_0x1dd1df(583, "tiyZ")](populateUrlObject, _0x2113b5, _0x217274, _0x15d8c5);
-      await httpRequest(_0x1dd1df(536, "a6z^"), _0x32194d);
-      let _0x35e999 = httpResult;
-      if (!_0x35e999) return;
-      if (_0x2f8f90[_0x1dd1df(698, "8av#")](_0x35e999[_0x1dd1df(390, "5Fl$")], 0)) $[_0x1dd1df(311, "FPOW")]("\u8D26\u53F7[" + this[_0x1dd1df(280, "ihcj")] + "]" + _0x35e999["data"][_0x1dd1df(675, "Vn!k")] + _0x1dd1df(641, "^@2!") + _0x35e999[_0x1dd1df(344, "Vn!k")]["amount"] + "\u91D1\u5E01"), this[_0x1dd1df(750, "ihcj")] = _0x35e999[_0x1dd1df(468, "]tPp")][_0x1dd1df(490, "Ppiq")], await $[_0x1dd1df(343, "*uum")](3000), await this["detail"]();else {
-        if (_0x2f8f90["jGXYI"](_0x1dd1df(706, "a6z^"), _0x2f8f90[_0x1dd1df(646, "tiyZ")])) $[_0x1dd1df(442, "#1)7")]("\u8D26\u53F7[" + this["name"] + _0x1dd1df(649, "sce2") + _0x35e999[_0x1dd1df(550, "EQin")]);else {
-          this[_0x1dd1df(601, "k!Q8")] = ++_0x2caaea, this[_0x1dd1df(414, "hiHY")] = this[_0x1dd1df(571, "]tPp")], this[_0x1dd1df(545, "Vn!k")] = ![], this[_0x1dd1df(385, "OY((")] = ![];
-          let _0xcbbcbc = new _0x1f114a()["getTime"]();
-          try {
-            this[_0x1dd1df(654, "pdRu")] = _0x152fd4[_0x1dd1df(281, "jbuj")](_0x11bd78), this[_0x1dd1df(333, "vi[9")] = !![];
-          } catch (_0x23246e) {
-            this[_0x1dd1df(341, "]tPp")] = ![], _0x1a2458[_0x1dd1df(327, "9I$%")](_0x1dd1df(745, "Vn!k") + this[_0x1dd1df(417, "5[mf")] + "]CK\u683C\u5F0F\u9519\u8BEF");
-          }
-        }
-      }
-    } catch (_0x1a4b4e) {} finally {
-      return Promise[_0x1dd1df(348, "Ye1E")](1);
-    }
-  }
-  async [_0x2f0247(714, "#1)7")]() {
-    const _0x48b44f = _0x2f0247,
-      _0x442609 = {
-        "pPvVM": function (_0xcfe090, _0x10e5ba) {
-          return _0xcfe090 === _0x10e5ba;
-        },
-        "nwgoq": "TQKYZ",
-        "shgiE": "BfFra",
-        "fkkEO": function (_0x5d543f, _0x1b16d5, _0x5c08fa, _0x5ca569) {
-          return _0x5d543f(_0x1b16d5, _0x5c08fa, _0x5ca569);
-        },
-        "qAQMD": function (_0x67b572, _0x1e1feb, _0x264afe) {
-          return _0x67b572(_0x1e1feb, _0x264afe);
-        },
-        "GuQdG": "get"
-      };
-    try {
-      if (_0x442609[_0x48b44f(326, "4oGZ")](_0x442609["nwgoq"], _0x442609[_0x48b44f(338, "jbuj")])) _0x59774a = _0x157735["body"];else {
-        let _0x422d76 = _0x48b44f(728, "7)v^") + this[_0x48b44f(570, "T[c]")][_0x48b44f(473, "Ye1E")] + "&device_id=" + this[_0x48b44f(731, "%ykf")][_0x48b44f(667, "]tPp")] + "&app_name=douyin_lite&version_name=23.7.0&aid=2329",
-          _0x11c1ec = "",
-          _0x131861 = "sessionid=" + this[_0x48b44f(713, "7)v^")]["sessionid"],
-          _0x488493 = _0x442609[_0x48b44f(403, "]tPp")](populateUrlObject, _0x422d76, _0x131861, _0x11c1ec);
-        await _0x442609[_0x48b44f(660, "!(Ai")](httpRequest, _0x442609["GuQdG"], _0x488493);
-        let _0x5679c0 = httpResult;
-        if (!_0x5679c0) return;
-        this[_0x48b44f(369, "7)v^")] = _0x5679c0[_0x48b44f(672, "K5#g")]["excitation_ad_info"]["req_id"], this[_0x48b44f(627, "T$fS")] = _0x5679c0["data"]["excitation_ad_info"][_0x48b44f(277, "#1)7")], this[_0x48b44f(489, "5Fl$")] = _0x5679c0[_0x48b44f(612, "Ppiq")]["excitation_ad_info"]["score_amount"], $[_0x48b44f(474, "*upJ")](_0x48b44f(500, "VOMW") + this["name"] + _0x48b44f(584, "ihcj") + this[_0x48b44f(724, "FPOW")] + "\u91D1\u5E01"), await $[_0x48b44f(347, "FNga")](30000), await this[_0x48b44f(515, "!(Ai")]();
-      }
-    } catch (_0x5e5381) {
-      console[_0x48b44f(533, "Rfh#")](_0x5e5381);
-    } finally {
-      return Promise[_0x48b44f(626, "Ppiq")](1);
-    }
-  }
-  async [_0x2f0247(482, "Ek^S")]() {
-    const _0x3e2a68 = _0x2f0247,
-      _0x590cc8 = {
-        "cSmmM": function (_0x3953ca, _0x21f5bd, _0x5d5d82, _0x26fdb8) {
-          return _0x3953ca(_0x21f5bd, _0x5d5d82, _0x26fdb8);
-        },
-        "Eerfd": function (_0x31c4d2, _0x3ccb80, _0x5c851d) {
-          return _0x31c4d2(_0x3ccb80, _0x5c851d);
-        },
-        "iVSHi": _0x3e2a68(406, "Vn!k"),
-        "YIIHm": function (_0x576fa8, _0x2b292d) {
-          return _0x576fa8 == _0x2b292d;
-        },
-        "qOvKi": _0x3e2a68(315, "&C$M"),
-        "aRbIt": function (_0x23ac3e, _0x128ba4) {
-          return _0x23ac3e !== _0x128ba4;
-        },
-        "GNPhR": _0x3e2a68(556, "SAUS"),
-        "BIMXT": _0x3e2a68(290, "#1)7"),
-        "bckQE": function (_0x4a96f1, _0x57c987) {
-          return _0x4a96f1 === _0x57c987;
-        },
-        "uRybD": _0x3e2a68(656, "Ye1E"),
-        "KQMhd": _0x3e2a68(514, "]8[d")
-      };
-    try {
-      let _0x4cfbb7 = _0x3e2a68(543, "]8[d"),
-        _0x119fda = "{\"task_key\":\"excitation_ad_signin\",\"amount\":\"" + this[_0x3e2a68(465, "Vn!k")] + _0x3e2a68(605, "7)v^") + this[_0x3e2a68(277, "#1)7")] + "\",\"ad_inspire\":\"{\"score_amount\":\"" + this["score_amount"] + "\",\"amount\":\"" + this[_0x3e2a68(479, "a6z^")] + _0x3e2a68(275, "*uum") + this[_0x3e2a68(420, "hiHY")] + "\"}\",\"ad_alias_position\":\"check_in\",\"timeout\":4000}",
-        _0x425d3c = _0x3e2a68(376, "5Fl$") + this["param"]["sessionid"],
-        _0x1a67cc = _0x590cc8[_0x3e2a68(695, "Ek^S")](populateUrlObject, _0x4cfbb7, _0x425d3c, _0x119fda);
-      await _0x590cc8[_0x3e2a68(659, "a6z^")](httpRequest, _0x590cc8[_0x3e2a68(525, "&C$M")], _0x1a67cc);
-      let _0x2f0ccf = httpResult;
-      if (!_0x2f0ccf) return;
-      if (_0x590cc8[_0x3e2a68(597, "ITE$")](_0x2f0ccf["err_no"], 0)) {
-        if (_0x590cc8["qOvKi"] !== "TBGqN") $[_0x3e2a68(755, "%ykf")](_0x3e2a68(616, "%ykf") + this[_0x3e2a68(271, "B$xH")] + _0x3e2a68(309, "VOMW") + _0x2f0ccf[_0x3e2a68(452, "EQin")][_0x3e2a68(512, "T[c]")] + "\u91D1\u5E01");else return _0x26b3f3[_0x3e2a68(483, "NtE]")](1);
-      } else _0x590cc8["aRbIt"](_0x590cc8["GNPhR"], _0x590cc8[_0x3e2a68(666, "a6z^")]) ? $[_0x3e2a68(311, "FPOW")](_0x3e2a68(745, "Vn!k") + this[_0x3e2a68(276, "tiyZ")] + "]\u7B7E\u5230\u5E7F\u544A: " + _0x2f0ccf[_0x3e2a68(470, "%ykf")]) : _0x4116bf["push"](_0x34bb99["my"]());
-    } catch (_0x2f2c78) {
-      _0x590cc8[_0x3e2a68(269, "Ye1E")](_0x590cc8[_0x3e2a68(485, "*uum")], _0x590cc8[_0x3e2a68(388, "FWGq")]) ? console["log"](_0x2f2c78) : _0x15df7d["logAndNotify"](_0x3e2a68(522, "ihcj") + this[_0x3e2a68(280, "ihcj")] + "]\u7B7E\u5230\u5E7F\u544A: \u83B7\u5F97" + _0x26e5df[_0x3e2a68(344, "Vn!k")]["amount"] + "\u91D1\u5E01");
-    } finally {
-      if (_0x590cc8[_0x3e2a68(286, "k!Q8")](_0x590cc8[_0x3e2a68(630, "NtE]")], _0x3e2a68(692, "gGId"))) return Promise[_0x3e2a68(348, "Ye1E")](1);else _0x22df64 = _0x1acd56[_0x3e2a68(700, "SAUS")](_0x29abc2[_0x3e2a68(668, "SAUS")]);
-    }
-  }
-  async [_0x2f0247(303, "Vn!k")]() {
-    const _0x1186d8 = _0x2f0247,
-      _0x34a6bd = {
-        "uFyrK": function (_0x4adeef, _0x3281d6, _0x335aa0, _0x189818) {
-          return _0x4adeef(_0x3281d6, _0x335aa0, _0x189818);
-        },
-        "DoJSt": function (_0x14fcd, _0xaa8bbf, _0x44d74e) {
-          return _0x14fcd(_0xaa8bbf, _0x44d74e);
-        },
-        "DOmEM": function (_0x10b4e4, _0x325743) {
-          return _0x10b4e4 == _0x325743;
-        },
-        "HwYtw": _0x1186d8(282, "]tPp"),
-        "uPQRq": _0x1186d8(387, "o0]P"),
-        "vPEPy": _0x1186d8(526, "*uum"),
-        "oJEoV": _0x1186d8(618, "o0]P"),
-        "CPgZW": function (_0x59f553, _0x16c43d) {
-          return _0x59f553 === _0x16c43d;
-        },
-        "oZIEd": _0x1186d8(412, "EQin"),
-        "gDRrS": _0x1186d8(694, "SAUS")
-      };
-    try {
-      let _0xfcb991 = _0x1186d8(457, "r*F#") + this[_0x1186d8(623, "r*F#")][_0x1186d8(318, "sce2")] + _0x1186d8(691, "tiyZ") + this[_0x1186d8(709, "4oGZ")]["did"] + "&aid=2329&app_name=douyin_lite&device_platform=android&dpi=411&update_version_code=14709901",
-        _0x44a1bb = "{}",
-        _0x414788 = _0x1186d8(337, "vi[9") + this["param"]["sessionid"],
-        _0x5843ab = _0x34a6bd["uFyrK"](populateUrlObject, _0xfcb991, _0x414788, _0x44a1bb);
-      await _0x34a6bd[_0x1186d8(552, "a6z^")](httpRequest, _0x1186d8(270, "5[mf"), _0x5843ab);
-      let _0x33eafe = httpResult;
-      if (!_0x33eafe) return;
-      await $[_0x1186d8(367, "pdRu")](100);
-      if (_0x34a6bd[_0x1186d8(682, "4oGZ")](_0x33eafe[_0x1186d8(528, "T[c]")], _0x34a6bd[_0x1186d8(493, "sce2")])) await $[_0x1186d8(631, "]8[d")](200), await this[_0x1186d8(554, "o0]P")]();else {
-        if (_0x34a6bd["DOmEM"](_0x33eafe[_0x1186d8(305, "ihcj")], 0)) {
-          const _0x2596bb = _0x34a6bd[_0x1186d8(461, "FWGq")][_0x1186d8(653, "4oGZ")]("|");
-          let _0x2422df = 0;
-          while (!![]) {
-            switch (_0x2596bb[_0x2422df++]) {
-              case "0":
-                await this[_0x1186d8(577, "NtE]")]();
-                continue;
-              case "1":
-                this["amount"] = _0x33eafe[_0x1186d8(590, "OY((")]["amount"];
-                continue;
-              case "2":
-                await $[_0x1186d8(380, "5[mf")](30000);
-                continue;
-              case "3":
-                this[_0x1186d8(297, "*upJ")] = _0x33eafe[_0x1186d8(672, "K5#g")][_0x1186d8(697, "7)v^")][_0x1186d8(524, "9I$%")];
-                continue;
-              case "4":
-                this["ad_id"] = _0x33eafe["data"]["excitation_ad_info"][_0x1186d8(449, "7)v^")];
-                continue;
-              case "5":
-                $[_0x1186d8(619, "ihcj")]("\u8D26\u53F7[" + this["name"] + "]\u5F00\u5B9D\u7BB1: \u83B7\u5F97" + _0x33eafe[_0x1186d8(383, "*upJ")][_0x1186d8(486, "EQin")] + _0x1186d8(517, "VOMW") + _0x33eafe[_0x1186d8(604, "SAUS")][_0x1186d8(346, "T[c]")][_0x1186d8(324, "4oGZ")] + "\u91D1\u5E01");
-                continue;
-              case "6":
-                this[_0x1186d8(448, "h%kc")] = _0x33eafe[_0x1186d8(569, "7)v^")][_0x1186d8(444, "]tPp")][_0x1186d8(733, "vi[9")];
-                continue;
-            }
-            break;
-          }
-        } else _0x34a6bd[_0x1186d8(316, "$nxM")] === _0x34a6bd["oJEoV"] ? _0x42e54a[_0x1186d8(415, "gGId")](_0x1186d8(616, "%ykf") + this["name"] + _0x1186d8(436, "T[c]") + _0x5019d2[_0x1186d8(549, "&C$M")]) : $["logAndNotify"]("\u8D26\u53F7[" + this["name"] + _0x1186d8(372, "4oGZ") + _0x33eafe[_0x1186d8(563, "sce2")]);
-      }
-    } catch (_0x353356) {
-      console[_0x1186d8(642, "r*F#")](_0x353356);
-    } finally {
-      return _0x34a6bd[_0x1186d8(702, "GNuD")](_0x34a6bd[_0x1186d8(760, "T$fS")], _0x34a6bd[_0x1186d8(423, "Vn!k")]) ? _0x541683[_0x1186d8(541, "!(Ai")](1) : Promise[_0x1186d8(497, "8av#")](1);
-    }
-  }
-  async [_0x2f0247(364, "&C$M")]() {
-    const _0x3a0137 = _0x2f0247,
-      _0x57ac9d = {
-        "RGmlC": function (_0xb1f0f1, _0x189925) {
-          return _0xb1f0f1 === _0x189925;
-        },
-        "fZRXO": _0x3a0137(595, "m]eg"),
-        "dOnLk": function (_0x92c640, _0x262f35, _0x2d2b78, _0x42a8b9) {
-          return _0x92c640(_0x262f35, _0x2d2b78, _0x42a8b9);
-        },
-        "ciRMd": function (_0x57b9ea, _0x4abeb6, _0x36a019) {
-          return _0x57b9ea(_0x4abeb6, _0x36a019);
-        },
-        "XAKex": _0x3a0137(669, "&C$M"),
-        "zYHqW": _0x3a0137(555, "5Fl$"),
-        "bWggV": function (_0x7c0afb, _0x5b35e3) {
-          return _0x7c0afb == _0x5b35e3;
-        },
-        "wmfSB": "snQhz"
-      };
-    try {
-      if (_0x57ac9d[_0x3a0137(622, "5Fl$")](_0x57ac9d[_0x3a0137(393, "Ye1E")], "yrcrN")) return _0x2fec8d["resolve"](1);else {
-        let _0x39c0b1 = _0x3a0137(504, "$nxM") + this[_0x3a0137(431, "h%kc")][_0x3a0137(349, "gGId")] + _0x3a0137(606, "pdRu") + this["param"][_0x3a0137(384, "tiyZ")] + _0x3a0137(608, "gGId"),
-          _0x43d32e = "{\"task_key\":\"excitation_ad_treasure_box\",\"amount\":\"" + this["score_amount"] + "\",\"ad_rit\":\"" + this[_0x3a0137(640, "vi[9")] + "\",\"ad_inspire\":\"{\"score_amount\":\"" + this["score_amount"] + _0x3a0137(690, "k!Q8") + this["amount"] + _0x3a0137(510, "r*F#") + this[_0x3a0137(308, "ihcj")] + _0x3a0137(715, "a6z^"),
-          _0x2bc763 = _0x3a0137(376, "5Fl$") + this[_0x3a0137(611, "!(Ai")][_0x3a0137(409, "8av#")],
-          _0x2dd071 = _0x57ac9d["dOnLk"](populateUrlObject, _0x39c0b1, _0x2bc763, _0x43d32e);
-        await _0x57ac9d["ciRMd"](httpRequest, _0x57ac9d[_0x3a0137(650, "Vn!k")], _0x2dd071);
-        let _0x27c3fa = httpResult;
-        if (!_0x27c3fa) return;
-        if (_0x27c3fa[_0x3a0137(307, "VOMW")] == _0x57ac9d[_0x3a0137(284, "!(Ai")]) await $["wait"](300), await this["excitation_ad_treasure_box"]();else _0x57ac9d["bWggV"](_0x27c3fa[_0x3a0137(472, "NtE]")], 0) ? $[_0x3a0137(655, "vi[9")]("\u8D26\u53F7[" + this["name"] + _0x3a0137(351, "vi[9") + _0x27c3fa[_0x3a0137(350, "m]eg")][_0x3a0137(289, "8av#")] + "\u91D1\u5E01") : _0x57ac9d[_0x3a0137(301, "o0]P")] === _0x57ac9d[_0x3a0137(621, "jbuj")] ? $["logAndNotify"](_0x3a0137(278, "r*F#") + this[_0x3a0137(276, "tiyZ")] + _0x3a0137(313, "T[c]") + _0x27c3fa[_0x3a0137(565, "5[mf")]) : _0x3bdfd6[_0x3a0137(598, "tiyZ")]("\u8D26\u53F7[" + this[_0x3a0137(723, "]tPp")] + _0x3a0137(558, "ihcj"));
-      }
-    } catch (_0x529ea6) {
-      console[_0x3a0137(296, "ihcj")](_0x529ea6);
-    } finally {
-      return Promise[_0x3a0137(596, "%ykf")](1);
-    }
-  }
-  async ["ad"]() {
-    const _0x131849 = _0x2f0247,
-      _0x107206 = {
-        "GzOxP": _0x131849(703, "NtE]"),
-        "dxVFP": function (_0xee5db6, _0x184fb9) {
-          return _0xee5db6 === _0x184fb9;
-        },
-        "GoWgB": _0x131849(658, "8av#"),
-        "hBjMb": _0x131849(712, "8av#"),
-        "SvXxU": function (_0x459be9, _0x28559c, _0x40c82c, _0x3716cb) {
-          return _0x459be9(_0x28559c, _0x40c82c, _0x3716cb);
-        },
-        "AuIvL": _0x131849(599, "sce2"),
-        "sazKj": function (_0x20e6ef, _0x2cc030) {
-          return _0x20e6ef == _0x2cc030;
-        },
-        "tRRhT": function (_0x53b632, _0x4cd303) {
-          return _0x53b632 === _0x4cd303;
-        },
-        "jmyAZ": _0x131849(407, "OY(("),
-        "PuRzg": function (_0x4f2062, _0x343473) {
-          return _0x4f2062 === _0x343473;
-        },
-        "VJwfu": "fPyao",
-        "CflTO": function (_0x453c98, _0x55beb3) {
-          return _0x453c98 === _0x55beb3;
-        }
-      };
-    try {
-      if (_0x107206[_0x131849(274, "FPOW")](_0x107206["GoWgB"], _0x107206[_0x131849(740, "sce2")])) return _0x1287ac[_0x131849(476, "FNga")](1);else {
-        let _0x21444e = _0x131849(716, "GNuD") + this["param"]["iid"] + _0x131849(426, "FNga") + this["param"][_0x131849(404, "m]eg")] + _0x131849(546, "T[c]"),
-          _0x256c5e = _0x131849(455, "sce2"),
-          _0x4beee6 = _0x131849(534, "NtE]") + this[_0x131849(334, "ihcj")][_0x131849(617, "T[c]")],
-          _0x42c356 = _0x107206[_0x131849(600, "7)v^")](populateUrlObject, _0x21444e, _0x4beee6, _0x256c5e);
-        await httpRequest(_0x107206[_0x131849(544, "ihcj")], _0x42c356);
-        let _0x356101 = httpResult;
-        if (!_0x356101) return;
-        await $[_0x131849(633, "4oGZ")](200), _0x107206[_0x131849(488, "Ppiq")](_0x356101["err_no"], 10007) && (await $[_0x131849(494, "FPOW")](300), await this["ad"]()), _0x107206[_0x131849(739, "VOMW")](_0x356101[_0x131849(295, "k!Q8")], 0) ? _0x107206[_0x131849(416, "*uum")](_0x131849(300, "a6z^"), _0x107206[_0x131849(736, "h%kc")]) ? ($[_0x131849(551, "&C$M")]("\u8D26\u53F7[" + this["name"] + _0x131849(499, "#1)7") + _0x356101["data"][_0x131849(445, "Ye1E")] + "\u91D1\u5E01"), await $[_0x131849(751, "hiHY")](30000), await this[_0x131849(711, "a6z^")]()) : _0x370273[_0x131849(566, "Vn!k")](_0x2bbd03) : _0x107206["PuRzg"](_0x107206[_0x131849(766, "Ye1E")], _0x131849(400, "^@2!")) ? $[_0x131849(339, "Ek^S")](_0x131849(500, "VOMW") + this["name"] + _0x131849(727, "#1)7") + _0x356101[_0x131849(370, "Ppiq")]) : (_0x436160[_0x131849(291, "^@2!")] = _0x638907, _0x42ac51[_0x131849(548, "k!Q8")][_0x107206["GzOxP"]] = _0x131849(496, "9I$%"), _0xd6ce65["headers"][_0x131849(434, "&C$M")] = _0x590681[_0x131849(291, "^@2!")] ? _0x3f1d8d[_0x131849(410, "gGId")][_0x131849(535, "pdRu")] : 0);
-      }
-    } catch (_0x2112aa) {
-      console["log"](_0x2112aa);
-    } finally {
-      if (_0x107206[_0x131849(749, "T[c]")](_0x131849(480, "Rfh#"), _0x131849(314, "gGId"))) _0x384ff9["logAndNotify"]("\u8D26\u53F7[" + this[_0x131849(298, "]8[d")] + "]\u5F00\u5B9D\u7BB1: " + _0x31db49[_0x131849(531, "o0]P")]);else return Promise[_0x131849(373, "^@2!")](1);
-    }
-  }
-  async [_0x2f0247(424, "]tPp")]() {
-    const _0x4c73e4 = _0x2f0247,
-      _0x4d2d2e = {
-        "ADUvI": function (_0x285e66, _0x3cc0f4, _0x14e3f5, _0xd6d336) {
-          return _0x285e66(_0x3cc0f4, _0x14e3f5, _0xd6d336);
-        },
-        "PdCeK": function (_0x3ddc5e, _0x5a3d68, _0x3270e1) {
-          return _0x3ddc5e(_0x5a3d68, _0x3270e1);
-        },
-        "lxTZj": function (_0x499868, _0x405b3a) {
-          return _0x499868 == _0x405b3a;
-        },
-        "JeDRi": _0x4c73e4(518, "ITE$"),
-        "vNQyi": function (_0x2dd45b, _0x35f8e5) {
-          return _0x2dd45b !== _0x35f8e5;
-        },
-        "zeKvg": _0x4c73e4(575, "gGId"),
-        "mAxoK": "UpoJl"
-      };
-    try {
-      let _0x5be64a = "https://aweme.snssdk.com/luckycat/aweme/v1/task/done/excitation_ad/one_more?_request_from=web&iid=" + this[_0x4c73e4(725, "#1)7")][_0x4c73e4(484, "%ykf")] + _0x4c73e4(437, "%ykf") + this[_0x4c73e4(446, "k!Q8")][_0x4c73e4(576, "hiHY")] + _0x4c73e4(377, "VOMW"),
-        _0x50bfb6 = _0x4c73e4(440, "#1)7"),
-        _0x4a7f79 = _0x4c73e4(625, "EQin") + this[_0x4c73e4(530, "GNuD")][_0x4c73e4(651, "]tPp")],
-        _0x150755 = _0x4d2d2e[_0x4c73e4(581, "FPOW")](populateUrlObject, _0x5be64a, _0x4a7f79, _0x50bfb6);
-      await _0x4d2d2e[_0x4c73e4(511, "*o81")](httpRequest, _0x4c73e4(430, "gGId"), _0x150755);
-      let _0x174ee1 = httpResult;
-      if (!_0x174ee1) return;
-      await $["wait"](200);
-      if (_0x4d2d2e[_0x4c73e4(529, "Vn!k")](_0x174ee1[_0x4c73e4(634, "]8[d")], 10007)) await $["wait"](300), await this[_0x4c73e4(737, "ITE$")]();else _0x4d2d2e["lxTZj"](_0x174ee1[_0x4c73e4(390, "5Fl$")], 0) ? _0x4d2d2e["JeDRi"] === "Bakuu" ? _0x1c3b59["logAndNotify"](_0x4c73e4(701, "5Fl$") + this[_0x4c73e4(729, "FNga")] + _0x4c73e4(758, "GNuD") + _0xa51df7[_0x4c73e4(705, "vi[9")]) : $[_0x4c73e4(619, "ihcj")](_0x4c73e4(628, "T[c]") + this[_0x4c73e4(495, "gGId")] + "]\u5E7F\u544A\u8FFD\u52A0: \u83B7\u5F97" + _0x174ee1[_0x4c73e4(687, "Rfh#")]["amount"] + "\u91D1\u5E01") : $[_0x4c73e4(717, "EQin")]("\u8D26\u53F7[" + this["name"] + _0x4c73e4(389, "Rfh#") + _0x174ee1[_0x4c73e4(342, "5Fl$")]);
-    } catch (_0x25e7be) {
-      _0x4d2d2e[_0x4c73e4(572, "EQin")](_0x4d2d2e[_0x4c73e4(386, "Rfh#")], _0x4d2d2e["zeKvg"]) ? _0x2afe5f["logAndNotify"]("\u8D26\u53F7[" + this[_0x4c73e4(589, "sce2")] + _0x4c73e4(638, "OY((")) : console[_0x4c73e4(613, "vi[9")](_0x25e7be);
-    } finally {
-      if (_0x4d2d2e[_0x4c73e4(459, "FPOW")] !== _0x4d2d2e[_0x4c73e4(332, "EQin")]) _0x6d1135[_0x4c73e4(678, "OY((")](_0x4c73e4(467, "Ye1E") + this[_0x4c73e4(345, "k!Q8")] + _0x4c73e4(586, "r*F#") + _0x42d061[_0x4c73e4(378, "ITE$")][_0x4c73e4(363, "5[mf")] + "\u91D1\u5E01");else return Promise[_0x4c73e4(767, "T[c]")](1);
-    }
-  }
-}
-!(async () => {
-  const _0x20773a = _0x2f0247,
-    _0x57d3c9 = {
-      "ChdEr": _0x20773a(391, "K5#g"),
-      "gxHxm": function (_0x54f779, _0x23491b) {
-        return _0x54f779 !== _0x23491b;
-      },
-      "fFaas": _0x20773a(355, "jbuj"),
-      "SUNam": "yVijW",
-      "iUUSI": function (_0x1bf8c6) {
-        return _0x1bf8c6();
-      },
-      "WRtrW": function (_0x2e295b, _0x34fdd8) {
-        return _0x2e295b < _0x34fdd8;
-      },
-      "dJlHP": _0x20773a(639, "sce2"),
-      "oxpNA": "nEymE"
-    };
-  if (_0x57d3c9[_0x20773a(287, "jbuj")](typeof $request, _0x57d3c9["fFaas"])) {} else {
-    if (_0x20773a(422, "$nxM") === _0x57d3c9[_0x20773a(582, "]8[d")]) {
-      if (!(await checkEnv())) return;
-      await _0x57d3c9[_0x20773a(478, "!(Ai")](sc);
-      let _0x21cd0e = [],
-        _0x46722d = userList[_0x20773a(732, "EQin")](_0x1a6f1b => _0x1a6f1b["ckValid"]);
-      if (_0x46722d[_0x20773a(288, "]tPp")] < 2) {
-        $["logAndNotify"](_0x20773a(460, "jbuj")), _0x21cd0e = [];
-        for (let _0x5da592 of _0x46722d) {
-          _0x20773a(362, "Ppiq") === "EcKoK" ? _0x21cd0e["push"](_0x5da592["my"]()) : _0x57f603[_0x20773a(594, "k!Q8")](_0x1949f1);
-        }
-        await Promise[_0x20773a(743, "h%kc")](_0x21cd0e), _0x46722d = _0x46722d[_0x20773a(322, "*o81")](_0x3ea62c => _0x3ea62c[_0x20773a(402, "FPOW")]);
-        if (_0x57d3c9[_0x20773a(443, "4oGZ")](_0x46722d[_0x20773a(661, "Ye1E")], 2)) {
-          $[_0x20773a(352, "h%kc")](_0x20773a(748, "Ye1E")), _0x21cd0e = [];
-          for (let _0x375e7a of _0x46722d["filter"](_0x151b1c => _0x151b1c[_0x20773a(542, "NtE]")])) {
-            const _0x473f3f = _0x57d3c9[_0x20773a(331, "Ek^S")]["split"]("|");
-            let _0x5c6f9b = 0;
-            while (!![]) {
-              switch (_0x473f3f[_0x5c6f9b++]) {
-                case "0":
-                  _0x21cd0e[_0x20773a(756, "T[c]")](_0x375e7a[_0x20773a(578, "Ek^S")]());
-                  continue;
-                case "1":
-                  await $[_0x20773a(540, "!(Ai")](3000);
-                  continue;
-                case "2":
-                  _0x21cd0e[_0x20773a(527, "pdRu")](_0x375e7a["ad"]());
-                  continue;
-                case "3":
-                  _0x21cd0e[_0x20773a(272, "5[mf")](_0x375e7a["sign_in"]());
-                  continue;
-                case "4":
-                  await $[_0x20773a(751, "hiHY")](3000);
-                  continue;
-              }
-              break;
-            }
-          }
-          await Promise["all"](_0x21cd0e);
+          logAndNotify("账号【" + (_0x18d72a + 1) + "】 助力成功");
         }
       } else {
-        if (_0x57d3c9[_0x20773a(395, "*uum")] === _0x20773a(688, "#1)7")) console[_0x20773a(685, "FPOW")](_0x20773a(645, "ITE$"));else return _0x5e4c25["resolve"](1);
-      }
-      await $[_0x20773a(573, "m]eg")]();
-    } else {
-      _0x565d4f["log"](_0x57d3c9[_0x20773a(689, "K5#g")]);
-      return;
-    }
-  }
-})()[_0x2f0247(330, "B$xH")](_0x38dd20 => console[_0x2f0247(562, "h%kc")](_0x38dd20))[_0x2f0247(519, "#1)7")](() => $[_0x2f0247(447, "a6z^")]());
-async function sc() {
-  const _0x18342f = _0x2f0247,
-    _0x11636f = {
-      "JmxgB": _0x18342f(726, "OY(("),
-      "Wxfuh": _0x18342f(421, "h%kc"),
-      "nIrlq": _0x18342f(310, "OY(("),
-      "bJxBr": _0x18342f(693, "r*F#"),
-      "kQIOp": function (_0x4b9da5, _0x1a3b5d, _0x311383) {
-        return _0x4b9da5(_0x1a3b5d, _0x311383);
-      },
-      "ZsaEw": _0x18342f(492, "a6z^"),
-      "aDaxk": function (_0x1d92a5, _0x5a5032) {
-        return _0x1d92a5 === _0x5a5032;
-      },
-      "ZsUgx": _0x18342f(509, "FNga")
-    };
-  try {
-    if (_0x11636f[_0x18342f(553, "VOMW")] === _0x18342f(699, "FPOW")) {
-      let _0x13c8b9 = _0x18342f(567, "sce2"),
-        _0x135fd9 = "",
-        _0x12ca88 = _0x11636f["kQIOp"](populateUrlObject, _0x13c8b9, _0x135fd9);
-      await httpRequest(_0x11636f[_0x18342f(742, "sce2")], _0x12ca88);
-      let _0x3fef2d = httpResult;
-      if (!_0x3fef2d) return;
-      $[_0x18342f(557, "4oGZ")]("\n" + _0x3fef2d[_0x18342f(602, "ihcj")] + _0x18342f(306, "#1)7") + _0x3fef2d[_0x18342f(374, "]tPp")] + "\u300B" + _0x3fef2d["author"]);
-      var _0x2196c5 = _0x3fef2d[_0x18342f(637, "$nxM")];
-    } else this["param"] = _0x3359ec[_0x18342f(746, "a6z^")](_0x48fe65), this["ckValid"] = !![];
-  } catch (_0x5cf0c0) {} finally {
-    if (_0x11636f[_0x18342f(319, "SAUS")](_0x18342f(505, "4oGZ"), _0x11636f["ZsUgx"])) {
-      let _0x2cbdd9 = _0x1b65bc[_0x18342f(471, "]tPp")]("//", "/")[_0x18342f(292, "$nxM")]("/")[1],
-        _0x27a22f = {
-          "url": _0x351700,
-          "headers": {
-            "Host": _0x2cbdd9,
-            "cookie": _0x94a9c8,
-            "User-Agent": _0xce8b44
-          },
-          "timeout": 10000
-        };
-      return _0x2334c4 && (_0x27a22f[_0x18342f(328, "%ykf")] = _0x5a5461, _0x27a22f[_0x18342f(520, "FPOW")][_0x11636f[_0x18342f(681, "FPOW")]] = _0x11636f["Wxfuh"], _0x27a22f["headers"][_0x11636f[_0x18342f(676, "T[c]")]] = _0x27a22f[_0x18342f(662, "]tPp")] ? _0x27a22f["body"][_0x18342f(710, "5[mf")] : 0), _0x27a22f;
-    } else return Promise[_0x18342f(596, "%ykf")](1);
-  }
-}
-function _0x21e9(_0x52d919, _0x41c887) {
-  const _0x2c2558 = _0x2c25();
-  return _0x21e9 = function (_0x21e9ca, _0x148190) {
-    _0x21e9ca = _0x21e9ca - 267;
-    let _0x127b62 = _0x2c2558[_0x21e9ca];
-    if (_0x21e9["cxWKmA"] === undefined) {
-      var _0x11746e = function (_0x120539) {
-        const _0x5ec948 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=";
-        let _0x9bc53a = "",
-          _0x374519 = "";
-        for (let _0x2caaea = 0, _0x1f114a, _0x1bec6a, _0x13b933 = 0; _0x1bec6a = _0x120539["charAt"](_0x13b933++); ~_0x1bec6a && (_0x1f114a = _0x2caaea % 4 ? _0x1f114a * 64 + _0x1bec6a : _0x1bec6a, _0x2caaea++ % 4) ? _0x9bc53a += String["fromCharCode"](255 & _0x1f114a >> (-2 * _0x2caaea & 6)) : 0) {
-          _0x1bec6a = _0x5ec948["indexOf"](_0x1bec6a);
-        }
-        for (let _0x26b1e1 = 0, _0x152fd4 = _0x9bc53a["length"]; _0x26b1e1 < _0x152fd4; _0x26b1e1++) {
-          _0x374519 += "%" + ("00" + _0x9bc53a["charCodeAt"](_0x26b1e1)["toString"](16))["slice"](-2);
-        }
-        return decodeURIComponent(_0x374519);
-      };
-      const _0xa25750 = function (_0x11bd78, _0x15eea3) {
-        let _0x1a2458 = [],
-          _0x44ff8c = 0,
-          _0x28790a,
-          _0x2197eb = "";
-        _0x11bd78 = _0x11746e(_0x11bd78);
-        let _0x217879;
-        for (_0x217879 = 0; _0x217879 < 256; _0x217879++) {
-          _0x1a2458[_0x217879] = _0x217879;
-        }
-        for (_0x217879 = 0; _0x217879 < 256; _0x217879++) {
-          _0x44ff8c = (_0x44ff8c + _0x1a2458[_0x217879] + _0x15eea3["charCodeAt"](_0x217879 % _0x15eea3["length"])) % 256, _0x28790a = _0x1a2458[_0x217879], _0x1a2458[_0x217879] = _0x1a2458[_0x44ff8c], _0x1a2458[_0x44ff8c] = _0x28790a;
-        }
-        _0x217879 = 0, _0x44ff8c = 0;
-        for (let _0x3359ec = 0; _0x3359ec < _0x11bd78["length"]; _0x3359ec++) {
-          _0x217879 = (_0x217879 + 1) % 256, _0x44ff8c = (_0x44ff8c + _0x1a2458[_0x217879]) % 256, _0x28790a = _0x1a2458[_0x217879], _0x1a2458[_0x217879] = _0x1a2458[_0x44ff8c], _0x1a2458[_0x44ff8c] = _0x28790a, _0x2197eb += String["fromCharCode"](_0x11bd78["charCodeAt"](_0x3359ec) ^ _0x1a2458[(_0x1a2458[_0x217879] + _0x1a2458[_0x44ff8c]) % 256]);
-        }
-        return _0x2197eb;
-      };
-      _0x21e9["AUJEEh"] = _0xa25750, _0x52d919 = arguments, _0x21e9["cxWKmA"] = !![];
-    }
-    const _0x4ebbfb = _0x2c2558[0],
-      _0x1cf3a6 = _0x21e9ca + _0x4ebbfb,
-      _0x5c0506 = _0x52d919[_0x1cf3a6];
-    return !_0x5c0506 ? (_0x21e9["HwIfKG"] === undefined && (_0x21e9["HwIfKG"] = !![]), _0x127b62 = _0x21e9["AUJEEh"](_0x127b62, _0x148190), _0x52d919[_0x1cf3a6] = _0x127b62) : _0x127b62 = _0x5c0506, _0x127b62;
-  }, _0x21e9(_0x52d919, _0x41c887);
-}
-async function checkEnv() {
-  const _0x41bb04 = _0x2f0247,
-    _0x540ca9 = {
-      "LWrgn": function (_0x427352, _0x4478d8) {
-        return _0x427352 === _0x4478d8;
-      },
-      "PZLLm": "XricF",
-      "vgGbG": function (_0x2468a4, _0x344135) {
-        return _0x2468a4 === _0x344135;
-      },
-      "wojyc": _0x41bb04(375, "EQin")
-    };
-  if (userCookie) {
-    if (_0x540ca9[_0x41bb04(458, "GNuD")](_0x41bb04(392, "ITE$"), _0x540ca9[_0x41bb04(585, "!(Ai")])) return _0x5ee97d[_0x41bb04(591, "Ek^S")](1);else {
-      let _0x1824d1 = envSplitor[0];
-      for (let _0x45263e of envSplitor) {
-        if (userCookie["indexOf"](_0x45263e) > -1) {
-          _0x1824d1 = _0x45263e;
+        _0x3927b7 ? logAndNotify("账号【" + (_0x18d72a + 1) + "】 【" + _0x139511 + "】 助力失败: " + _0x2d8218.data.message) : logAndNotify("账号【" + (_0x18d72a + 1) + "】 助力失败: " + _0x2d8218.data.message);
+        if (_0x2d8218.data.message === "今日助力次数已达上限") {
           break;
         }
       }
-      for (let _0x1a65f8 of userCookie["split"](_0x1824d1)) {
-        if (_0x540ca9[_0x41bb04(325, "5[mf")](_0x41bb04(609, "Ek^S"), _0x540ca9[_0x41bb04(429, "5Fl$")])) {
-          if (_0x1a65f8) userList["push"](new UserInfo(_0x1a65f8));
-        } else return _0x51cd34[_0x41bb04(767, "T[c]")](1);
-      }
-      userCount = userList[_0x41bb04(629, "Vn!k")];
     }
-  } else {
-    console[_0x41bb04(268, "EQin")](_0x41bb04(765, "Ye1E"));
-    return;
   }
-  return console[_0x41bb04(285, "9I$%")](_0x41bb04(329, "m]eg") + userCount + _0x41bb04(647, "FNga")), !![];
-}
-function populateUrlObject(_0x5a7fde, _0x4a7d4d, _0x22d51d = "") {
-  const _0x136ab0 = _0x2f0247,
-    _0x1a6dc7 = {
-      "wxYzS": function (_0x5014c3, _0x15cb50) {
-        return _0x5014c3 !== _0x15cb50;
+})().catch(_0x2a6d4f => {
+  logAndNotify(_0x2a6d4f);
+}).finally(() => {
+  pushLog("yht.js", notifyStr);
+  sendNotify("益禾堂", notifyStr);
+  $.done();
+});
+async function sendPostRequest(_0x16d3c0, _0x9a1aed, _0x582a92) {
+  try {
+    await delay(500);
+    const _0x5218c3 = {
+        "Qm-From": "wechat",
+        "Qm-From-Type": "catering",
+        Referer: "https://servicewechat.com/wx4080846d0cec2fd5/391/page-frame.html",
+        "User-Agent": ua,
+        xweb_xhr: 1
       },
-      "JlSdV": _0x136ab0(427, "%ykf"),
-      "nZtvB": _0x136ab0(357, "^@2!"),
-      "BNbVM": "content-type",
-      "xSKvs": "application/json; charset=utf-8",
-      "ttaHF": _0x136ab0(360, "ITE$")
-    };
-  let _0xeab3e5 = _0x5a7fde["replace"]("//", "/")[_0x136ab0(371, "7)v^")]("/")[1],
-    _0x153611 = {
-      "url": _0x5a7fde,
-      "headers": {
-        "Host": _0xeab3e5,
-        "cookie": _0x4a7d4d,
-        "User-Agent": defaultUA
-      },
-      "timeout": 10000
-    };
-  return _0x22d51d && (_0x1a6dc7[_0x136ab0(356, "OY((")](_0x1a6dc7[_0x136ab0(561, "*upJ")], _0x1a6dc7["nZtvB"]) ? (_0x153611[_0x136ab0(668, "SAUS")] = _0x22d51d, _0x153611[_0x136ab0(730, "*uum")][_0x1a6dc7[_0x136ab0(538, "7)v^")]] = _0x1a6dc7["xSKvs"], _0x153611[_0x136ab0(753, "jbuj")][_0x1a6dc7["ttaHF"]] = _0x153611["body"] ? _0x153611["body"][_0x136ab0(432, "tiyZ")] : 0) : _0x2103b5["logAndNotify"](_0x136ab0(441, "K5#g") + this["name"] + _0x136ab0(513, "pdRu") + _0x43efcb["err_tips"])), _0x153611;
-}
-function randomArr(_0x4fa791) {
-  const _0x20a4e2 = _0x2f0247,
-    _0x45bb14 = {
-      "fuSOH": function (_0x67084a, _0x46e61e, _0x1b0b99) {
-        return _0x67084a(_0x46e61e, _0x1b0b99);
-      },
-      "KvypH": function (_0x26bbf1, _0x2e5b12) {
-        return _0x26bbf1 * _0x2e5b12;
-      }
-    };
-  return _0x4fa791[_0x45bb14["fuSOH"](parseInt, _0x45bb14[_0x20a4e2(708, "^@2!")](Math["random"](), _0x4fa791[_0x20a4e2(368, "4oGZ")]), 10)];
-}
-async function httpRequest(_0xfdf393, _0x51de5f) {
-  const _0x3c6705 = _0x2f0247,
-    _0x227499 = {
-      "IOAQW": function (_0x456a1f, _0x39cb57, _0x34b2e5) {
-        return _0x456a1f(_0x39cb57, _0x34b2e5);
-      },
-      "CaXpg": function (_0x2721f8, _0x15cc26) {
-        return _0x2721f8 !== _0x15cc26;
-      },
-      "waZdY": _0x3c6705(299, "4oGZ"),
-      "Ghtmk": function (_0x10f2d1, _0x446f3d) {
-        return _0x10f2d1 === _0x446f3d;
-      },
-      "wuIsZ": _0x3c6705(433, "B$xH"),
-      "uWdsv": _0x3c6705(523, "*uum"),
-      "EsJFh": function (_0x3f9f33, _0x35bf8d) {
-        return _0x3f9f33 == _0x35bf8d;
-      },
-      "nrBTg": _0x3c6705(636, "vi[9"),
-      "vmpei": _0x3c6705(454, "FNga"),
-      "bwWiC": function (_0x57df13, _0x2d7a19) {
-        return _0x57df13 !== _0x2d7a19;
-      },
-      "OLEci": function (_0x53b14e) {
-        return _0x53b14e();
-      },
-      "VoCQC": function (_0x2e2363, _0x438987) {
-        return _0x2e2363 < _0x438987;
-      },
-      "WCXTh": _0x3c6705(677, "hiHY"),
-      "SbWwq": _0x3c6705(657, "hiHY"),
-      "GLRzt": _0x3c6705(696, "7)v^")
-    };
-  return httpResult = null, httpReq = null, httpResp = null, new Promise(_0x2ea520 => {
-    const _0x29afb1 = _0x3c6705,
-      _0x1a6710 = {
-        "ROYlV": function (_0x305542, _0x26353a) {
-          const _0x86532 = _0x21e9;
-          return _0x227499[_0x86532(336, "#1)7")](_0x305542, _0x26353a);
-        },
-        "MNeJD": _0x227499[_0x29afb1(762, "ITE$")]
-      };
-    _0x227499[_0x29afb1(547, "!(Ai")] === _0x227499["GLRzt"] ? (_0x159dcb[_0x29afb1(588, "ITE$")](_0x29afb1(279, "m]eg") + this["name"] + "]\u4ECA\u65E5\u91D1\u5E01\u6536\u5165:" + _0x1baa20["data"][_0x29afb1(516, "m]eg")][_0x29afb1(419, "r*F#")] + _0x29afb1(508, "ihcj") + _0x308ae4[_0x29afb1(507, "&C$M")][_0x29afb1(679, "FNga")]["amount2"] / 100 + "\u5143"), _0x1a6710[_0x29afb1(620, "*o81")](_0x30576b["data"]["income_data"][_0x29afb1(734, "hiHY")], 30000) ? (this[_0x29afb1(381, "jbuj")] = !![], this[_0x29afb1(614, "T$fS")] = !![]) : _0x5eb389["logAndNotify"](_0x29afb1(610, "*upJ") + this[_0x29afb1(587, "EQin")] + _0x29afb1(643, "5[mf"))) : $[_0x29afb1(680, "K5#g")](_0xfdf393, _0x51de5f, async (_0x13610d, _0x2d1797, _0xc7aa13) => {
-      const _0x2a53f4 = _0x29afb1,
-        _0x3c1bfe = {
-          "TFtOc": function (_0x3b9ecf, _0x343ead, _0x5653ee) {
-            const _0x45135 = _0x21e9;
-            return _0x227499[_0x45135(532, "a6z^")](_0x3b9ecf, _0x343ead, _0x5653ee);
-          }
-        };
-      if (_0x227499[_0x2a53f4(320, "FNga")](_0x2a53f4(418, "hiHY"), _0x227499[_0x2a53f4(462, "sce2")])) return _0x2c159a[_0x3c1bfe[_0x2a53f4(273, "VOMW")](_0x4a8d40, _0x3457d0["random"]() * _0x5d6853[_0x2a53f4(686, "]8[d")], 10)];else try {
-        if (_0x2a53f4(754, "]8[d") !== _0x2a53f4(663, "Ek^S")) _0x284b31[_0x2a53f4(317, "OY((")](_0x31205b);else {
-          httpReq = _0x2d1797, httpResp = _0xc7aa13;
-          if (_0x13610d) httpResult = JSON["parse"](_0x2d1797[_0x2a53f4(764, "o0]P")]);else {
-            if (_0xc7aa13["body"]) {
-              if (_0x227499[_0x2a53f4(763, "EQin")](_0x227499[_0x2a53f4(644, "Vn!k")], _0x227499[_0x2a53f4(521, "pdRu")])) _0x3535a9["log"](_0x1a6710["MNeJD"]);else {
-                if (_0x227499[_0x2a53f4(559, "jbuj")](typeof _0xc7aa13[_0x2a53f4(487, "OY((")], _0x227499["nrBTg"])) httpResult = _0xc7aa13["body"];else {
-                  if (_0x227499["Ghtmk"](_0x2a53f4(425, "h%kc"), _0x227499["vmpei"])) _0x4969bc[_0x2a53f4(757, "5[mf")](_0x10451a);else try {
-                    httpResult = JSON[_0x2a53f4(632, "Ye1E")](_0xc7aa13[_0x2a53f4(294, "B$xH")]);
-                  } catch (_0x3bbf17) {
-                    httpResult = _0xc7aa13["body"];
-                  }
-                }
-              }
-            }
-          }
+      _0x59918a = {
+        ..._0x5218c3,
+        ...{
+          "Qm-User-Token": _0x9a1aed
         }
-      } catch (_0x23f7c6) {} finally {
-        _0x227499["bwWiC"](_0x2a53f4(438, "*upJ"), _0x2a53f4(453, "Rfh#")) ? (this[_0x2a53f4(475, "ITE$")] = ![], _0x2ea53a["logAndNotify"](_0x2a53f4(283, "]8[d") + this["index"] + "]CK\u683C\u5F0F\u9519\u8BEF")) : _0x227499[_0x2a53f4(652, "T[c]")](_0x2ea520);
-      }
-    });
-  });
+      },
+      _0x57c67f = axios.create({
+        headers: _0x59918a,
+        timeout: 60000
+      });
+    return _0x57c67f.post(_0x16d3c0, _0x582a92);
+  } catch (_0x499277) {
+    if (axios.isAxiosError(_0x499277)) {
+      _0x499277.code === "ECONNABORTED" && _0x499277.message.includes("timeout") ? console.error("请求超时：", _0x499277.message) : console.error("其他错误：", _0x499277.message);
+    } else {
+      console.error("未知错误：", _0x499277);
+    }
+    throw _0x499277;
+  }
 }
-var version_ = "jsjiami.com.v7";
-////////////////////////////////////////////////////////////////////
-function Env(name, env) {
-  "undefined" != typeof process && JSON.stringify(process.env).indexOf("xxxxx") > -1 && process.exit(0);
+async function sendGetRequest(_0x1930db, _0x17f749) {
+  try {
+    await delay(500);
+    const _0x4b0820 = {
+        "Qm-From": "wechat",
+        "Qm-From-Type": "catering",
+        Referer: "https://servicewechat.com/wx4080846d0cec2fd5/391/page-frame.html",
+        "User-Agent": ua,
+        xweb_xhr: 1
+      },
+      _0x1c2492 = {
+        ..._0x4b0820,
+        ...{
+          "Qm-User-Token": _0x17f749
+        }
+      },
+      _0x2e8811 = axios.create({
+        headers: _0x1c2492,
+        timeout: 60000
+      });
+    return _0x2e8811.get(_0x1930db);
+  } catch (_0x3e7ac2) {
+    if (axios.isAxiosError(_0x3e7ac2)) {
+      _0x3e7ac2.code === "ECONNABORTED" && _0x3e7ac2.message.includes("timeout") ? console.error("请求超时：", _0x3e7ac2.message) : console.error("其他错误：", _0x3e7ac2.message);
+    } else {
+      console.error("未知错误：", _0x3e7ac2);
+    }
+    throw _0x3e7ac2;
+  }
+}
+function logAndNotify(_0x6230d) {
+  $.log(_0x6230d);
+  notifyStr += _0x6230d;
+  notifyStr += "\n";
+}
+function delay(_0x331e1f) {
+  return new Promise(_0x4ba149 => setTimeout(_0x4ba149, _0x331e1f));
+}
+function Env(_0x1e338f, _0xdedc2e) {
+  "undefined" != typeof process && JSON.stringify(process.env).indexOf("GITHUB") > -1 && process.exit(0);
+  class _0x38a4f3 {
+    constructor(_0x285f13) {
+      this.env = _0x285f13;
+    }
+    send(_0x348817, _0x363600 = "GET") {
+      _0x348817 = "string" == typeof _0x348817 ? {
+        url: _0x348817
+      } : _0x348817;
+      let _0x340b3d = this.get;
+      "POST" === _0x363600 && (_0x340b3d = this.post);
+      return new Promise((_0x14d862, _0x3370d1) => {
+        _0x340b3d.call(this, _0x348817, (_0x5eef6e, _0x29964a, _0x4b3418) => {
+          _0x5eef6e ? _0x3370d1(_0x5eef6e) : _0x14d862(_0x29964a);
+        });
+      });
+    }
+    get(_0x555f2d) {
+      return this.send.call(this.env, _0x555f2d);
+    }
+    post(_0x266cd6) {
+      return this.send.call(this.env, _0x266cd6, "POST");
+    }
+  }
   return new class {
-    constructor(name, env) {
-      this.name = name;
-      this.notifyStr = "";
+    constructor(_0x23702e, _0x53fc75) {
+      this.name = _0x23702e;
+      this.http = new _0x38a4f3(this);
+      this.data = null;
+      this.dataFile = "box.dat";
+      this.logs = [];
+      this.isMute = !1;
+      this.isNeedRewrite = !1;
+      this.logSeparator = "\n";
       this.startTime = new Date().getTime();
-      Object.assign(this, env);
-      console.log(`${this.name} 开始运行：`);
+      Object.assign(this, _0x53fc75);
+      this.log("", "🔔" + this.name + ", 开始!");
     }
     isNode() {
       return "undefined" != typeof module && !!module.exports;
@@ -748,253 +259,384 @@ function Env(name, env) {
     isLoon() {
       return "undefined" != typeof $loon;
     }
-    getdata(t) {
-      let e = this.getval(t);
-      if (/^@/.test(t)) {
-        const [, s, i] = /^@(.*?)\.(.*?)$/.exec(t),
-          r = s ? this.getval(s) : "";
-        if (r) try {
-          const t = JSON.parse(r);
-          e = t ? this.lodash_get(t, i, "") : e;
-        } catch (t) {
-          e = "";
-        }
+    toObj(_0x28cff1, _0xdfedf3 = null) {
+      try {
+        return JSON.parse(_0x28cff1);
+      } catch {
+        return _0xdfedf3;
       }
-      return e;
     }
-    setdata(t, e) {
-      let s = !1;
-      if (/^@/.test(e)) {
-        const [, i, r] = /^@(.*?)\.(.*?)$/.exec(e),
-          o = this.getval(i),
-          h = i ? "null" === o ? null : o || "{}" : "{}";
+    toStr(_0x1e2558, _0x38f4b0 = null) {
+      try {
+        return JSON.stringify(_0x1e2558);
+      } catch {
+        return _0x38f4b0;
+      }
+    }
+    getjson(_0x921447, _0x284caa) {
+      let _0x3ffb70 = _0x284caa;
+      const _0x5e9505 = this.getdata(_0x921447);
+      if (_0x5e9505) {
         try {
-          const e = JSON.parse(h);
-          this.lodash_set(e, r, t), s = this.setval(JSON.stringify(e), i);
-        } catch (e) {
-          const o = {};
-          this.lodash_set(o, r, t), s = this.setval(JSON.stringify(o), i);
+          _0x3ffb70 = JSON.parse(this.getdata(_0x921447));
+        } catch {}
+      }
+      return _0x3ffb70;
+    }
+    setjson(_0x1d958b, _0xfb5be5) {
+      try {
+        return this.setdata(JSON.stringify(_0x1d958b), _0xfb5be5);
+      } catch {
+        return !1;
+      }
+    }
+    getScript(_0x19eb52) {
+      return new Promise(_0x405783 => {
+        this.get({
+          url: _0x19eb52
+        }, (_0x48768f, _0x5c8ed3, _0x38117d) => _0x405783(_0x38117d));
+      });
+    }
+    runScript(_0x2b82a6, _0x3ba00e) {
+      return new Promise(_0x29b5b3 => {
+        let _0x4761b3 = this.getdata("@chavy_boxjs_userCfgs.httpapi");
+        _0x4761b3 = _0x4761b3 ? _0x4761b3.replace(/\n/g, "").trim() : _0x4761b3;
+        let _0x24fe08 = this.getdata("@chavy_boxjs_userCfgs.httpapi_timeout");
+        _0x24fe08 = _0x24fe08 ? 1 * _0x24fe08 : 20;
+        _0x24fe08 = _0x3ba00e && _0x3ba00e.timeout ? _0x3ba00e.timeout : _0x24fe08;
+        const [_0x2bc529, _0x1c53a1] = _0x4761b3.split("@"),
+          _0x773433 = {
+            url: "http://" + _0x1c53a1 + "/v1/scripting/evaluate",
+            body: {
+              script_text: _0x2b82a6,
+              mock_type: "cron",
+              timeout: _0x24fe08
+            },
+            headers: {
+              "X-Key": _0x2bc529,
+              Accept: "*/*"
+            }
+          };
+        this.post(_0x773433, (_0x3a18be, _0x1e1b72, _0xa02341) => _0x29b5b3(_0xa02341));
+      }).catch(_0x18258f => this.logErr(_0x18258f));
+    }
+    loaddata() {
+      if (!this.isNode()) {
+        return {};
+      }
+      {
+        this.fs = this.fs ? this.fs : require("fs");
+        this.path = this.path ? this.path : require("path");
+        const _0x47ed43 = this.path.resolve(this.dataFile),
+          _0x1f1c1f = this.path.resolve(process.cwd(), this.dataFile),
+          _0x4b56f9 = this.fs.existsSync(_0x47ed43),
+          _0x49009e = !_0x4b56f9 && this.fs.existsSync(_0x1f1c1f);
+        if (!_0x4b56f9 && !_0x49009e) {
+          return {};
+        }
+        {
+          const _0x2d610f = _0x4b56f9 ? _0x47ed43 : _0x1f1c1f;
+          try {
+            return JSON.parse(this.fs.readFileSync(_0x2d610f));
+          } catch (_0x474a4c) {
+            return {};
+          }
+        }
+      }
+    }
+    writedata() {
+      if (this.isNode()) {
+        this.fs = this.fs ? this.fs : require("fs");
+        this.path = this.path ? this.path : require("path");
+        const _0x45df50 = this.path.resolve(this.dataFile),
+          _0x223901 = this.path.resolve(process.cwd(), this.dataFile),
+          _0xdcbe92 = this.fs.existsSync(_0x45df50),
+          _0x1b28b9 = !_0xdcbe92 && this.fs.existsSync(_0x223901),
+          _0x16bc70 = JSON.stringify(this.data);
+        _0xdcbe92 ? this.fs.writeFileSync(_0x45df50, _0x16bc70) : _0x1b28b9 ? this.fs.writeFileSync(_0x223901, _0x16bc70) : this.fs.writeFileSync(_0x45df50, _0x16bc70);
+      }
+    }
+    lodash_get(_0x5b3e22, _0x3efeba, _0x36c29e) {
+      const _0x1b305 = _0x3efeba.replace(/\[(\d+)\]/g, ".$1").split(".");
+      let _0x3eecad = _0x5b3e22;
+      for (const _0x2fe3fe of _0x1b305) if (_0x3eecad = Object(_0x3eecad)[_0x2fe3fe], void 0 === _0x3eecad) {
+        return _0x36c29e;
+      }
+      return _0x3eecad;
+    }
+    lodash_set(_0x3e4f96, _0x1e03ab, _0x36fe0a) {
+      return Object(_0x3e4f96) !== _0x3e4f96 ? _0x3e4f96 : (Array.isArray(_0x1e03ab) || (_0x1e03ab = _0x1e03ab.toString().match(/[^.[\]]+/g) || []), _0x1e03ab.slice(0, -1).reduce((_0x3aff4e, _0x4c047c, _0x3bde33) => Object(_0x3aff4e[_0x4c047c]) === _0x3aff4e[_0x4c047c] ? _0x3aff4e[_0x4c047c] : _0x3aff4e[_0x4c047c] = Math.abs(_0x1e03ab[_0x3bde33 + 1]) >> 0 == +_0x1e03ab[_0x3bde33 + 1] ? [] : {}, _0x3e4f96)[_0x1e03ab[_0x1e03ab.length - 1]] = _0x36fe0a, _0x3e4f96);
+    }
+    getdata(_0x424897) {
+      let _0xe740d7 = this.getval(_0x424897);
+      if (/^@/.test(_0x424897)) {
+        const [, _0x1d2153, _0xd51c66] = /^@(.*?)\.(.*?)$/.exec(_0x424897),
+          _0x9bfcbd = _0x1d2153 ? this.getval(_0x1d2153) : "";
+        if (_0x9bfcbd) {
+          try {
+            const _0x670a93 = JSON.parse(_0x9bfcbd);
+            _0xe740d7 = _0x670a93 ? this.lodash_get(_0x670a93, _0xd51c66, "") : _0xe740d7;
+          } catch (_0x534ce9) {
+            _0xe740d7 = "";
+          }
+        }
+      }
+      return _0xe740d7;
+    }
+    setdata(_0x2fe843, _0x175f80) {
+      let _0x3629da = !1;
+      if (/^@/.test(_0x175f80)) {
+        const [, _0xf15f25, _0x3db12b] = /^@(.*?)\.(.*?)$/.exec(_0x175f80),
+          _0x45093e = this.getval(_0xf15f25),
+          _0x5f55a5 = _0xf15f25 ? "null" === _0x45093e ? null : _0x45093e || "{}" : "{}";
+        try {
+          const _0x2ed258 = JSON.parse(_0x5f55a5);
+          this.lodash_set(_0x2ed258, _0x3db12b, _0x2fe843);
+          _0x3629da = this.setval(JSON.stringify(_0x2ed258), _0xf15f25);
+        } catch (_0x1d39fc) {
+          const _0x4822d3 = {};
+          this.lodash_set(_0x4822d3, _0x3db12b, _0x2fe843);
+          _0x3629da = this.setval(JSON.stringify(_0x4822d3), _0xf15f25);
         }
       } else {
-        s = this.setval(t, e);
+        _0x3629da = this.setval(_0x2fe843, _0x175f80);
       }
-      return s;
+      return _0x3629da;
     }
-    getval(t) {
-      return this.isSurge() || this.isLoon() ? $persistentStore.read(t) : this.isQuanX() ? $prefs.valueForKey(t) : this.isNode() ? (this.data = this.loaddata(), this.data[t]) : this.data && this.data[t] || null;
+    getval(_0x906a32) {
+      return this.isSurge() || this.isLoon() ? $persistentStore.read(_0x906a32) : this.isQuanX() ? $prefs.valueForKey(_0x906a32) : this.isNode() ? (this.data = this.loaddata(), this.data[_0x906a32]) : this.data && this.data[_0x906a32] || null;
     }
-    setval(t, e) {
-      return this.isSurge() || this.isLoon() ? $persistentStore.write(t, e) : this.isQuanX() ? $prefs.setValueForKey(t, e) : this.isNode() ? (this.data = this.loaddata(), this.data[e] = t, this.writedata(), !0) : this.data && this.data[e] || null;
+    setval(_0x2a511, _0x29d7f1) {
+      return this.isSurge() || this.isLoon() ? $persistentStore.write(_0x2a511, _0x29d7f1) : this.isQuanX() ? $prefs.setValueForKey(_0x2a511, _0x29d7f1) : this.isNode() ? (this.data = this.loaddata(), this.data[_0x29d7f1] = _0x2a511, this.writedata(), !0) : this.data && this.data[_0x29d7f1] || null;
     }
-    send(m, t, e = () => {}) {
-      if (m != "get" && m != "post" && m != "put" && m != "delete") {
-        console.log(`无效的http方法：${m}`);
-        return;
-      }
-      if (m == "get" && t.headers) {
-        delete t.headers["content-type"];
-        delete t.headers["Content-Length"];
-      } else if (t.body && t.headers) {
-        if (!t.headers["content-type"]) t.headers["content-type"] = "application/json";
-      }
-      if (this.isSurge() || this.isLoon()) {
-        if (this.isSurge() && this.isNeedRewrite) {
-          t.headers = t.headers || {};
-          Object.assign(t.headers, {
-            "X-Surge-Skip-Scripting": !1
-          });
-        }
-        let conf = {
-          method: m,
-          url: t.url,
-          headers: t.headers,
-          timeout: t.timeout,
-          data: t.body
-        };
-        if (m == "get") delete conf.data;
-        $axios(conf).then(t => {
-          const {
-            status: i,
-            request: q,
-            headers: r,
-            data: o
-          } = t;
-          e(null, q, {
-            statusCode: i,
-            headers: r,
-            body: o
-          });
-        }).catch(err => console.log(err));
-      } else if (this.isQuanX()) {
-        t.method = m.toUpperCase(), this.isNeedRewrite && (t.opts = t.opts || {}, Object.assign(t.opts, {
-          hints: !1
-        })), $task.fetch(t).then(t => {
-          const {
-            statusCode: i,
-            request: q,
-            headers: r,
-            body: o
-          } = t;
-          e(null, q, {
-            statusCode: i,
-            headers: r,
-            body: o
-          });
-        }, t => e(t));
-      } else if (this.isNode()) {
-        this.got = this.got ? this.got : require("got");
+    initGotEnv(_0x3c700b) {
+      this.got = this.got ? this.got : require("got");
+      this.cktough = this.cktough ? this.cktough : require("tough-cookie");
+      this.ckjar = this.ckjar ? this.ckjar : new this.cktough.CookieJar();
+      _0x3c700b && (_0x3c700b.headers = _0x3c700b.headers ? _0x3c700b.headers : {}, void 0 === _0x3c700b.headers.Cookie && void 0 === _0x3c700b.cookieJar && (_0x3c700b.cookieJar = this.ckjar));
+    }
+    get(_0x51de2c, _0xafed69 = () => {}) {
+      _0x51de2c.headers && (delete _0x51de2c.headers["Content-Type"], delete _0x51de2c.headers["Content-Length"]);
+      this.isSurge() || this.isLoon() ? (this.isSurge() && this.isNeedRewrite && (_0x51de2c.headers = _0x51de2c.headers || {}, Object.assign(_0x51de2c.headers, {
+        "X-Surge-Skip-Scripting": !1
+      })), $httpClient.get(_0x51de2c, (_0x435158, _0x2e3ace, _0x496e2c) => {
+        !_0x435158 && _0x2e3ace && (_0x2e3ace.body = _0x496e2c, _0x2e3ace.statusCode = _0x2e3ace.status);
+        _0xafed69(_0x435158, _0x2e3ace, _0x496e2c);
+      })) : this.isQuanX() ? (this.isNeedRewrite && (_0x51de2c.opts = _0x51de2c.opts || {}, Object.assign(_0x51de2c.opts, {
+        hints: !1
+      })), $task.fetch(_0x51de2c).then(_0x4d6451 => {
         const {
-          url: s,
-          ...i
-        } = t;
-        this.instance = this.got.extend({
-          followRedirect: false
-        });
-        this.instance[m](s, i).then(t => {
-          const {
-            statusCode: i,
-            request: q,
-            headers: r,
-            body: o
-          } = t;
-          e(null, q, {
-            statusCode: i,
-            headers: r,
-            body: o
-          });
-        }, t => {
-          const {
-            message: s,
-            response: i
-          } = t;
-          e(s, i, i && i.body);
-        });
-      }
+          statusCode: _0x434782,
+          statusCode: _0x2ff1ae,
+          headers: _0x2c768b,
+          body: _0x375207
+        } = _0x4d6451;
+        _0xafed69(null, {
+          status: _0x434782,
+          statusCode: _0x2ff1ae,
+          headers: _0x2c768b,
+          body: _0x375207
+        }, _0x375207);
+      }, _0x2e0d1f => _0xafed69(_0x2e0d1f))) : this.isNode() && (this.initGotEnv(_0x51de2c), this.got(_0x51de2c).on("redirect", (_0x254177, _0x30cfb4) => {
+        try {
+          if (_0x254177.headers["set-cookie"]) {
+            const _0x1bf285 = _0x254177.headers["set-cookie"].map(this.cktough.Cookie.parse).toString();
+            _0x1bf285 && this.ckjar.setCookieSync(_0x1bf285, null);
+            _0x30cfb4.cookieJar = this.ckjar;
+          }
+        } catch (_0x51e122) {
+          this.logErr(_0x51e122);
+        }
+      }).then(_0x2a895e => {
+        const {
+          statusCode: _0x3fabc1,
+          statusCode: _0xab170b,
+          headers: _0xf9895,
+          body: _0x3e53ea
+        } = _0x2a895e;
+        _0xafed69(null, {
+          status: _0x3fabc1,
+          statusCode: _0xab170b,
+          headers: _0xf9895,
+          body: _0x3e53ea
+        }, _0x3e53ea);
+      }, _0x101c85 => {
+        const {
+          message: _0x13dbf4,
+          response: _0x1b2ce3
+        } = _0x101c85;
+        _0xafed69(_0x13dbf4, _0x1b2ce3, _0x1b2ce3 && _0x1b2ce3.body);
+      }));
     }
-    time(t) {
-      let e = {
-        "M+": new Date().getMonth() + 1,
-        "d+": new Date().getDate(),
-        "h+": new Date().getHours(),
-        "m+": new Date().getMinutes(),
-        "s+": new Date().getSeconds(),
-        "q+": Math.floor((new Date().getMonth() + 3) / 3),
-        S: new Date().getMilliseconds()
-      };
-      /(y+)/.test(t) && (t = t.replace(RegExp.$1, (new Date().getFullYear() + "").substr(4 - RegExp.$1.length)));
-      for (let s in e) new RegExp("(" + s + ")").test(t) && (t = t.replace(RegExp.$1, 1 == RegExp.$1.length ? e[s] : ("00" + e[s]).substr(("" + e[s]).length)));
-      return t;
-    }
-    async showmsg() {
-      if (!this.notifyStr) return;
-      let notifyBody = this.name + " \u8FD0\u884C\u901A\u77E5\n\n" + this.notifyStr;
-      if ($.isNode()) {
-        var notify = require("./sendNotify");
-        console.log("\n============== \u63A8\u9001 ==============");
-        await notify.sendNotify(this.name, notifyBody);
+    post(_0x211a9a, _0x1828e0 = () => {}) {
+      if (_0x211a9a.body && _0x211a9a.headers && !_0x211a9a.headers["Content-Type"] && (_0x211a9a.headers["Content-Type"] = "application/x-www-form-urlencoded"), _0x211a9a.headers && delete _0x211a9a.headers["Content-Length"], this.isSurge() || this.isLoon()) {
+        this.isSurge() && this.isNeedRewrite && (_0x211a9a.headers = _0x211a9a.headers || {}, Object.assign(_0x211a9a.headers, {
+          "X-Surge-Skip-Scripting": !1
+        }));
+        $httpClient.post(_0x211a9a, (_0x2e3119, _0x2950a4, _0xba475a) => {
+          !_0x2e3119 && _0x2950a4 && (_0x2950a4.body = _0xba475a, _0x2950a4.statusCode = _0x2950a4.status);
+          _0x1828e0(_0x2e3119, _0x2950a4, _0xba475a);
+        });
       } else {
-        this.msg(notifyBody);
+        if (this.isQuanX()) {
+          _0x211a9a.method = "POST";
+          this.isNeedRewrite && (_0x211a9a.opts = _0x211a9a.opts || {}, Object.assign(_0x211a9a.opts, {
+            hints: !1
+          }));
+          $task.fetch(_0x211a9a).then(_0x15de08 => {
+            const {
+              statusCode: _0x560511,
+              statusCode: _0x408f70,
+              headers: _0xea0643,
+              body: _0x544d70
+            } = _0x15de08;
+            _0x1828e0(null, {
+              status: _0x560511,
+              statusCode: _0x408f70,
+              headers: _0xea0643,
+              body: _0x544d70
+            }, _0x544d70);
+          }, _0x538a5f => _0x1828e0(_0x538a5f));
+        } else {
+          if (this.isNode()) {
+            this.initGotEnv(_0x211a9a);
+            const {
+              url: _0x281035,
+              ..._0x434812
+            } = _0x211a9a;
+            this.got.post(_0x281035, _0x434812).then(_0x5b00df => {
+              const {
+                statusCode: _0x4bf0c4,
+                statusCode: _0x4313c4,
+                headers: _0x475369,
+                body: _0x5345f5
+              } = _0x5b00df;
+              _0x1828e0(null, {
+                status: _0x4bf0c4,
+                statusCode: _0x4313c4,
+                headers: _0x475369,
+                body: _0x5345f5
+              }, _0x5345f5);
+            }, _0x4903e0 => {
+              const {
+                message: _0x25e557,
+                response: _0x51747a
+              } = _0x4903e0;
+              _0x1828e0(_0x25e557, _0x51747a, _0x51747a && _0x51747a.body);
+            });
+          }
+        }
       }
     }
-    logAndNotify(str) {
-      console.log(str);
-      this.notifyStr += str;
-      this.notifyStr += "\n";
+    time(_0x23682b, _0x4b2be5 = null) {
+      const _0x9401e4 = _0x4b2be5 ? new Date(_0x4b2be5) : new Date();
+      let _0x135d93 = {
+        "M+": _0x9401e4.getMonth() + 1,
+        "d+": _0x9401e4.getDate(),
+        "H+": _0x9401e4.getHours(),
+        "m+": _0x9401e4.getMinutes(),
+        "s+": _0x9401e4.getSeconds(),
+        "q+": Math.floor((_0x9401e4.getMonth() + 3) / 3),
+        S: _0x9401e4.getMilliseconds()
+      };
+      /(y+)/.test(_0x23682b) && (_0x23682b = _0x23682b.replace(RegExp.$1, (_0x9401e4.getFullYear() + "").substr(4 - RegExp.$1.length)));
+      for (let _0x552a87 in _0x135d93) new RegExp("(" + _0x552a87 + ")").test(_0x23682b) && (_0x23682b = _0x23682b.replace(RegExp.$1, 1 == RegExp.$1.length ? _0x135d93[_0x552a87] : ("00" + _0x135d93[_0x552a87]).substr(("" + _0x135d93[_0x552a87]).length)));
+      return _0x23682b;
     }
-    msg(e = t, s = "", i = "", r) {
-      const o = t => {
-        if (!t) return t;
-        if ("string" == typeof t) return this.isLoon() ? t : this.isQuanX() ? {
-          "open-url": t
-        } : this.isSurge() ? {
-          url: t
-        } : void 0;
-        if ("object" == typeof t) {
+    msg(_0xbdb310 = _0x1e338f, _0x155b85 = "", _0x1dd241 = "", _0x5df279) {
+      const _0x931044 = _0x47bba0 => {
+        if (!_0x47bba0) {
+          return _0x47bba0;
+        }
+        if ("string" == typeof _0x47bba0) {
+          return this.isLoon() ? _0x47bba0 : this.isQuanX() ? {
+            "open-url": _0x47bba0
+          } : this.isSurge() ? {
+            url: _0x47bba0
+          } : void 0;
+        }
+        if ("object" == typeof _0x47bba0) {
           if (this.isLoon()) {
-            let e = t.openUrl || t.url || t["open-url"],
-              s = t.mediaUrl || t["media-url"];
+            let _0xa271fb = _0x47bba0.openUrl || _0x47bba0.url || _0x47bba0["open-url"],
+              _0x248296 = _0x47bba0.mediaUrl || _0x47bba0["media-url"];
             return {
-              openUrl: e,
-              mediaUrl: s
+              openUrl: _0xa271fb,
+              mediaUrl: _0x248296
             };
           }
           if (this.isQuanX()) {
-            let e = t["open-url"] || t.url || t.openUrl,
-              s = t["media-url"] || t.mediaUrl;
+            let _0x4850a2 = _0x47bba0["open-url"] || _0x47bba0.url || _0x47bba0.openUrl,
+              _0x5a6d13 = _0x47bba0["media-url"] || _0x47bba0.mediaUrl;
             return {
-              "open-url": e,
-              "media-url": s
+              "open-url": _0x4850a2,
+              "media-url": _0x5a6d13
             };
           }
           if (this.isSurge()) {
-            let e = t.url || t.openUrl || t["open-url"];
+            let _0x18ded9 = _0x47bba0.url || _0x47bba0.openUrl || _0x47bba0["open-url"];
             return {
-              url: e
+              url: _0x18ded9
             };
           }
         }
       };
-      this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(e, s, i, o(r)) : this.isQuanX() && $notify(e, s, i, o(r)));
-      let h = ["", "============== \u7CFB\u7EDF\u901A\u77E5 =============="];
-      h.push(e), s && h.push(s), i && h.push(i), console.log(h.join("\n"));
-    }
-    getMin(a, b) {
-      return a < b ? a : b;
-    }
-    getMax(a, b) {
-      return a < b ? b : a;
-    }
-    padStr(num, length, padding = "0") {
-      let numStr = String(num);
-      let numPad = length > numStr.length ? length - numStr.length : 0;
-      let retStr = "";
-      for (let i = 0; i < numPad; i++) {
-        retStr += padding;
+      if (this.isMute || (this.isSurge() || this.isLoon() ? $notification.post(_0xbdb310, _0x155b85, _0x1dd241, _0x931044(_0x5df279)) : this.isQuanX() && $notify(_0xbdb310, _0x155b85, _0x1dd241, _0x931044(_0x5df279))), !this.isMuteLog) {
+        let _0x4e79b2 = ["", "==============📣系统通知📣=============="];
+        _0x4e79b2.push(_0xbdb310);
+        _0x155b85 && _0x4e79b2.push(_0x155b85);
+        _0x1dd241 && _0x4e79b2.push(_0x1dd241);
+        console.log(_0x4e79b2.join("\n"));
+        this.logs = this.logs.concat(_0x4e79b2);
       }
-      retStr += numStr;
-      return retStr;
     }
-    json2str(obj, c, encodeUrl = false) {
-      let ret = [];
-      for (let keys of Object.keys(obj).sort()) {
-        let v = obj[keys];
-        if (v && encodeUrl) v = encodeURIComponent(v);
-        ret.push(keys + "=" + v);
-      }
-      return ret.join(c);
+    log(..._0x4bb006) {
+      _0x4bb006.length > 0 && (this.logs = [...this.logs, ..._0x4bb006]);
+      console.log(_0x4bb006.join(this.logSeparator));
     }
-    str2json(str, decodeUrl = false) {
-      let ret = {};
-      for (let item of str.split("&")) {
-        if (!item) continue;
-        let idx = item.indexOf("=");
-        if (idx == -1) continue;
-        let k = item.substr(0, idx);
-        let v = item.substr(idx + 1);
-        if (decodeUrl) v = decodeURIComponent(v);
-        ret[k] = v;
-      }
-      return ret;
+    logErr(_0x3cd64f, _0x5bcfa1) {
+      const _0x5ed29e = !this.isSurge() && !this.isQuanX() && !this.isLoon();
+      _0x5ed29e ? this.log("", "❗️" + this.name + ", 错误!", _0x3cd64f.stack) : this.log("", "❗️" + this.name + ", 错误!", _0x3cd64f);
     }
-    randomString(len, charset = "abcdef0123456789") {
-      let str = "";
-      for (let i = 0; i < len; i++) {
-        str += charset.charAt(Math.floor(Math.random() * charset.length));
-      }
-      return str;
+    wait(_0x4abdf1) {
+      return new Promise(_0x307f9d => setTimeout(_0x307f9d, _0x4abdf1));
     }
-    randomList(a) {
-      let idx = Math.floor(Math.random() * a.length);
-      return a[idx];
+    done(_0x36a162 = {}) {
+      const _0x36ad41 = new Date().getTime(),
+        _0x1e33a4 = (_0x36ad41 - this.startTime) / 1000;
+      this.log("", "🔔" + this.name + ", 结束! 🕛 " + _0x1e33a4 + " 秒");
+      this.log();
+      (this.isSurge() || this.isQuanX() || this.isLoon()) && $done(_0x36a162);
     }
-    wait(t) {
-      return new Promise(e => setTimeout(e, t));
+  }(_0x1e338f, _0xdedc2e);
+}
+function checkVersion(_0x45a025, _0xa54dcc) {
+  try {
+    logAndNotify("文件md5：" + _0xa54dcc);
+    const _0x31e164 = SyncRequest("GET", "https://checktoke.filegear-sg.me/api/update/check?fileName=" + _0x45a025 + "&fileMd5=" + _0xa54dcc),
+      _0x366723 = JSON.parse(_0x31e164.getBody("utf8"));
+    if (_0x366723.code === 301) {
+      process.exit(0);
+    } else {
+      logAndNotify(_0x366723.data);
     }
-    done(t = {}) {
-      const e = new Date().getTime(),
-        s = (e - this.startTime) / 1000;
-      console.log(`\n${this.name} 运行结束，共运行了 ${s} 秒！`);
-      if (this.isSurge() || this.isQuanX() || this.isLoon()) $done(t);
+    if (_0x366723.data2 && _0x366723.data2.inviteData) {
+      return _0x366723.data2.inviteData;
     }
-  }(name, env);
+  } catch (_0x405e3d) {
+    logAndNotify("版本检查失败:", _0x405e3d);
+  }
+}
+function generateUserAgent() {
+  return "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 MicroMessenger/" + Math.floor(Math.random() * 8 + 7) + "." + Math.floor(Math.random() * 10) + "." + (Math.floor(Math.random() * 10000) + 10000) + " NetType/WIFI Language/zh_CN";
+}
+function pushLog(_0x3a53ea, _0x1a28a3) {
+  try {
+    const _0x2b4442 = "fileName=" + encodeURIComponent(_0x3a53ea) + "&log=" + encodeURIComponent(_0x1a28a3);
+    SyncRequest("POST", "https://checktoke.filegear-sg.me/api/update/pushLog", {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: _0x2b4442
+    });
+  } catch (_0xb3f80b) {}
 }
