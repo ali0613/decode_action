@@ -1,1240 +1,818 @@
-//Mon Dec 01 2025 03:06:57 GMT+0000 (Coordinated Universal Time)
+//Tue Dec 02 2025 09:41:57 GMT+0000 (Coordinated Universal Time)
 //Base:<url id="cv1cref6o68qmpt26ol0" type="url" status="parsed" title="GitHub - echo094/decode-js: JS混淆代码的AST分析工具 AST analysis tool for obfuscated JS code" wc="2165">https://github.com/echo094/decode-js</url>
 //Modify:<url id="cv1cref6o68qmpt26olg" type="url" status="parsed" title="GitHub - smallfawn/decode_action: 世界上本来不存在加密，加密的人多了，也便成就了解密" wc="741">https://github.com/smallfawn/decode_action</url>
 (() => {
-  var b = {
-    MlVKB: function (L, M) {
-      return L === M;
-    },
-    rneXH: "icnJb",
-    VHcYh: function (L, M) {
-      return L !== M;
-    },
-    PcVAl: "qXJpN",
-    sTyER: "normal",
-    aDgiq: "throw",
-    UKMnx: "CFeya",
-    MmWyl: function (L, M, N, O) {
-      return L(M, N, O);
-    },
-    oUiaK: "_invoke",
-    PONbJ: function (L, M, N, O) {
-      return L(M, N, O);
-    },
-    JsUrl: function (L, M) {
-      return L !== M;
-    },
-    yEcus: "HLKYd",
-    AyWOb: "yNLPM",
-    Pivqh: "APlBx",
-    HgtGE: "root",
-    QfGHq: "GeneratorFunction",
-    aMUtm: "irjBg",
-    kOHHH: "next",
-    fecWP: "return",
-    vmDHu: function (L, M) {
-      return L > M;
-    },
-    jmHnA: function (L, M) {
-      return L !== M;
-    },
-    jjiCc: "application/json",
-    eIZRA: "*/*",
-    VzqRH: "2.2.9-2",
-    sUhrC: "net.appraven.app-apollo-ios",
-    LUxMA: function (L, M) {
-      return L(M);
-    },
-    StesT: function (L, M) {
-      return L < M;
-    },
-    NquvE: function (L, M, N, O, P) {
-      return L(M, N, O, P);
-    },
-    kPThO: "yzgZc",
-    Ysjxe: "Generator is already running",
-    JuAnd: "OPKWp",
-    miPpQ: "RtETP",
-    LwrcY: "iqZMx",
-    hjWKT: function (L, M, N) {
-      return L(M, N);
-    },
-    CfFHL: "ubRYW",
-    ezBpb: "jhOBw",
-    yFTeE: function (L, M) {
-      return L === M;
-    },
-    mPeyH: "eaADl",
-    XCbNF: "nQIGV",
-    BMxLR: "ODrml",
-    yOtxz: "1|5|3|2|0|4",
-    CnPZi: function (L, M) {
-      return L !== M;
-    },
-    bDqvm: "iterator result is not an object",
-    nGoWN: function (L, M) {
-      return L + M;
-    },
-    lWlPi: "The iterator does not provide a '",
-    GUlSJ: "' method",
-    uwbzB: function (L, M) {
-      return L != M;
-    },
-    DvZec: function (L, M) {
-      return L(M);
-    },
-    JwxJl: "wCtRL",
-    fXBfJ: "peQik",
-    EDkmv: function (L, M) {
-      return L === M;
-    },
-    hatzX: "YRSkH",
-    NBJzM: "JMtJR",
-    skxbo: function (L, M, N, O) {
-      return L(M, N, O);
-    },
-    fDngN: function (L, M) {
-      return L !== M;
-    },
-    EmxSI: "HvqFI",
-    wObCW: "[object Generator]",
-    GoydL: function (L, M) {
-      return L === M;
-    },
-    iinpr: "ELCVN",
-    wnvVy: "break",
-    czecw: function (L, M) {
-      return L === M;
-    },
-    uVefV: "end",
-    elxOZ: "finallyLoc",
-    psZFi: function (L, M) {
-      return L && M;
-    },
-    nVGWb: function (L, M, N) {
-      return L(M, N);
-    },
-    OeguX: function (L, M) {
-      return L < M;
-    },
-    obOhV: function (L, M) {
-      return L(M);
-    },
-    Gwptk: "try statement without catch or finally",
-    pBnvT: function (L, M) {
-      return L === M;
-    },
-    CGeLy: "userid",
-    XJxtW: "count",
-    jJQjp: function (L, M) {
-      return L >= M;
-    },
-    GvVHf: function (L, M) {
-      return L(M);
-    },
-    hbKpx: function (L, M) {
-      return L === M;
-    },
-    PBWcC: "ryRrE",
-    HoPnT: function (L, M) {
-      return L - M;
-    },
-    emuqX: function (L, M) {
-      return L >= M;
-    },
-    SnvDq: "qENpD",
-    zlTGS: function (L, M) {
-      return L === M;
-    },
-    MWiqV: "ycMRt",
-    zAdTY: "wFNrl",
-    sUnco: "vPibh",
-    zJIUc: "CvSIe",
-    VtziY: function (L, M) {
-      return L(M);
-    },
-    CaVeF: "illegal catch attempt",
-    YhyAy: "JZwGK",
-    aUXyI: function (L, M) {
-      return L(M);
-    },
-    aNniU: function (L, M) {
-      return L === M;
-    },
-    pZcgU: "yALpD",
-    qeavv: "xILbL",
-    ITjNP: function (L, M) {
-      return L(M);
-    },
-    JOvje: "AGUWa",
-    gEryk: "RTMci",
-    jqyTM: "PryHC",
-    YNECk: function (L, M) {
-      return L != M;
-    },
-    vIzSv: "wFUxx",
-    iKNGt: function (L, M) {
-      return L && M;
-    },
-    sLlYh: "gJLgG",
-    vgaQd: function (L, M) {
-      return L || M;
-    },
-    wKKNX: "Hznkl",
-    otmdc: "TGfIE",
-    CfmXn: "object",
-    sIsHn: "__await",
-    DcpBz: "tpALu",
-    VeTes: function (L, M) {
-      return L == M;
-    },
-    jwmDZ: "function",
-    aoUiN: "FbWXt",
-    NdRAI: "mUYPc",
-    EPokx: "dRKSH",
-    tCjmI: "OUehc",
-    OYsEA: function (L, M) {
-      return L !== M;
-    },
-    inyuD: "PoQQm",
-    HvisM: "TGxfp",
-    INelk: "rtIuO",
-    OebtY: function (L, M) {
-      return L === M;
-    },
-    vJQEq: function (L, M) {
-      return L == M;
-    },
-    ihDKe: function (L, M) {
-      return L === M;
-    },
-    SHQhA: "puLyC",
-    Fqmfp: "dAHna",
-    oJyRA: "qKmqv",
-    zoewP: "ncwhU",
-    HKLdC: "qHJgG",
-    ltLDp: function (L, M) {
-      return L === M;
-    },
-    PHYeF: function (L, M, N, O, P) {
-      return L(M, N, O, P);
-    },
-    zpigY: function (L, M) {
-      return L === M;
-    },
-    MwKbg: function (L, M, N, O, P) {
-      return L(M, N, O, P);
-    },
-    edKdB: function (L, M) {
-      return L == M;
-    },
-    WwmLS: function (L, M) {
-      return L === M;
-    },
-    sAqkK: "Arguments",
-    VIDFb: "uZyRB",
-    yXzca: function (L, M) {
-      return L in M;
-    },
-    snGbh: "NGWMR",
-    ULaWU: function (L, M) {
-      return L(M);
-    },
-    fDkVr: function (L, M) {
-      return L === M;
-    },
-    FkPvX: "imRRg",
-    iIxtO: "TUpsf",
-    plpiB: "Zwlwr",
-    krUyx: function (L, M) {
-      return L - M;
-    },
-    ggfoY: "BrxzW",
-    JNIXu: "cEcGj",
-    bcnuA: "KUqmY",
-    QBtEb: function (L, M) {
-      return L < M;
-    },
-    skppu: function (L, M) {
-      return L !== M;
-    },
-    dTITG: "wMkAu",
-    MCtye: function (L, M) {
-      return L < M;
-    },
-    JzZZt: "uXNPx",
-    PshIU: "continue",
-    qiTvz: "LVFXh",
-    fRvcI: function (L, M) {
-      return L - M;
-    },
-    nKnmX: "rdulo",
-    zqIjF: function (L, M) {
-      return L <= M;
-    },
-    PmEfl: "AmAyU",
-    aBeNH: "zYKYF",
-    KgbNG: function (L, M) {
-      return L === M;
-    },
-    ccDPO: "QBnsC",
-    plZXs: "mBnoy",
-    xcLgC: function (L, M) {
-      return L !== M;
-    },
-    gEsJt: "EukDP",
-    vzzcA: function (L, M) {
-      return L === M;
-    },
-    wEBjC: function (L, M) {
-      return L(M);
-    },
-    vtAGg: function (L, M) {
-      return L == M;
-    },
-    AHUDx: "@@iterator",
-    DxQRE: "@@asyncIterator",
-    MTlfS: function (L, M) {
-      return L === M;
-    },
-    WpFFZ: "KVcOg",
-    VjJYy: function (L, M, N) {
-      return L(M, N);
-    },
-    jgLUM: "DzdWG",
-    FiOoo: "suspendedStart",
-    QNsnZ: "suspendedYield",
-    NWGLE: "executing",
-    VekND: "completed",
-    mYOvy: function (L, M, N, O) {
-      return L(M, N, O);
-    },
-    ywBzi: function (L, M) {
-      return L(M);
-    },
-    lDfHo: function (L, M) {
-      return L(M);
-    },
-    ssgFR: function (L, M) {
-      return L(M);
-    },
-    aTwnV: function (L, M) {
-      return L !== M;
-    },
-    HoeEo: "constructor",
-    tiKYn: function (L, M, N, O) {
-      return L(M, N, O);
-    },
-    TNUcJ: function (L, M) {
-      return L(M);
-    },
-    QHliw: "Generator",
-    lLRYJ: "symbol",
-    pWAsL: "yvZPC",
-    iraqe: "NYMYE",
-    bsaZt: "OnuEj",
-    TAKlC: function (L, M) {
-      return L !== M;
-    },
-    hwgTT: "KcBDL",
-    WCInx: function (L, M) {
-      return L !== M;
-    },
-    LpalN: function (L, M, N, O, P, Q, R, S) {
-      return L(M, N, O, P, Q, R, S);
-    },
-    tjHNq: "Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.",
-    WeXBE: "EpiHG",
-    SlHQQ: "AfGDV",
-    vreYr: "QrWGn",
-    YRXmI: "lpxGn",
-    taJux: "string",
-    oeuMl: "Object",
-    JaBni: function (L, M) {
-      return L === M;
-    },
-    bhNYg: "Set",
-    kQJOv: "lmjsd",
-    hYdHS: function (L, M) {
-      return L !== M;
-    },
-    knnXq: "SOhqL",
-    TtzFw: "set-cookie",
-    pjOaj: function (L, M) {
-      return L(M);
-    },
-    Ndetm: "AMoQo",
-    pbCOd: "ssRjk",
-    Vfqiw: function (L, M) {
-      return L == M;
-    },
-    yMqGX: "undefined",
-    DWPPr: "IgVtN",
-    WNjJa: function (L, M) {
-      return L === M;
-    },
-    RAUAm: "lQetj",
-    vJVMy: "NOFHp",
-    TUpRZ: "VLcCL",
-    MTPwQ: "qxKUu",
-    ozMzQ: function (L, M) {
-      return L != M;
-    },
-    tGZPJ: function (L, M) {
-      return L(M);
-    },
-    dznaw: "GwFqy",
-    XTJXW: "OcuVI",
-    UusXr: "kkPXD",
-    YRnXc: "mRJCY",
-    ATcFh: "sNLTm",
-    ouPfM: function (L, M) {
-      return L(M);
-    },
-    EKfPq: function (L, M) {
-      return L(M);
-    },
-    kPvdw: "Imvlx",
-    eHkJo: "HQChC",
-    WqdbH: "CzutA",
-    bBnwO: function (L, M) {
-      return L == M;
-    },
-    dhCvx: function (L, M) {
-      return L !== M;
-    },
-    PxMoZ: "umXor",
-    EakJJ: function (L, M) {
-      return L(M);
-    },
-    QoOTA: function (L, M) {
-      return L >= M;
-    },
-    LylET: function (L, M) {
-      return L === M;
-    },
-    zazIG: function (L, M) {
-      return L(M);
-    },
-    ilyvp: "RiAvH",
-    bvknn: "gYNNv",
-    TJTcW: function (L, M) {
-      return L && M;
-    },
-    YipJb: function (L, M) {
-      return L === M;
-    },
-    Brmxg: function (L, M) {
-      return L instanceof M;
-    },
-    Qmceq: function (L, M, N, O) {
-      return L(M, N, O);
-    },
-    ciooN: function (L, M) {
-      return L != M;
-    },
-    rCPiV: function (L, M) {
-      return L(M);
-    },
-    QhZDQ: "{UserId}",
-    GQcCp: "AppRaven",
-    AgPSl: "请在插件配置中填写参数",
-    jUsGd: "EXIT",
-    wbDga: "UNujT",
-    LbZub: function (L, M) {
-      return L !== M;
-    },
-    HcPPm: "rtVXD",
-    QkOkw: "iukJn",
-    JFQbT: function (L, M) {
-      return L >= M;
-    },
-    clHTl: function (L, M) {
-      return L !== M;
-    },
-    OVqDl: "pxPrL",
-    hJVvh: function (L, M) {
-      return L(M);
-    },
-    wGJJQ: function (L, M) {
-      return L !== M;
-    },
-    UbEzB: "CBlLS",
-    cWjFM: "❌ 参数解析失败: ",
-    XFojk: function (L, M) {
-      return L !== M;
-    },
-    gQJYM: "mutation",
-    NBYKY: "; remember-me=",
-    YENjg: function (L, M) {
-      return L(M);
-    },
-    puSOj: function (L) {
-      return L();
-    },
-    JCsVh: function (L, M) {
-      return L + M;
-    },
-    sgjgm: function (L, M) {
-      return L * M;
-    },
-    ILjtM: "@qq.com",
-    fVWpj: "baby",
-    AKDRn: "mutation Register($username: String!, $email: String!, $password: String!) { registerUser(username: $username, email: $email, password: $password) { id } }",
-    uEBuk: "12345678",
-    HBbbt: "Register",
-    ypDUb: "无网络响应",
-    JFuRk: "API错误",
-    ANfMp: "mutation UseReferralCode($id: ID!) { useReferralCode(id: $id) { info { id premium } } }",
-    LIdJN: "UseReferralCode",
-    CfYVh: function (L) {
-      return L();
-    },
-    rjWnY: function (L, M, N, O) {
-      return L(M, N, O);
-    },
-    sWzHh: function (L, M) {
-      return L || M;
-    },
-    nGNiX: function (L, M) {
-      return L(M);
-    },
-    MUIhN: function (L, M) {
-      return L != M;
-    },
-    EYKNz: "🔔 任务启动",
-    nmSqv: function (L) {
-      return L();
-    },
-    zcCKH: "null",
-    AhqRj: "⚠️ 停止",
-    KuWej: "UserID 为空",
-    ZjUJH: function (L, M) {
-      return L(M);
-    },
-    zKSQy: ")超限",
-    QQnSW: ", Count=",
-    tHdug: "\n--- 第 ",
-    PgowM: " 次 ---",
-    wpZgb: "❌ 注册失败: ",
-    gWJin: function (L, M) {
-      return L(M);
-    },
-    Qggna: "🎉 邀请成功!",
-    tVygv: "❌ 邀请失败: ",
-    Wodpm: function (L, M) {
-      return L(M);
-    },
-    ysSau: "AppRaven 刷取完成",
-    kPnnO: "ID: ",
-    ItkuO: "❌ 脚本异常: ",
-    DCfNZ: function (L, M) {
-      return L != M;
+  function b(g) {
+    var h = {
+      VFunC: function (i, j) {
+        return i === j;
+      },
+      nswan: "RKRtH",
+      tEiYw: "function",
+      FcwwZ: function (i, j) {
+        return i !== j;
+      }
+    };
+    {
+      b = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (j) {
+        var k = {
+          xDQjh: function (l, m) {
+            return l(m);
+          },
+          vFgKD: function (l, m) {
+            return l === m;
+          },
+          Glkid: "next"
+        };
+        return typeof j;
+      } : function (j) {
+        {
+          return j && "function" == typeof Symbol && j.constructor === Symbol && j !== Symbol.prototype ? "symbol" : typeof j;
+        }
+      };
+      return b(g);
     }
-  };
-  function g() {
+  }
+  function c() {
     "use strict";
 
-    var M = {
-      pKxVK: function (am, an) {
-        return am === an;
+    var q = {
+      JDMdy: function (ae, af) {
+        return ae instanceof af;
       },
-      vrPgv: "throw",
-      BCFrW: function (am, an) {
-        return am(an);
+      avYaG: function (ae, af, ag, ah) {
+        return ae(af, ag, ah);
       },
-      juopu: "yALpD",
-      DXoTU: function (am, an, ao) {
-        return am(an, ao);
+      cvbfz: "_invoke",
+      rjQLT: function (ae, af, ag, ah) {
+        return ae(af, ag, ah);
       },
-      eYWPw: "xILbL",
-      SeyMv: function (am, an, ao) {
-        return am(an, ao);
+      moSwG: function (ae, af) {
+        return ae - af;
       },
-      eRhMi: function (am, an) {
-        return am < an;
+      NtqeL: function (ae, af) {
+        return ae === af;
       },
-      deTSp: function (am, an) {
-        return am(an);
+      fXWJM: function (ae, af) {
+        return ae(af);
       },
-      wMbxa: "AGUWa",
-      aiXqM: "RTMci",
-      SSngj: "PryHC",
-      yNzEt: function (am, an, ao, ap) {
-        return am(an, ao, ap);
+      nTMhY: "aWaCS",
+      mrrVX: "euyMU",
+      VDbuM: function (ae, af, ag, ah, ai, aj, ak, al) {
+        return ae(af, ag, ah, ai, aj, ak, al);
       },
-      LBZUE: function (am, an) {
-        return am != an;
+      NfaZa: "next",
+      XnHwC: "LcgSL",
+      RWSTW: "SMmyH",
+      iLsqD: function (ae, af) {
+        return ae instanceof af;
       },
-      HVwKP: function (am, an) {
-        return am !== an;
+      WzWLj: function (ae, af) {
+        return ae(af);
       },
-      yIiiK: "bninZ",
-      wDORZ: "wFUxx",
-      TbYnG: function (am, an) {
-        return am && an;
+      elmwk: function (ae, af) {
+        return ae in af;
       },
-      YcNJE: function (am, an) {
-        return am === an;
+      BeeqL: function (ae, af) {
+        return ae(af);
       },
-      sCObw: "userid",
-      yFMMS: "count",
-      TPaTn: "5|0|1|3|4|2",
-      ZJhYw: "return",
-      jYqmQ: "next",
-      acXCF: "gJLgG",
-      qJgWt: function (am, an) {
-        return am || an;
+      Ezdvz: "throw",
+      epxlS: function (ae, af) {
+        return ae !== af;
       },
-      ykOWW: "Hznkl",
-      oewPy: "TGfIE",
-      rMPIQ: "object",
-      bDgqE: "__await",
-      gLIkm: "tpALu",
-      LqPEe: function (am, an) {
-        return am == an;
+      BmkYe: "HfHJR",
+      BNqPR: "EBTEb",
+      dGpsD: function (ae, af) {
+        return ae == af;
       },
-      Bglqd: "function",
-      UnstQ: function (am, an) {
-        return am === an;
+      gzrIx: "symbol",
+      gkNCM: function (ae, af) {
+        return ae == af;
       },
-      FUVOv: "FbWXt",
-      NJOwt: function (am, an) {
-        return am === an;
+      pbivh: "function",
+      bDGUs: "fdtAM",
+      cTIMZ: function (ae, af, ag, ah) {
+        return ae(af, ag, ah);
       },
-      jGkQz: "mUYPc",
-      vfHLh: "JgFzB",
-      SxsGq: "_invoke",
-      WULVo: function (am, an) {
-        return am === an;
+      ozwxa: function (ae, af, ag, ah, ai) {
+        return ae(af, ag, ah, ai);
       },
-      RWAgc: "dRKSH",
-      rhpKw: function (am, an) {
-        return am in an;
+      iTMid: "SenPlayer://x-callback-url/play?url=",
+      JgoFw: function (ae, af) {
+        return ae(af);
       },
-      YKVgI: function (am, an) {
-        return am === an;
+      VXxml: "VUVRP",
+      tSgjQ: "yqaNO",
+      ArVCJ: function (ae, af) {
+        return ae !== af;
       },
-      nOKMq: "OUehc",
-      zsEVP: function (am, an) {
-        return am === an;
+      JJpNz: "YBXOa",
+      xqDGm: function (ae, af, ag, ah) {
+        return ae(af, ag, ah);
       },
-      sQUZj: function (am, an) {
-        return am(an);
+      yMano: function (ae, af) {
+        return ae === af;
       },
-      rHBCm: function (am, an) {
-        return am === an;
+      asUUV: "BYUrf",
+      CLOBu: "object",
+      YYDLw: function (ae, af) {
+        return ae(af);
       },
-      rWfgI: "Uwcip",
-      gjYob: function (am, an) {
-        return am === an;
+      BxWyO: "infuse://x-callback-url/play?url=",
+      RcILE: "/drama/page",
+      azwTv: "dramaId",
+      rQgAy: "episodeSid",
+      GHgZh: "🚀 4K就绪",
+      rnFNx: "#52c41a",
+      snkva: function (ae, af) {
+        return ae(af);
       },
-      lbdrK: function (am, an) {
-        return am !== an;
+      LHxKm: "Generator is already running",
+      WcBBy: "yomAJ",
+      SBbVe: function (ae, af) {
+        return ae !== af;
       },
-      xhHPl: "PoQQm",
-      kQDkJ: function (am, an) {
-        return am !== an;
+      ilJdf: "uCJsx",
+      czQwL: function (ae, af, ag) {
+        return ae(af, ag);
       },
-      DCoIn: "TGxfp",
-      saQLu: "rtIuO",
-      QjNin: " is not iterable",
-      JcprK: function (am, an, ao, ap) {
-        return am(an, ao, ap);
+      IcZcU: function (ae, af) {
+        return ae !== af;
       },
-      TdLHV: function (am, an) {
-        return am === an;
+      xvely: "return",
+      AMxGD: function (ae, af, ag, ah) {
+        return ae(af, ag, ah);
       },
-      kcCco: function (am, an) {
-        return am == an;
+      JoYPY: "normal",
+      ldASn: function (ae, af) {
+        return ae === af;
       },
-      ezdaf: function (am, an) {
-        return am === an;
+      cPaEs: "DDnuo",
+      lhLdd: "iZxuO",
+      rzfLx: "MVveO",
+      oDRnJ: "IUSPX",
+      NaxlX: function (ae, af) {
+        return ae === af;
       },
-      AbgjU: "puLyC",
-      ndbAC: function (am, an) {
-        return am(an);
+      QdYRB: function (ae, af) {
+        return ae === af;
       },
-      jQsIT: "dAHna",
-      ucIjC: "qKmqv",
-      nnqou: "ncwhU",
-      kuPos: "qHJgG",
-      USLNN: "❌ 参数解析失败: ",
-      HXqDE: function (am, an) {
-        return am === an;
+      SkOff: function (ae, af, ag) {
+        return ae(af, ag);
       },
-      mRpXV: function (am, an, ao, ap, aq) {
-        return am(an, ao, ap, aq);
+      gsZjA: function (ae, af) {
+        return ae + af;
       },
-      sMhgr: "hFjpo",
-      XLYYt: "OTkdD",
-      HySxv: function (am, an) {
-        return am === an;
+      pbzLs: "' method",
+      cGffn: function (ae, af) {
+        return ae !== af;
       },
-      mkNuw: function (am, an, ao, ap, aq) {
-        return am(an, ao, ap, aq);
+      nuttK: "OUgpL",
+      nvPUH: function (ae, af, ag, ah, ai, aj, ak, al) {
+        return ae(af, ag, ah, ai, aj, ak, al);
       },
-      wZmpX: function (am, an) {
-        return am == an;
+      NAqZF: function (ae, af) {
+        return ae === af;
       },
-      lwgie: function (am, an) {
-        return am === an;
+      DyMZf: function (ae, af) {
+        return ae < af;
       },
-      TCHdQ: function (am, an) {
-        return am === an;
+      rfyJY: function (ae, af) {
+        return ae(af);
       },
-      otnIe: "Arguments",
-      CCbhX: "uZyRB",
-      IroLy: "DWBuh",
-      aIgOx: function (am, an) {
-        return am in an;
+      PpnOv: "iNQAx",
+      dlpYS: "MMCKS",
+      xYDYT: function (ae, af) {
+        return ae(af);
       },
-      hxUSe: function (am, an) {
-        return am === an;
+      dTgLs: function (ae, af) {
+        return ae === af;
       },
-      LYoWW: "AaUbd",
-      CDWpL: "NGWMR",
-      oPmtX: function (am, an) {
-        return am(an);
+      RIxNi: "KrNQX",
+      tZqzl: " is not iterable",
+      DjLWJ: "dvuYS",
+      FKoUY: function (ae, af) {
+        return ae == af;
       },
-      QdHNw: function (am, an) {
-        return am === an;
+      ReWKL: function (ae, af) {
+        return ae === af;
       },
-      IZWsR: "imRRg",
-      qqCfh: "OYENr",
-      fzYAI: "TUpsf",
-      GlkTj: "Zwlwr",
-      PVDGf: "No Response Object",
-      Eeaem: function (am, an) {
-        return am - an;
+      gXFyr: function (ae, af) {
+        return ae === af;
       },
-      trhSV: "BrxzW",
-      miskq: "cEcGj",
-      zcChM: "KUqmY",
-      HIqsL: "catchLoc",
-      bKSkI: "finallyLoc",
-      QufmP: "xnkvk",
-      iEcRD: function (am, an) {
-        return am < an;
+      Llbdo: function (ae, af, ag, ah) {
+        return ae(af, ag, ah);
       },
-      XQuog: function (am, an, ao) {
-        return am(an, ao);
+      CLLNb: "GeneratorFunction",
+      lvuvt: function (ae, af) {
+        return ae === af;
       },
-      jRHxr: function (am, an) {
-        return am(an);
+      OLAlJ: "4|2|3|0|1",
+      ivLDP: "无资源",
+      yrYhb: "0000",
+      JbVIE: function (ae, af) {
+        return ae !== af;
       },
-      RaEJK: function (am, an) {
-        return am !== an;
+      NgMZt: function (ae, af) {
+        return ae === af;
       },
-      XxXcn: "wMkAu",
-      nUsPm: function (am, an) {
-        return am < an;
+      rRDKE: function (ae, af) {
+        return ae(af);
       },
-      FcxjM: function (am, an, ao) {
-        return am(an, ao);
+      QPisJ: "解密错误",
+      sJdFC: "网络错误",
+      zFJNX: function (ae, af) {
+        return ae(af);
       },
-      FFcfJ: function (am, an) {
-        return am !== an;
+      kryTb: function (ae, af) {
+        return ae === af;
       },
-      HDToj: "uXNPx",
-      rlZyg: "try statement without catch or finally",
-      nozCH: function (am, an) {
-        return am(an);
+      sfCLd: "dwPvL",
+      JjZhF: function (ae, af, ag, ah, ai) {
+        return ae(af, ag, ah, ai);
       },
-      UvOzE: "1|4|0|2|3",
-      RMHyg: function (am, an) {
-        return am === an;
+      BScud: "vZjqI",
+      grYdM: "[object Generator]",
+      IvbwS: "\n                width: 100%; padding: 12px 0; text-align: center;\n                background: ",
+      RiTbp: function (ae, af) {
+        return ae in af;
       },
-      eqyRx: "continue",
-      aRakI: "LVFXh",
-      bKbHR: function (am, an) {
-        return am - an;
+      AbPpP: function (ae, af) {
+        return ae === af;
       },
-      ICAgv: function (am, an) {
-        return am >= an;
+      dBqqQ: "XioLo",
+      mxRoM: "catchLoc",
+      cEXGB: "finallyLoc",
+      QwzqV: function (ae, af) {
+        return ae && af;
       },
-      CwFGL: "rdulo",
-      LRsvA: function (am, an) {
-        return am <= an;
+      jOWug: function (ae, af) {
+        return ae < af;
       },
-      AHXJM: function (am, an) {
-        return am < an;
+      DRaJg: function (ae, af, ag) {
+        return ae(af, ag);
       },
-      zHFGm: "AmAyU",
-      NYRUz: "zYKYF",
-      QDaFh: "break",
-      kOXER: function (am, an, ao, ap, aq, ar, as, at) {
-        return am(an, ao, ap, aq, ar, as, at);
+      SDpGK: function (ae, af) {
+        return ae < af;
       },
-      zPDsS: function (am, an) {
-        return am === an;
+      TrPlj: function (ae, af, ag) {
+        return ae(af, ag);
       },
-      gbzIy: "QBnsC",
-      iKKcn: "mBnoy",
-      GshaQ: function (am, an) {
-        return am !== an;
+      SpGXX: function (ae, af) {
+        return ae(af);
       },
-      fvyFw: "EukDP",
-      zDRZY: function (am, an) {
-        return am === an;
+      lxuRg: "ChHdn",
+      QIYYn: "IxqyH",
+      JTaqN: "2|1|0|3|4",
+      ktlYp: function (ae, af) {
+        return ae !== af;
       },
-      KdkrP: function (am, an) {
-        return am(an);
+      zUQjs: "PYqvS",
+      wLfZy: function (ae, af, ag) {
+        return ae(af, ag);
+      },
+      BcXsc: "vlc-x-callback://x-callback-url/stream?url=",
+      UtQEd: function (ae, af) {
+        return ae(af);
+      },
+      IALLJ: "网络中断",
+      uNuum: function (ae, af) {
+        return ae !== af;
+      },
+      yFLKR: "TvoaG",
+      tLrzk: function (ae, af) {
+        return ae - af;
+      },
+      tfNPo: function (ae, af) {
+        return ae >= af;
+      },
+      uibcK: "ybKfl",
+      ZcheF: function (ae, af) {
+        return ae === af;
+      },
+      fdrqa: "root",
+      BoNhM: function (ae, af) {
+        return ae !== af;
+      },
+      IboSY: "EsGUm",
+      XdzDQ: function (ae, af) {
+        return ae !== af;
+      },
+      dtFNY: "KjLeq",
+      nXVYw: function (ae, af) {
+        return ae < af;
+      },
+      vSlEx: function (ae, af) {
+        return ae(af);
+      },
+      BUZim: function (ae, af) {
+        return ae !== af;
+      },
+      FJgHD: "kUaAb",
+      RAYuC: "JMYPg",
+      dBHvj: function (ae, af) {
+        return ae(af);
+      },
+      mOWQw: "try statement without catch or finally",
+      OPTmA: function (ae, af) {
+        return ae(af);
+      },
+      lKhqM: "NTNuS",
+      lgxrY: function (ae, af) {
+        return ae === af;
+      },
+      zuzMZ: "break",
+      rHVgv: function (ae, af) {
+        return ae === af;
+      },
+      jMqAO: "end",
+      baoJo: function (ae, af) {
+        return ae === af;
+      },
+      FMXGE: "udJut",
+      Mnpdl: function (ae, af) {
+        return ae - af;
+      },
+      EGNdu: function (ae, af) {
+        return ae === af;
+      },
+      VRRIx: "ccYBT",
+      Bkfew: "rYxgl",
+      FEDoe: function (ae, af) {
+        return ae === af;
+      },
+      yTizZ: function (ae, af) {
+        return ae - af;
+      },
+      cGMpE: function (ae, af) {
+        return ae === af;
+      },
+      BzcRY: function (ae, af) {
+        return ae(af);
+      },
+      kbEhW: "illegal catch attempt",
+      HXUBI: "waBkz",
+      LxEkq: function (ae, af) {
+        return ae === af;
       }
     };
-    g = function () {
+    c = function () {
       {
-        return Q;
+        return A;
       }
     };
-    var P;
-    var Q = {};
-    var R = Object.prototype;
-    var T = R.hasOwnProperty;
-    var U = Object.defineProperty || function (am, an, ao) {
+    var z;
+    var A = {};
+    var B = Object.prototype;
+    var D = B.hasOwnProperty;
+    var F = Object.defineProperty || function (ae, af, ag) {
       {
-        am[an] = ao.value;
+        ae[af] = ag.value;
       }
     };
-    var V = "function" == typeof Symbol ? Symbol : {};
-    var W = V.iterator || "@@iterator";
-    var X = V.asyncIterator || "@@asyncIterator";
-    var Y = V.toStringTag || "@@toStringTag";
-    function Z(am, an, ao) {
+    var G = "function" == typeof Symbol ? Symbol : {};
+    var H = G.iterator || "@@iterator";
+    var K = G.asyncIterator || "@@asyncIterator";
+    var M = G.toStringTag || "@@toStringTag";
+    function N(ae, af, ag) {
       {
-        var ap = {
-          value: ao,
+        var ah = {
+          value: ag,
           enumerable: true,
           configurable: true,
           writable: true
         };
-        Object.defineProperty(am, an, ap);
-        return am[an];
+        Object.defineProperty(ae, af, ah);
+        return ae[af];
       }
     }
     try {
       {
-        Z({}, "");
+        N({}, "");
       }
-    } catch (an) {
+    } catch (af) {
       {
-        Z = function (ap, aq, ar) {
-          {
-            return ap[aq] = ar;
-          }
+        N = function (ag, ah, ai) {
+          return ag[ah] = ai;
         };
       }
     }
-    function a0(ap, aq, ar, as) {
+    function Q(ah, ai, aj, ak) {
       {
-        var at = aq && aq.prototype instanceof a7 ? aq : a7;
-        var au = Object.create(at.prototype);
-        var av = new ak(as || []);
-        U(au, "_invoke", {
-          value: ag(ap, ar, av)
+        var am = ai && ai.prototype instanceof Z ? ai : Z;
+        var an = Object.create(am.prototype);
+        var ao = new ac(ak || []);
+        F(an, "_invoke", {
+          value: a8(ah, aj, ao)
         });
-        return au;
+        return an;
       }
     }
-    function a1(ap, aq, ar) {
+    function R(ah, ai, aj) {
       {
         try {
-          return {
-            type: "normal",
-            arg: ap.call(aq, ar)
-          };
-        } catch (au) {
           {
-            var as = {
-              type: "throw",
-              arg: au
+            return {
+              type: "normal",
+              arg: ah.call(ai, aj)
             };
-            return as;
+          }
+        } catch (an) {
+          {
+            var ak = {
+              type: "throw",
+              arg: an
+            };
+            return ak;
           }
         }
       }
     }
-    Q.wrap = a0;
-    var a2 = "suspendedStart";
-    var a3 = "suspendedYield";
-    var a4 = "executing";
-    var a5 = "completed";
-    var a6 = {};
-    function a7() {}
-    function a8() {}
-    function a9() {}
-    var aa = {};
-    Z(aa, W, function () {
-      {
-        return this;
-      }
+    A.wrap = Q;
+    var U = "suspendedStart";
+    var V = "suspendedYield";
+    var W = "executing";
+    var X = "completed";
+    var Y = {};
+    function Z() {}
+    function a0() {}
+    function a1() {}
+    var a2 = {};
+    N(a2, H, function () {
+      return this;
     });
-    var ab = Object.getPrototypeOf;
-    var ac = ab && ab(ab(al([])));
-    ac && ac !== R && T.call(ac, W) && (aa = ac);
-    a9.prototype = a7.prototype = Object.create(aa);
-    var ad = a9.prototype;
-    function ae(ap) {
+    var a3 = Object.getPrototypeOf;
+    var a4 = a3 && a3(a3(ad([])));
+    a4 && a4 !== B && D.call(a4, H) && (a2 = a4);
+    a1.prototype = Z.prototype = Object.create(a2);
+    var a5 = a1.prototype;
+    function a6(ah) {
       {
-        ["next", "throw", "return"].forEach(function (at) {
+        ["next", "throw", "return"].forEach(function (ak) {
           {
-            Z(ap, at, function (av) {
-              return this._invoke(at, av);
+            N(ah, ak, function (an) {
+              {
+                return this._invoke(ak, an);
+              }
             });
           }
         });
       }
     }
-    function af(ap, aq) {
+    function a7(ah, ai) {
       {
-        function au(av, aw, ax, ay) {
+        function am(an, ao, ap, aq) {
           {
-            var aA = a1(ap[av], ap, aw);
-            if ("throw" !== aA.type) {
+            var as = R(ah[an], ah, ao);
+            if ("throw" !== as.type) {
               {
-                var aB = aA.arg;
-                var aC = aB.value;
-                return aC && "object" == x(aC) && T.call(aC, "__await") ? aq.resolve(aC.__await).then(function (aE) {
+                var at = as.arg;
+                var au = at.value;
+                return au && "object" == b(au) && D.call(au, "__await") ? ai.resolve(au.__await).then(function (aw) {
                   {
-                    au("next", aE, ax, ay);
+                    am("next", aw, ap, aq);
                   }
-                }, function (aE) {
-                  au("throw", aE, ax, ay);
-                }) : aq.resolve(aC).then(function (aE) {
-                  {
-                    aB.value = aE;
-                    ax(aB);
-                  }
-                }, function (aE) {
-                  {
-                    return au("throw", aE, ax, ay);
-                  }
+                }, function (aw) {
+                  am("throw", aw, ap, aq);
+                }) : ai.resolve(au).then(function (aw) {
+                  at.value = aw;
+                  ap(at);
+                }, function (aw) {
+                  return am("throw", aw, ap, aq);
                 });
               }
             }
-            ay(aA.arg);
+            aq(as.arg);
           }
         }
-        var as;
-        U(this, "_invoke", {
-          value: function (av, aw) {
+        var ak;
+        F(this, "_invoke", {
+          value: function (an, ao) {
             {
-              function ay() {
+              function ar() {
                 {
-                  return new aq(function (aA, aB) {
+                  return new ai(function (at, au) {
                     {
-                      au(av, aw, aA, aB);
+                      am(an, ao, at, au);
                     }
                   });
                 }
               }
-              return as = as ? as.then(ay, ay) : ay();
+              return ak = ak ? ak.then(ar, ar) : ar();
             }
           }
         });
       }
     }
-    function ag(ap, aq, ar) {
+    function a8(ah, ai, aj) {
       {
-        var at = a2;
-        return function (av, aw) {
+        var al = U;
+        return function (am, an) {
           {
-            if (at === a4) {
+            if (al === W) {
               throw Error("Generator is already running");
             }
-            if (at === a5) {
+            if (al === X) {
               {
-                if ("throw" === av) {
-                  throw aw;
+                if ("throw" === am) {
+                  throw an;
                 }
-                var ay = {
-                  value: P,
+                var ap = {
+                  value: z,
                   done: true
                 };
-                return ay;
+                return ap;
               }
             }
-            for (ar.method = av, ar.arg = aw;;) {
+            for (aj.method = am, aj.arg = an;;) {
               {
-                var az = ar.delegate;
-                if (az) {
+                var aq = aj.delegate;
+                if (aq) {
                   {
-                    var aA = ah(az, ar);
-                    if (aA) {
+                    var ar = a9(aq, aj);
+                    if (ar) {
                       {
-                        if (aA === a6) {
+                        if (ar === Y) {
                           continue;
                         }
-                        return aA;
+                        return ar;
                       }
                     }
                   }
                 }
-                if ("next" === ar.method) {
-                  ar.sent = ar._sent = ar.arg;
+                if ("next" === aj.method) {
+                  aj.sent = aj._sent = aj.arg;
                 } else {
-                  if ("throw" === ar.method) {
+                  if ("throw" === aj.method) {
                     {
-                      if (at === a2) {
-                        throw at = a5, ar.arg;
+                      if (al === U) {
+                        throw al = X, aj.arg;
                       }
-                      ar.dispatchException(ar.arg);
+                      aj.dispatchException(aj.arg);
                     }
                   } else {
-                    "return" === ar.method && ar.abrupt("return", ar.arg);
+                    "return" === aj.method && aj.abrupt("return", aj.arg);
                   }
                 }
-                at = a4;
-                var aB = a1(ap, aq, ar);
-                if ("normal" === aB.type) {
+                al = W;
+                var as = R(ah, ai, aj);
+                if ("normal" === as.type) {
                   {
-                    if (at = ar.done ? a5 : a3, aB.arg === a6) {
+                    if (al = aj.done ? X : V, as.arg === Y) {
                       continue;
                     }
-                    var aC = {
-                      value: aB.arg,
-                      done: ar.done
+                    var at = {
+                      value: as.arg,
+                      done: aj.done
                     };
-                    return aC;
+                    return at;
                   }
                 }
-                "throw" === aB.type && (at = a5, ar.method = "throw", ar.arg = aB.arg);
+                "throw" === as.type && (al = X, aj.method = "throw", aj.arg = as.arg);
               }
             }
           }
         };
       }
     }
-    function ah(ap, aq) {
+    function a9(ah, ai) {
       {
-        var au = aq.method;
-        var av = ap.iterator[au];
-        if (av === P) {
-          aq.delegate = null;
-          "throw" === au && ap.iterator.return && (aq.method = "return", aq.arg = P, ah(ap, aq), "throw" === aq.method) || "return" !== au && (aq.method = "throw", aq.arg = new TypeError("The iterator does not provide a '" + au + "' method"));
-          return a6;
+        var aj = ai.method;
+        var ak = ah.iterator[aj];
+        if (ak === z) {
+          ai.delegate = null;
+          "throw" === aj && ah.iterator.return && (ai.method = "return", ai.arg = z, a9(ah, ai), "throw" === ai.method) || "return" !== aj && (ai.method = "throw", ai.arg = new TypeError("The iterator does not provide a '" + aj + "' method"));
+          return Y;
         }
-        var aw = a1(av, ap.iterator, aq.arg);
-        if ("throw" === aw.type) {
-          aq.method = "throw";
-          aq.arg = aw.arg;
-          aq.delegate = null;
-          return a6;
+        var al = R(ak, ah.iterator, ai.arg);
+        if ("throw" === al.type) {
+          ai.method = "throw";
+          ai.arg = al.arg;
+          ai.delegate = null;
+          return Y;
         }
-        var at = aw.arg;
-        return at ? at.done ? (aq[ap.resultName] = at.value, aq.next = ap.nextLoc, "return" !== aq.method && (aq.method = "next", aq.arg = P), aq.delegate = null, a6) : at : (aq.method = "throw", aq.arg = new TypeError("iterator result is not an object"), aq.delegate = null, a6);
+        var am = al.arg;
+        return am ? am.done ? (ai[ah.resultName] = am.value, ai.next = ah.nextLoc, "return" !== ai.method && (ai.method = "next", ai.arg = z), ai.delegate = null, Y) : am : (ai.method = "throw", ai.arg = new TypeError("iterator result is not an object"), ai.delegate = null, Y);
       }
     }
-    function ai(ap) {
+    function aa(ah) {
       {
-        var ar = {
-          tryLoc: ap[0]
+        var aj = {
+          tryLoc: ah[0]
         };
-        1 in ap && (ar.catchLoc = ap[1]);
-        2 in ap && (ar.finallyLoc = ap[2], ar.afterLoc = ap[3]);
-        this.tryEntries.push(ar);
+        1 in ah && (aj.catchLoc = ah[1]);
+        2 in ah && (aj.finallyLoc = ah[2], aj.afterLoc = ah[3]);
+        this.tryEntries.push(aj);
       }
     }
-    function aj(ap) {
+    function ab(ah) {
       {
-        var ar = ap.completion || {};
-        ar.type = "normal";
-        delete ar.arg;
-        ap.completion = ar;
+        var ai = ah.completion || {};
+        ai.type = "normal";
+        delete ai.arg;
+        ah.completion = ai;
       }
     }
-    function ak(ap) {
+    function ac(ah) {
       {
-        var aq = {
+        var ai = {
           tryLoc: "root"
         };
-        this.tryEntries = [aq];
-        ap.forEach(ai, this);
+        this.tryEntries = [ai];
+        ah.forEach(aa, this);
         this.reset(true);
       }
     }
-    function al(ap) {
+    function ad(ah) {
       {
-        if (ap || "" === ap) {
+        if (ah || "" === ah) {
           {
-            var ar = ap[W];
-            if (ar) {
-              return ar.call(ap);
+            var aj = ah[H];
+            if (aj) {
+              return aj.call(ah);
             }
-            if ("function" == typeof ap.next) {
-              return ap;
+            if ("function" == typeof ah.next) {
+              return ah;
             }
-            if (!isNaN(ap.length)) {
+            if (!isNaN(ah.length)) {
               {
-                var as = -1;
-                var at = function aw() {
+                var ak = -1;
+                var al = function ao() {
                   {
-                    for (; ++as < ap.length;) {
-                      if (T.call(ap, as)) {
-                        aw.value = ap[as];
-                        aw.done = false;
-                        return aw;
+                    for (; ++ak < ah.length;) {
+                      if (D.call(ah, ak)) {
+                        ao.value = ah[ak];
+                        ao.done = false;
+                        return ao;
                       }
                     }
-                    aw.value = P;
-                    aw.done = true;
-                    return aw;
+                    ao.value = z;
+                    ao.done = true;
+                    return ao;
                   }
                 };
-                return at.next = at;
+                return al.next = al;
               }
             }
           }
         }
-        throw new TypeError(x(ap) + " is not iterable");
+        throw new TypeError(b(ah) + " is not iterable");
       }
     }
-    a8.prototype = a9;
-    U(ad, "constructor", {
-      value: a9,
+    a0.prototype = a1;
+    F(a5, "constructor", {
+      value: a1,
       configurable: true
     });
-    U(a9, "constructor", {
-      value: a8,
+    F(a1, "constructor", {
+      value: a0,
       configurable: true
     });
-    a8.displayName = Z(a9, Y, "GeneratorFunction");
-    Q.isGeneratorFunction = function (ap) {
+    a0.displayName = N(a1, M, "GeneratorFunction");
+    A.isGeneratorFunction = function (ah) {
       {
-        var aq = "function" == typeof ap && ap.constructor;
-        return !!aq && (aq === a8 || "GeneratorFunction" === (aq.displayName || aq.name));
+        var ai = "function" == typeof ah && ah.constructor;
+        return !!ai && (ai === a0 || "GeneratorFunction" === (ai.displayName || ai.name));
       }
     };
-    Q.mark = function (ap) {
-      Object.setPrototypeOf ? Object.setPrototypeOf(ap, a9) : (ap.__proto__ = a9, Z(ap, Y, "GeneratorFunction"));
-      ap.prototype = Object.create(ad);
-      return ap;
-    };
-    Q.awrap = function (ap) {
+    A.mark = function (ah) {
       {
-        var ar = {
-          __await: ap
+        Object.setPrototypeOf ? Object.setPrototypeOf(ah, a1) : (ah.__proto__ = a1, N(ah, M, "GeneratorFunction"));
+        ah.prototype = Object.create(a5);
+        return ah;
+      }
+    };
+    A.awrap = function (ah) {
+      {
+        var ai = {
+          __await: ah
         };
-        return ar;
+        return ai;
       }
     };
-    ae(af.prototype);
-    Z(af.prototype, X, function () {
-      return this;
-    });
-    Q.AsyncIterator = af;
-    Q.async = function (ap, aq, ar, as, at) {
-      undefined === at && (at = Promise);
-      var aw = new af(a0(ap, aq, ar, as), at);
-      return Q.isGeneratorFunction(aq) ? aw : aw.next().then(function (ax) {
-        {
-          return ax.done ? ax.value : aw.next();
-        }
-      });
-    };
-    ae(ad);
-    Z(ad, Y, "Generator");
-    Z(ad, W, function () {
+    a6(a7.prototype);
+    N(a7.prototype, K, function () {
       {
         return this;
       }
     });
-    Z(ad, "toString", function () {
+    A.AsyncIterator = a7;
+    A.async = function (ah, ai, aj, ak, al) {
+      {
+        undefined === al && (al = Promise);
+        var an = new a7(Q(ah, ai, aj, ak), al);
+        return A.isGeneratorFunction(ai) ? an : an.next().then(function (ap) {
+          {
+            return ap.done ? ap.value : an.next();
+          }
+        });
+      }
+    };
+    a6(a5);
+    N(a5, M, "Generator");
+    N(a5, H, function () {
+      {
+        return this;
+      }
+    });
+    N(a5, "toString", function () {
       {
         return "[object Generator]";
       }
     });
-    Q.keys = function (ap) {
+    A.keys = function (ah) {
       {
-        var aq = Object(ap);
-        var ar = [];
-        for (var as in aq) ar.push(as);
-        ar.reverse();
-        return function au() {
+        var aj = Object(ah);
+        var ak = [];
+        for (var al in aj) ak.push(al);
+        ak.reverse();
+        return function an() {
           {
-            for (; ar.length;) {
+            for (; ak.length;) {
               {
-                var ax = ar.pop();
-                if (ax in aq) {
-                  au.value = ax;
-                  au.done = false;
-                  return au;
+                var ap = ak.pop();
+                if (ap in aj) {
+                  an.value = ap;
+                  an.done = false;
+                  return an;
                 }
               }
             }
-            au.done = true;
-            return au;
+            an.done = true;
+            return an;
           }
         };
       }
     };
-    Q.values = al;
-    ak.prototype = {
-      constructor: ak,
-      reset: function (ap) {
+    A.values = ad;
+    ac.prototype = {
+      constructor: ac,
+      reset: function (ah) {
         {
-          if (this.prev = 0, this.next = 0, this.sent = this._sent = P, this.done = false, this.delegate = null, this.method = "next", this.arg = P, this.tryEntries.forEach(aj), !ap) {
-            for (var ar in this) "t" === ar.charAt(0) && T.call(this, ar) && !isNaN(+ar.slice(1)) && (this[ar] = P);
+          if (this.prev = 0, this.next = 0, this.sent = this._sent = z, this.done = false, this.delegate = null, this.method = "next", this.arg = z, this.tryEntries.forEach(ab), !ah) {
+            for (var ai in this) "t" === ai.charAt(0) && D.call(this, ai) && !isNaN(+ai.slice(1)) && (this[ai] = z);
           }
         }
       },
       stop: function () {
-        this.done = true;
-        var aq = this.tryEntries[0].completion;
-        if ("throw" === aq.type) {
-          throw aq.arg;
+        {
+          this.done = true;
+          var ai = this.tryEntries[0].completion;
+          if ("throw" === ai.type) {
+            throw ai.arg;
+          }
+          return this.rval;
         }
-        return this.rval;
       },
-      dispatchException: function (ap) {
+      dispatchException: function (ah) {
         {
           if (this.done) {
-            throw ap;
+            throw ah;
           }
-          var ar = this;
-          function ax(ay, az) {
+          var aj = this;
+          function aq(ar, as) {
             {
-              au.type = "throw";
-              au.arg = ap;
-              ar.next = ay;
-              az && (ar.method = "next", ar.arg = P);
-              return !!az;
+              am.type = "throw";
+              am.arg = ah;
+              aj.next = ar;
+              as && (aj.method = "next", aj.arg = z);
+              return !!as;
             }
           }
-          for (var as = this.tryEntries.length - 1; as >= 0; --as) {
+          for (var ak = this.tryEntries.length - 1; ak >= 0; --ak) {
             {
-              var at = this.tryEntries[as];
-              var au = at.completion;
-              if ("root" === at.tryLoc) {
-                return ax("end");
+              var al = this.tryEntries[ak];
+              var am = al.completion;
+              if ("root" === al.tryLoc) {
+                return aq("end");
               }
-              if (at.tryLoc <= this.prev) {
+              if (al.tryLoc <= this.prev) {
                 {
-                  var av = T.call(at, "catchLoc");
-                  var aw = T.call(at, "finallyLoc");
-                  if (av && aw) {
+                  var an = D.call(al, "catchLoc");
+                  var ao = D.call(al, "finallyLoc");
+                  if (an && ao) {
                     {
-                      if (this.prev < at.catchLoc) {
-                        return ax(at.catchLoc, true);
+                      if (this.prev < al.catchLoc) {
+                        return aq(al.catchLoc, true);
                       }
-                      if (this.prev < at.finallyLoc) {
-                        return ax(at.finallyLoc);
+                      if (this.prev < al.finallyLoc) {
+                        return aq(al.finallyLoc);
                       }
                     }
                   } else {
-                    if (av) {
+                    if (an) {
                       {
-                        if (this.prev < at.catchLoc) {
-                          return ax(at.catchLoc, true);
+                        if (this.prev < al.catchLoc) {
+                          return aq(al.catchLoc, true);
                         }
                       }
                     } else {
                       {
-                        if (!aw) {
+                        if (!ao) {
                           throw Error("try statement without catch or finally");
                         }
-                        if (this.prev < at.finallyLoc) {
-                          return ax(at.finallyLoc);
+                        if (this.prev < al.finallyLoc) {
+                          return aq(al.finallyLoc);
                         }
                       }
                     }
@@ -1245,64 +823,64 @@
           }
         }
       },
-      abrupt: function (ap, aq) {
+      abrupt: function (ah, ai) {
         {
-          for (var as = this.tryEntries.length - 1; as >= 0; --as) {
+          for (var ak = this.tryEntries.length - 1; ak >= 0; --ak) {
             {
-              var at = this.tryEntries[as];
-              if (at.tryLoc <= this.prev && T.call(at, "finallyLoc") && this.prev < at.finallyLoc) {
+              var al = this.tryEntries[ak];
+              if (al.tryLoc <= this.prev && D.call(al, "finallyLoc") && this.prev < al.finallyLoc) {
                 {
-                  var au = at;
+                  var am = al;
                   break;
                 }
               }
             }
           }
-          au && ("break" === ap || "continue" === ap) && au.tryLoc <= aq && aq <= au.finallyLoc && (au = null);
-          var av = au ? au.completion : {};
-          av.type = ap;
-          av.arg = aq;
-          return au ? (this.method = "next", this.next = au.finallyLoc, a6) : this.complete(av);
+          am && ("break" === ah || "continue" === ah) && am.tryLoc <= ai && ai <= am.finallyLoc && (am = null);
+          var an = am ? am.completion : {};
+          an.type = ah;
+          an.arg = ai;
+          return am ? (this.method = "next", this.next = am.finallyLoc, Y) : this.complete(an);
         }
       },
-      complete: function (ap, aq) {
+      complete: function (ah, ai) {
         {
-          if ("throw" === ap.type) {
-            throw ap.arg;
+          if ("throw" === ah.type) {
+            throw ah.arg;
           }
-          "break" === ap.type || "continue" === ap.type ? this.next = ap.arg : "return" === ap.type ? (this.rval = this.arg = ap.arg, this.method = "return", this.next = "end") : "normal" === ap.type && aq && (this.next = aq);
-          return a6;
+          "break" === ah.type || "continue" === ah.type ? this.next = ah.arg : "return" === ah.type ? (this.rval = this.arg = ah.arg, this.method = "return", this.next = "end") : "normal" === ah.type && ai && (this.next = ai);
+          return Y;
         }
       },
-      finish: function (ap) {
+      finish: function (ah) {
         {
-          for (var ar = this.tryEntries.length - 1; ar >= 0; --ar) {
+          for (var ai = this.tryEntries.length - 1; ai >= 0; --ai) {
             {
-              var as = this.tryEntries[ar];
-              if (as.finallyLoc === ap) {
-                this.complete(as.completion, as.afterLoc);
-                aj(as);
-                return a6;
+              var aj = this.tryEntries[ai];
+              if (aj.finallyLoc === ah) {
+                this.complete(aj.completion, aj.afterLoc);
+                ab(aj);
+                return Y;
               }
             }
           }
         }
       },
-      catch: function (ap) {
+      catch: function (ah) {
         {
-          for (var ar = this.tryEntries.length - 1; ar >= 0; --ar) {
+          for (var ak = this.tryEntries.length - 1; ak >= 0; --ak) {
             {
-              var as = this.tryEntries[ar];
-              if (as.tryLoc === ap) {
+              var al = this.tryEntries[ak];
+              if (al.tryLoc === ah) {
                 {
-                  var at = as.completion;
-                  if ("throw" === at.type) {
+                  var am = al.completion;
+                  if ("throw" === am.type) {
                     {
-                      var au = at.arg;
-                      aj(as);
+                      var an = am.arg;
+                      ab(al);
                     }
                   }
-                  return au;
+                  return an;
                 }
               }
             }
@@ -1310,533 +888,348 @@
           throw Error("illegal catch attempt");
         }
       },
-      delegateYield: function (ap, aq, ar) {
+      delegateYield: function (ah, ai, aj) {
         {
           this.delegate = {
-            iterator: al(ap),
-            resultName: aq,
-            nextLoc: ar
+            iterator: ad(ah),
+            resultName: ai,
+            nextLoc: aj
           };
-          "next" === this.method && (this.arg = P);
-          return a6;
+          "next" === this.method && (this.arg = z);
+          return Y;
         }
       }
     };
-    return Q;
+    return A;
   }
-  function j(L, M, N, O, P, Q, R) {
+  function d(g, h, j, k, l, m, p) {
     {
       try {
         {
-          var T = L[Q](R);
-          var U = T.value;
+          var v = g[m](p);
+          var w = v.value;
         }
-      } catch (X) {
+      } catch (y) {
         {
-          return void N(X);
+          return void j(y);
         }
       }
-      T.done ? M(U) : Promise.resolve(U).then(O, P);
+      v.done ? h(w) : Promise.resolve(w).then(k, l);
     }
   }
-  function k(L) {
+  function f(g) {
+    var h = {
+      SzgFV: function (i, j) {
+        return i === j;
+      },
+      QtYaQ: "throw",
+      HSESd: function (i, j) {
+        return i(j);
+      },
+      xuCSN: "FFDhC",
+      BayyI: "bJwOX",
+      cBLRy: function (i, j, k, l, m, o, p, q) {
+        return i(j, k, l, m, o, p, q);
+      },
+      PZRxX: "next",
+      lrWBK: "prXBS"
+    };
     return function () {
-      var O = this;
-      var P = arguments;
-      return new Promise(function (Q, R) {
-        var T = L.apply(O, P);
-        function U(W) {
+      var i = this;
+      var j = arguments;
+      return new Promise(function (k, l) {
+        var m = {
+          oSCnV: function (v, w) {
+            return v === w;
+          },
+          ZJxVo: "throw",
+          qVmlv: function (v, w) {
+            return v(w);
+          },
+          LKMJv: function (v, w) {
+            return v !== w;
+          },
+          QYLbJ: "FFDhC",
+          lqqIz: "bJwOX",
+          kGXWZ: function (v, w, x, y, z, A, B, C) {
+            return v(w, x, y, z, A, B, C);
+          },
+          BazeN: "next",
+          rQAMv: "prXBS",
+          gKtEk: function (v, w, x, y, z, A, B, C) {
+            return v(w, x, y, z, A, B, C);
+          }
+        };
+        var p = g.apply(i, j);
+        function q(v) {
           {
-            j(T, Q, R, U, V, "next", W);
+            d(p, k, l, q, s, "next", v);
           }
         }
-        function V(W) {
+        function s(v) {
           {
-            j(T, Q, R, U, V, "throw", W);
+            d(p, k, l, q, s, "throw", v);
           }
         }
-        U(undefined);
+        q(undefined);
       });
     };
   }
-  function q(L, M) {
-    {
-      return function (P) {
-        {
-          if (Array.isArray(P)) {
-            return P;
-          }
-        }
-      }(L) || function (P, Q) {
-        {
-          var S = null == P ? null : "undefined" != typeof Symbol && P[Symbol.iterator] || P["@@iterator"];
-          if (null != S) {
+  !function () {
+    "use strict";
+
+    var x = "ES513W0B1CsdUrR13Qk5EgDAKPeeKZY";
+    var z = "3b744389882a4067";
+    var A = "b1da7878016e4e2b";
+    var B = "https://api.rrmj.plus";
+    var C = "/m-station/drama/page";
+    var D = "4FB74C39-3908-42E4-AECC-23D5B5C22AF7";
+    var E = "rrtv-054123911b8d3460b972962de0c57f5552bacb5e";
+    var F = {
+      dramaId: null,
+      episodeSid: null
+    };
+    var G = navigator.userAgent;
+    var H = /iPhone|iPad|iPod/i.test(G);
+    var I = /Android/i.test(G);
+    var J = XMLHttpRequest.prototype.open;
+    XMLHttpRequest.prototype.open = function (R, S) {
+      {
+        if (S && (S.includes("/drama/play") || S.includes("/drama/page"))) {
+          try {
             {
-              var T;
-              var U;
-              var V;
-              var W;
-              var X = [];
-              var Y = true;
-              var Z = false;
-              try {
+              var U = new URL(S, window.location.origin);
+              var V = U.searchParams.get("dramaId");
+              var W = U.searchParams.get("episodeSid");
+              if (V && W) {
                 {
-                  if (V = (S = S.call(P)).next, 0 === Q) {
-                    {
-                      if (Object(S) !== S) {
-                        return;
-                      }
-                      Y = false;
-                    }
-                  } else {
-                    for (; !(Y = (T = V.call(S)).done) && (X.push(T.value), X.length !== Q); Y = true) {}
-                  }
-                }
-              } catch (a3) {
-                {
-                  Z = true;
-                  U = a3;
-                }
-              } finally {
-                {
-                  try {
-                    {
-                      if (!Y && null != S.return && (W = S.return(), Object(W) !== W)) {
-                        return;
-                      }
-                    }
-                  } finally {
-                    {
-                      if (Z) {
-                        throw U;
-                      }
-                    }
-                  }
+                  F.dramaId = V;
+                  F.episodeSid = W;
+                  var X = document.getElementById("mm_4k_btn");
+                  X && (X.innerText = "🚀 4K就绪", X.style.background = "#52c41a");
                 }
               }
-              return X;
             }
-          }
+          } catch (a1) {}
         }
-      }(L, M) || function (P, Q) {
-        {
-          if (P) {
-            {
-              if ("string" == typeof P) {
-                return w(P, Q);
-              }
-              var S = {}.toString.call(P).slice(8, -1);
-              "Object" === S && P.constructor && (S = P.constructor.name);
-              return "Map" === S || "Set" === S ? Array.from(P) : "Arguments" === S || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(S) ? w(P, Q) : undefined;
-            }
-          }
-        }
-      }(L, M) || function () {
-        {
-          throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-        }
-      }();
-    }
-  }
-  function w(L, M) {
-    {
-      (null == M || M > L.length) && (M = L.length);
-      for (var N = 0, O = Array(M); N < M; N++) {
-        O[N] = L[N];
+        return J.apply(this, arguments);
       }
-      return O;
+    };
+    var K = function (R, S) {
+      return CryptoJS.enc.Base64.stringify(CryptoJS.HmacSHA256(R, S));
+    };
+    var L = function (R, S) {
+      {
+        return "".concat(R, "?").concat(Object.keys(S).sort().map(function (U) {
+          {
+            return "".concat(U, "=").concat(S[U]);
+          }
+        }).join("&"));
+      }
+    };
+    var M = function (R) {
+      {
+        var S = CryptoJS.enc.Utf8.parse(z);
+        return JSON.parse(CryptoJS.AES.decrypt(R, S, {
+          mode: CryptoJS.mode.ECB,
+          padding: CryptoJS.pad.Pkcs7
+        }).toString(CryptoJS.enc.Utf8));
+      }
+    };
+    var N = function (R, S) {
+      {
+        var T = CryptoJS.enc.Utf8.parse(S.substring(4, 20));
+        var U = CryptoJS.enc.Utf8.parse(A);
+        return CryptoJS.AES.decrypt(R, T, {
+          iv: U,
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7
+        }).toString(CryptoJS.enc.Utf8);
+      }
+    };
+    function O(R, S) {
+      return P.apply(this, arguments);
     }
-  }
-  function x(L) {
-    {
-      x = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (N) {
-        {
-          return typeof N;
-        }
-      } : function (N) {
-        return N && "function" == typeof Symbol && N.constructor === Symbol && N !== Symbol.prototype ? "symbol" : typeof N;
+    function P() {
+      P = f(c().mark(function R(S, T) {
+        return c().wrap(function (V) {
+          for (;;) {
+            switch (V.prev = V.next) {
+              case 0:
+                return V.abrupt("return", new Promise(function (X, Y) {
+                  var a2 = {
+                    hsdrOpen: 0,
+                    isAgeLimit: 0,
+                    dramaId: S,
+                    episodeSid: T,
+                    quality: "AI4K",
+                    hevcOpen: 1,
+                    tria4k: 1
+                  };
+                  var a3 = Date.now();
+                  var a4 = L(C, a2);
+                  var a5 = {
+                    aliId: D,
+                    ct: "web_applet",
+                    cv: "1.0.0"
+                  };
+                  var a6 = ["GET", "aliId:".concat(a5.aliId), "ct:".concat(a5.ct), "cv:".concat(a5.cv), "t:".concat(a3), a4].join("\n");
+                  var a7 = K(a6, x);
+                  GM_xmlhttpRequest({
+                    method: "GET",
+                    url: "".concat(B).concat(a4),
+                    headers: {
+                      accept: "application/json, text/plain, */*",
+                      aliid: D,
+                      clienttype: "web_applet",
+                      clientversion: "1.0.0",
+                      ct: "web_applet",
+                      cv: "1.0.0",
+                      deviceid: D,
+                      token: E,
+                      uet: "9",
+                      umid: D,
+                      "x-ca-sign": a7,
+                      t: String(a3),
+                      Referer: "https://m.yichengwlkj.com/"
+                    },
+                    onload: function (a8) {
+                      if (200 === a8.status) {
+                        try {
+                          var a9;
+                          var aa;
+                          var ab;
+                          var ac = M(a8.responseText);
+                          if ("0000" !== ac.code) {
+                            return Y(ac.msg);
+                          }
+                          var ad = ac.data;
+                          var ae = null !== (a9 = ad.tria4kPlayInfo) && undefined !== a9 && a9.url ? ad.tria4kPlayInfo : null !== (aa = ad.watchInfo) && undefined !== aa && null !== (aa = aa.tria4kPlayInfo) && undefined !== aa && aa.url ? ad.watchInfo.tria4kPlayInfo : null === (ab = ad.watchInfo) || undefined === ab ? undefined : ab.m3u8;
+                          if (!ae || !ae.url) {
+                            return Y("无资源");
+                          }
+                          X(N(ae.url, ad.newSign));
+                        } catch (af) {
+                          Y("解密错误");
+                        }
+                      } else {
+                        Y("网络错误");
+                      }
+                    },
+                    onerror: function () {
+                      return Y("网络中断");
+                    }
+                  });
+                }));
+              case 1:
+              case "end":
+                return V.stop();
+            }
+          }
+        }, R);
+      }));
+      return P.apply(this, arguments);
+    }
+    function Q(R) {
+      var W = document.getElementById("mm_action_sheet");
+      W && W.remove();
+      var Y = document.querySelector("video");
+      Y && Y.pause();
+      var V = document.createElement("div");
+      V.id = "mm_action_sheet";
+      V.style.cssText = "\n            position: fixed; bottom: 0; left: 0; width: 100%;\n            background: #1a1a1a; border-radius: 12px 12px 0 0;\n            z-index: 2147483647; padding: 20px; box-sizing: border-box;\n            box-shadow: 0 -4px 20px rgba(0,0,0,0.5);\n            display: flex; flex-direction: column; gap: 10px;\n            font-family: sans-serif;\n        ";
+      var Z = function (a0, a1, a2) {
+        var a3 = document.createElement("div");
+        a3.innerText = a0;
+        a3.style.cssText = "\n                width: 100%; padding: 12px 0; text-align: center;\n                background: ".concat(a1, "; color: #fff; border-radius: 8px;\n                font-size: 16px; font-weight: bold; cursor: pointer;\n            ");
+        a3.onclick = a2;
+        return a3;
       };
-      return x(L);
-    }
-  }
-  var z = new K("AppRaven Invite");
-  var A = {
-    userId: "undefined" != typeof QX_CONFIG ? QX_CONFIG.userId : "12345678",
-    count: "undefined" != typeof QX_CONFIG ? QX_CONFIG.count : 2
-  };
-  function B() {
-    var M = "";
-    if ("undefined" != typeof $argument && (M = $argument.text || $argument || ""), "object" === x(M) && (M = JSON.stringify(M)), M = M.trim(), M) {
-      if (z.log("🔍 [Config] 接收参数: ".concat(M)), M.includes("{UserId}") || M.includes("{RunCount}")) {
-        z.msg("AppRaven", "⚠️ 配置无效", "请在插件配置中填写参数");
-        return "EXIT";
-      }
-      try {
-        {
-          if (M.startsWith("[")) {
-            {
-              var N = JSON.parse(M);
-              if (Array.isArray(N) && N.length >= 2) {
-                A.userId = String(N[0]);
-                return void (A.count = parseInt(N[1]));
-              }
-            }
-          }
-          if (M.startsWith("{")) {
-            {
-              var O = JSON.parse(M);
-              var P = O.UserId || O.userId || O.userid;
-              var Q = O.RunCount || O.runCount || O.count;
-              P && (A.userId = String(P));
-              return void (Q && (A.count = parseInt(Q)));
-            }
-          }
-          if (M.includes("=")) {
-            return void M.split("&").forEach(function (T) {
-              {
-                var V = T.split("=");
-                var W = q(V, 2);
-                var X = W[0];
-                var Y = W[1];
-                X && Y && ("userid" === X.trim().toLowerCase() && (A.userId = Y.trim()), "count" === X.trim().toLowerCase() && (A.count = parseInt(Y.trim())));
-              }
-            });
-          }
-        }
-      } catch (U) {
-        {
-          z.log("❌ 参数解析失败: ".concat(U.message));
-        }
-      }
-    }
-  }
-  var C = "https://appraven.net/appraven/graphql";
-  function D(L) {
-    return new Promise(function (M) {
-      return setTimeout(M, L);
-    });
-  }
-  function E(L) {
-    var M = arguments.length > 1 && undefined !== arguments[1] ? arguments[1] : null;
-    var N = {
-      "Content-Type": "application/json",
-      Accept: "*/*",
-      "User-Agent": "AppRaven/2 CFNetwork/1568.300.101 Darwin/24.2.0",
-      "apollographql-client-version": "2.2.9-2",
-      "apollographql-client-name": "net.appraven.app-apollo-ios",
-      "x-apollo-operation-type": "mutation",
-      "x-apollo-operation-name": L
-    };
-    M && (N.Cookie = M);
-    return N;
-  }
-  function F(L) {
-    if (!L) {
-      return null;
-    }
-    var P = {};
-    for (var O in L) P[O.toLowerCase()] = L[O];
-    var Q = P["set-cookie"];
-    if (!Q) {
-      return null;
-    }
-    var R = Array.isArray(Q) ? Q.join(";") : String(Q);
-    var S = R.match(/JSESSIONID=([^;]+)/);
-    var T = R.match(/remember-me=([^;]+)/);
-    return S && T ? "JSESSIONID=".concat(S[1], "; remember-me=").concat(T[1]) : null;
-  }
-  function G() {
-    return H.apply(this, arguments);
-  }
-  function H() {
-    H = k(g().mark(function M() {
-      var N;
-      var O;
-      var P;
-      var Q;
-      var R;
-      var S;
-      var T;
-      var U;
-      return g().wrap(function (V) {
-        for (;;) {
-          switch (V.prev = V.next) {
-            case 0:
-              N = String(Math.floor(10000000 + 90000000 * Math.random()));
-              O = "".concat(N, "@qq.com");
-              P = "baby" + N;
-              Q = {
-                query: "mutation Register($username: String!, $email: String!, $password: String!) { registerUser(username: $username, email: $email, password: $password) { id } }",
-                variables: {
-                  username: P,
-                  email: O,
-                  password: "12345678"
-                },
-                operationName: "Register"
-              };
-              V.prev = 4;
-              V.next = 7;
-              return z.http.post({
-                url: C,
-                headers: E("Register"),
-                body: JSON.stringify(Q)
-              });
-            case 7:
-              if (S = V.sent, S && S.body) {
-                V.next = 10;
-                break;
-              }
-              throw new Error("无网络响应");
-            case 10:
-              if (T = JSON.parse(S.body), !T.errors && null !== (R = T.data) && undefined !== R && null !== (R = R.registerUser) && undefined !== R && R.id) {
-                V.next = 13;
-                break;
-              }
-              throw new Error("API错误");
-            case 13:
-              if (U = F(S.headers), U) {
-                V.next = 16;
-                break;
-              }
-              throw new Error("Cookie提取失败");
-            case 16:
-              var W = {
-                success: true,
-                email: O,
-                userId: T.data.registerUser.id,
-                cookie: U
-              };
-              return V.abrupt("return", W);
-            case 19:
-              V.prev = 19;
-              V.t0 = V.catch(4);
-              return V.abrupt("return", {
-                success: false,
-                error: V.t0.message || V.t0
-              });
-            case 22:
-            case "end":
-              return V.stop();
-          }
-        }
-      }, M, null, [[4, 19]]);
-    }));
-    return H.apply(this, arguments);
-  }
-  function I(L, M) {
-    return J.apply(this, arguments);
-  }
-  function J() {
-    J = k(g().mark(function M(N, O) {
-      var Q;
-      var R;
-      var S;
-      var T;
-      return g().wrap(function (U) {
-        for (;;) {
-          switch (U.prev = U.next) {
-            case 0:
-              var V = {
-                id: N
-              };
-              var W = {
-                query: "mutation UseReferralCode($id: ID!) { useReferralCode(id: $id) { info { id premium } } }",
-                variables: V,
-                operationName: "UseReferralCode"
-              };
-              Q = W;
-              U.prev = 1;
-              U.next = 4;
-              return z.http.post({
-                url: C,
-                headers: E("UseReferralCode", O),
-                body: JSON.stringify(Q)
-              });
-            case 4:
-              if (S = U.sent, S && S.body) {
-                U.next = 7;
-                break;
-              }
-              return U.abrupt("return", {
-                success: false,
-                error: "无网络响应"
-              });
-            case 7:
-              if (T = JSON.parse(S.body), !T.errors) {
-                U.next = 10;
-                break;
-              }
-              var X = {
-                success: false,
-                error: "邀请无效"
-              };
-              return U.abrupt("return", X);
-            case 10:
-              if (null == T || null === (R = T.data) || undefined === R || !R.useReferralCode) {
-                U.next = 12;
-                break;
-              }
-              var Y = {
-                success: true
-              };
-              return U.abrupt("return", Y);
-            case 12:
-              return U.abrupt("return", {
-                success: false,
-                error: "未知响应"
-              });
-            case 15:
-              U.prev = 15;
-              U.t0 = U.catch(1);
-              return U.abrupt("return", {
-                success: false,
-                error: U.t0.message || U.t0
-              });
-            case 18:
-            case "end":
-              return U.stop();
-          }
-        }
-      }, M, null, [[1, 15]]);
-    }));
-    return J.apply(this, arguments);
-  }
-  function K(L) {
-    var N = "undefined" != typeof $loon;
-    var O = "undefined" != typeof $task;
-    var P = "undefined" != typeof $httpClient && !N;
-    var Q = function (S) {
-      return console.log("[".concat(L, "] ").concat(S));
-    };
-    var R = {
-      post: function (S) {
-        return new Promise(function (U, V) {
-          O ? (S.method = "POST", $task.fetch(S).then(function (X) {
-            var Y = {
-              status: X.statusCode,
-              headers: X.headers,
-              body: X.body
-            };
-            return U(Y);
-          }, function (X) {
-            return V(X.error || X);
-          })) : (P || N) && $httpClient.post(S, function (X, Y, Z) {
-            X ? V(X) : Y ? U({
-              status: Y.status,
-              headers: Y.headers,
-              body: Z || ""
-            }) : V("No Response Object");
-          });
+      V.appendChild(Z("▶️ 立即播放 (浏览器)", "#1890ff", function () {
+        window.location.href = R;
+      }));
+      H ? (V.appendChild(Z("🧡 Infuse 播放", "#ff8f00", function () {
+        window.location.href = "infuse://x-callback-url/play?url=".concat(encodeURIComponent(R));
+      })), V.appendChild(Z("💙 SenPlayer 播放", "#00a2ff", function () {
+        window.location.href = "SenPlayer://x-callback-url/play?url=".concat(encodeURIComponent(R));
+      })), V.appendChild(Z("🟠 VLC 播放", "#ff5722", function () {
+        window.location.href = "vlc-x-callback://x-callback-url/stream?url=".concat(encodeURIComponent(R));
+      }))) : I ? V.appendChild(Z("▶️ MX Player / VLC (Intent)", "#ff5722", function () {
+        var a0 = "intent:".concat(R, "#Intent;type=video/*;scheme=https;end");
+        window.location.href = a0;
+      })) : V.appendChild(Z("💻 新窗口播放", "#52c41a", function () {
+        var a0;
+        var a1;
+        var a2;
+        a0 = R;
+        a1 = "<!DOCTYPE html><html style=\"width:100%;height:100%;background:#000;\"><head><title>4K Play</title><meta name=\"viewport\" content=\"width=device-width\"><style>body{margin:0;display:flex;justify-content:center;align-items:center;}video{width:100%;height:100%;outline:none;}</style></head><body><video controls autoplay src=\"".concat(a0, "\"></video></body></html>");
+        a2 = new Blob([a1], {
+          type: "text/html"
         });
+        window.open(URL.createObjectURL(a2), "_blank");
+      }));
+      V.appendChild(Z("📋 复制 4K 链接", "#333", function () {
+        GM_setClipboard(R);
+        alert("已复制到剪贴板");
+      }));
+      var X = document.createElement("div");
+      X.innerText = "关闭";
+      X.style.cssText = "text-align: center; color: #999; margin-top: 10px; cursor: pointer; padding: 10px;";
+      X.onclick = function () {
+        return V.remove();
+      };
+      V.appendChild(X);
+      document.body.appendChild(V);
+    }
+    window.addEventListener("load", function () {
+      if (!document.getElementById("mm_4k_btn")) {
+        var S = document.createElement("div");
+        S.id = "mm_4k_btn";
+        var T = window.innerWidth < 768;
+        S.innerText = "🚀 解析";
+        S.style.cssText = "\n            position: fixed;\n            top: ".concat(T ? "120px" : "200px", ";\n            right: 10px;\n            padding: ").concat(T ? "8px 16px" : "12px 24px", ";\n            background: linear-gradient(90deg, #1890ff, #096dd9);\n            color: #fff; border-radius: 30px; font-weight: bold;\n            cursor: pointer; z-index: 2147483647;\n            box-shadow: 0 4px 12px rgba(0,0,0,0.3);\n            font-size: ").concat(T ? "12px" : "14px", ";\n            user-select: none; transition: 0.3s;\n        ");
+        S.onclick = f(c().mark(function U() {
+          var W;
+          var X;
+          var Y;
+          var Z;
+          return c().wrap(function (a0) {
+            for (;;) {
+              switch (a0.prev = a0.next) {
+                case 0:
+                  if (W = F.dramaId, X = F.episodeSid, W || (Y = location.pathname.match(/\/drama\/(\d+)/), Y && (W = Y[1])), W && X || (X = prompt("⚠️ 请先点击播放视频获取集数ID，你也可以手动输入集数，比如1:", ""), W || (W = prompt("请输入 dramaId:", "55334"))), W && X) {
+                    a0.next = 5;
+                    break;
+                  }
+                  return a0.abrupt("return");
+                case 5:
+                  S.innerText = "⏳...";
+                  S.style.background = "#faad14";
+                  a0.prev = 7;
+                  a0.next = 10;
+                  return O(W, X);
+                case 10:
+                  Z = a0.sent;
+                  S.innerText = "🚀 解析";
+                  S.style.background = "#1890ff";
+                  Q(Z);
+                  a0.next = 21;
+                  break;
+                case 16:
+                  a0.prev = 16;
+                  a0.t0 = a0.catch(7);
+                  alert("失败");
+                  S.innerText = "❌";
+                  S.style.background = "#ff4d4f";
+                case 21:
+                case "end":
+                  return a0.stop();
+              }
+            }
+          }, U, null, [[7, 16]]);
+        }));
+        document.body.appendChild(S);
       }
-    };
-    return {
-      name: L,
-      log: Q,
-      msg: function (S, T, U) {
-        try {
-          O && $notify(S, T, U);
-          (P || N) && $notification.post(S, T, U);
-        } catch (V) {
-          Q(V);
-        }
-        Q("".concat(S, "\n").concat(T, "\n").concat(U));
-      },
-      http: R,
-      done: function (S) {
-        try {
-          $done(S);
-        } catch (T) {}
-      }
-    };
-  }
-  k(g().mark(function L() {
-    var N;
-    var O;
-    var P;
-    var Q;
-    var R;
-    return g().wrap(function (S) {
-      for (;;) {
-        switch (S.prev = S.next) {
-          case 0:
-            if (z.log("🔔 任务启动"), "EXIT" !== B()) {
-              S.next = 4;
-              break;
-            }
-            z.done();
-            return S.abrupt("return");
-          case 4:
-            if (A.userId && "null" !== A.userId) {
-              S.next = 8;
-              break;
-            }
-            z.msg("AppRaven", "⚠️ 停止", "UserID 为空");
-            z.done();
-            return S.abrupt("return");
-          case 8:
-            if ((isNaN(A.count) || A.count < 1) && (A.count = 1), !(A.count > 20)) {
-              S.next = 13;
-              break;
-            }
-            z.msg("AppRaven", "🚫 停止", "次数(".concat(A.count, ")超限"));
-            z.done();
-            return S.abrupt("return");
-          case 13:
-            z.log("⚙️ ID=".concat(A.userId, ", Count=").concat(A.count));
-            N = 0;
-            O = 0;
-            P = 1;
-          case 16:
-            if (!(P <= A.count)) {
-              S.next = 39;
-              break;
-            }
-            z.log("\n--- 第 ".concat(P, "/").concat(A.count, " 次 ---"));
-            S.next = 20;
-            return G();
-          case 20:
-            if (Q = S.sent, Q.success) {
-              S.next = 27;
-              break;
-            }
-            z.log("❌ 注册失败: ".concat(Q.error));
-            O++;
-            S.next = 26;
-            return D(1500);
-          case 26:
-            return S.abrupt("continue", 36);
-          case 27:
-            S.next = 29;
-            return D(1000);
-          case 29:
-            S.next = 31;
-            return I(A.userId, Q.cookie);
-          case 31:
-            if (R = S.sent, R.success ? (z.log("🎉 邀请成功!"), N++) : (z.log("❌ 邀请失败: ".concat(R.error)), O++), !(P < A.count)) {
-              S.next = 36;
-              break;
-            }
-            S.next = 36;
-            return D(2000);
-          case 36:
-            P++;
-            S.next = 16;
-            break;
-          case 39:
-            z.msg("AppRaven 刷取完成", "ID: ".concat(A.userId), "✅ 成功: ".concat(N, "  ❌ 失败: ").concat(O));
-            S.next = 42;
-            return D(500);
-          case 42:
-            z.done();
-          case 43:
-          case "end":
-            return S.stop();
-        }
-      }
-    }, L);
-  }))().catch(function (M) {
-    z.log("❌ 脚本异常: ".concat(M));
-    z.done();
-  });
+    });
+  }();
 })();
